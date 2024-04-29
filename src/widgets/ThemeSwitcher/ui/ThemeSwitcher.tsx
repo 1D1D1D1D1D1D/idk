@@ -1,5 +1,5 @@
 
-import {classNames} from 'shared/lib/classNames';
+import {classNames} from 'shared/lib/classNames/classNames';
 import cls from './themeSwitcher.module.scss';
 import {useTheme, Theme} from 'app/providers/ThemeProvider';
 import LightIcon from 'shared/assets/icons/theme-light.svg';
