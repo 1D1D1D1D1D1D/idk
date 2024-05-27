@@ -1,10 +1,14 @@
 import {render, screen} from "@testing-library/react"
-import Button from "./Button";
+import Button, { ThemeButton } from "./Button";
+import '@testing-library/jest-dom'
 describe('classNames', () => {
     test('with only first param', () => {
-      render(<Button>test</Button>)
-      expect(screen)
-      screen.getByText('test')
+        render(<Button>test</Button>)
+        expect(screen.getByText('test')).toBeInTheDocument()
+    });
+    test('with only first param', () => {
+        render(<Button theme={ThemeButton.CLEAR}>test</Button>)
+        expect(screen.getByText('test')).toHaveClass('clear')
     });
 
   

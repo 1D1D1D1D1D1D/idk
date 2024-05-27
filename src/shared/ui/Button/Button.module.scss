@@ -7,4 +7,11 @@ cursor: pointer;
     border: none;
     background: none;
     outline: none;
+    color: var(--primary-color)
+}
+
+.outline {
+    padding: 10px;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color)
 }
