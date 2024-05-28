@@ -14,8 +14,8 @@ jobs:
     
     steps: 
     - uses: actions/chekout@v2
-    - name: Staring Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+     - name: Staring Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
       with: 
         node-version: ${{ matrix.node-version }}
     - name: install modules
