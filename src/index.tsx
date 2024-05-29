@@ -1,3 +1,4 @@
+// eslint-disable-next-line react/no-deprecated
 import {render} from 'react-dom';
 import {ThemeProvider} from './app/providers/ThemeProvider';
 import './shared/config/i18n/i18n';

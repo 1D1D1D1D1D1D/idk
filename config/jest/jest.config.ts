@@ -32,6 +32,7 @@ export default {
     setupFilesAfterEnv: ['<rootDir>config/jest/jest-setup.ts'],
     moduleNameMapper: {
         '\\.(s?css)$': 'identity-obj-proxy',
+        // eslint-disable-next-line no-undef
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
     },
     // Indicates whether the coverage information should be collected while executing the test

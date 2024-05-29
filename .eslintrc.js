@@ -2,9 +2,9 @@ module.exports = {
     env: {
         browser: true,
         es2021: true,
-        jest: true
+        jest: true,
     },
-    extends: ['plugin:react/recommended', 'plugin:storybook/recommended'],
+    extends: ['plugin:react/recommended', 'plugin:storybook/recommended', "eslint:recommended"],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaFeatures: {
@@ -17,6 +17,7 @@ module.exports = {
         'react',
         '@typescript-eslint',
     ],
+   
     rules: {
         'react/jsx-indent': [2, 4],
         'react/jsx-indent-props': [2, 4],

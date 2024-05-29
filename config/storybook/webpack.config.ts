@@ -8,6 +8,7 @@ export default ({ config }: {config: webpack.Configuration}) => {
         build: '',
         html: '',
         entry: '',
+        // eslint-disable-next-line no-undef
         src: path.resolve(__dirname, '..', '..', 'src'),
     };
     config.resolve.modules.push(paths.src);
