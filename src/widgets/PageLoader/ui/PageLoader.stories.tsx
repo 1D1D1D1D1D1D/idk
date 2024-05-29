@@ -1,26 +1,25 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+// Replace your-renderer with the renderer you are using (e.g., react, vue3, etc.)
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { PageLoader } from './PageLoader';
-export default {
+const meta: Meta<typeof PageLoader> = {
     title: 'widget/PageLoader',
     component: PageLoader,
-    argTypes: {
-        backgroundColor: { control: 'color' },
-    },
-} as ComponentMeta<typeof PageLoader>;
+};
+export default meta;
 
-const Template: ComponentStory<typeof PageLoader> = (args) => <PageLoader {...args} />;
+type Story = StoryObj<typeof PageLoader>;
 
-export const Light = Template.bind({});
+
+export const Light: Story = {}
 Light.args = {
-    theme: Theme.LIGHT
+    
 };
 
-export const Dark = Template.bind({
-    theme: Theme.DARK
-})
+export const Dark: Story = {}
+Dark.args = {
 
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
+};
+Dark.decorators = [ThemeDecorator(Theme.DARK)];

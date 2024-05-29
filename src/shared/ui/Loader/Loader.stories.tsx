@@ -1,28 +1,25 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+// Replace your-renderer with the renderer you are using (e.g., react, vue3, etc.)
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import { AboutPageAsync } from 'pages/AboutPage/ui/AboutPage.async';
+import { Loader } from './Loader';
+const meta: Meta<typeof Loader> = {
+    title: 'shared/Loader',
+    component: Loader,
+};
+export default meta;
+
+type Story = StoryObj<typeof Loader>;
 
 
-export default {
-    title: 'pages/AboutPageAsync',
-    component: AboutPageAsync,
-    argTypes: {
-        backgroundColor: { control: 'color' },
-    },
-} as ComponentMeta<typeof AboutPageAsync>;
-
-const Template: ComponentStory<typeof AboutPageAsync> = (args) => <AboutPageAsync {...args} />;
-
-export const Light = Template.bind({});
+export const Light: Story = {}
 Light.args = {
-    theme: Theme.LIGHT
+   
 };
 
-export const Dark = Template.bind({});
+export const Dark: Story = {}
 Dark.args = {
-    theme: Theme.DARK
+
 };
 Dark.decorators = [ThemeDecorator(Theme.DARK)];
