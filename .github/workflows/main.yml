@@ -11,7 +11,7 @@ jobs:
       matrix:
         node-version: [ 20.12.x ]
 
-    steps:
+  steps:
       - uses: actions/checkout@v2
       - name: Staring Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -30,4 +30,4 @@ jobs:
       - name: build storybook
         run: npm run storybook:build
       - name: screenshot testing
-        run: npm run test:ui
+        run: npm run test:ui:ci
