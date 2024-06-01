@@ -15,7 +15,7 @@
     "test:ui": "npx loki test",
     "test:ui:ok": "npx loki approve",
     "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static",
-    "storybook": "start-storybook -p 6006 -c ./config/storybook",
+    "storybook": "storybook dev -p 6006 -c./config/storybook",
     "storybook:build": "storybook build -c ./config/storybook"
   },
   "keywords": [],
@@ -68,7 +68,7 @@
     "react-test-renderer": "^18.3.1",
     "sass": "^1.70.0",
     "sass-loader": "^14.1.0",
-    "storybook": "^8.0.10",
+    "storybook": "^8.1.5",
     "style-loader": "^3.3.4",
     "stylelint": "^16.3.1",
     "stylelint-config-standard-scss": "^13.1.0",
@@ -105,7 +105,7 @@
       },
       "chrome.iphone7": {
         "target": "chrome.app",
-        "preset": "iPhone 7"  
+        "preset": "iPhone 7"
       }
     }
   }
