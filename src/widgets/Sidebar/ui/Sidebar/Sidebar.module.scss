@@ -8,8 +8,11 @@
 }
 
 .collapsed {
-    width: var(--sidebar-width-collapsed)
-
+    width: var(--sidebar-width-collapsed);
+    
+    .switchers {
+        flex-direction: column;
+    }
 }
 
 .switchers {
@@ -22,4 +25,10 @@
 
 .lang {
     margin-left: 20px;
+}
+
+.collapsedBtn {
+    position: absolute;
+    right: -32px;
+    bottom: 32px;
 }
