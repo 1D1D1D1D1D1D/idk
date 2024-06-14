@@ -15,7 +15,6 @@ const preview: Preview = {
                 color: /(background|color)$/i,
                 date: /Date$/i,
             },
-            
         },
     },
     decorators: [
