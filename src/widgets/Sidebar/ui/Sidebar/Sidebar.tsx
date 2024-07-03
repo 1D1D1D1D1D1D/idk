@@ -12,7 +12,7 @@ import {useTranslation} from 'react-i18next';
 type SidebarProps = {
 	className?: string;
 };
-const Sidebar: FC<SidebarProps> = ({className}: SidebarProps) => {
+export const Sidebar: FC<SidebarProps> = ({className}: SidebarProps) => {
     const {t} = useTranslation();
 
     const [collapsed, setCollapsed] = useState(false);
@@ -41,7 +41,7 @@ const Sidebar: FC<SidebarProps> = ({className}: SidebarProps) => {
             </Button>
             <div className={cls.items}>
                 <div >
-                    <AppLink theme={AppLinkTheme.SECONDARY} className={cls.item}  to={RoutePath.main}>
+                    <AppLink theme={AppLinkTheme.SECONDARY} className={cls.item} to={RoutePath.main}>
                         <MainIcon className={cls.icon}/>
                         <span className={cls.link}>{t('Главная') }</span>
                     </AppLink>
@@ -62,5 +62,3 @@ const Sidebar: FC<SidebarProps> = ({className}: SidebarProps) => {
         </div>
     );
 };
-
-export default Sidebar;
