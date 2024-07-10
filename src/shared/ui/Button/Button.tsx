@@ -11,13 +11,13 @@ export enum ThemeButton {
     BACKGROUND_INVERTED = 'backgroundInverted'
 
 }
-type ButtonProps = {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	className?: string;
 	theme?: ThemeButton;
     square?: boolean;
     size?: ButtonSize;
 
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+} 
 export enum ButtonSize  {
     L = 'size_l',
     M = 'size_m',

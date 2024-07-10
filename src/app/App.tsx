@@ -19,7 +19,6 @@ const App = () => {
                 <div className='content-page'>
                     <Sidebar />
                     <AppRouter />
-                    <Counter/>
                 </div> 
             </Suspense>
         </div>

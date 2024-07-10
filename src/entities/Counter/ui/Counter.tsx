@@ -23,8 +23,8 @@ import Button, { ButtonSize, ThemeButton } from 'shared/ui/Button/Button';
           <h1 data-testid="value-title">
             value = {counterValue}
           </h1>
-          <Button data-testid="increment-btn" theme={ThemeButton.OUTLINE} size={ButtonSize.XL} onClick={increment}>INCREMENT</Button>
-          <Button data-testid="decrement-btn" theme={ThemeButton.OUTLINE} size={ButtonSize.XL}  onClick={decrement}>DECREMENT</Button>
+          <Button data-testid="increment-btn" theme={ThemeButton.BACKGROUND} size={ButtonSize.XL} onClick={increment}>INCREMENT</Button>
+          <Button data-testid="decrement-btn" theme={ThemeButton.BACKGROUND} size={ButtonSize.XL}  onClick={decrement}>DECREMENT</Button>
         </div>
     );
 };

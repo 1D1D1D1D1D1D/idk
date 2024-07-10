@@ -1,6 +1,6 @@
 // eslint-disable-next-line react/no-deprecated
 import {render} from 'react-dom';
-import './app/styles/index.scss';
+import 'app/styles/index.scss';
 import {ThemeProvider} from './app/providers/ThemeProvider';
 import './shared/config/i18n/i18n';
 import {BrowserRouter} from 'react-router-dom';
@@ -14,10 +14,10 @@ render(
     < BrowserRouter>
         <ErrorBoundary>
             <ThemeProvider>
-                <App />,
+                <App />
             </ThemeProvider>
         </ErrorBoundary>
-    </BrowserRouter>,
+    </BrowserRouter>
     </StoreProvider>,
     document.getElementById('root'),
 );

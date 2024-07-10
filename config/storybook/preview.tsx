@@ -2,9 +2,9 @@ import React from 'react';
 
 import { Preview } from '@storybook/react';
 import { StyleDecorator } from "shared/config/storybook/StyleDecorator/StyleDecorator";
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { RouteDecorator } from 'shared/config/storybook/RouteDecorator/RouteDecorator';
+import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 
 
 const preview: Preview = {
