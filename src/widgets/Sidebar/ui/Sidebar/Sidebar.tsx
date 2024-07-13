@@ -42,6 +42,7 @@ export const Sidebar: FC<SidebarProps> = ({className}: SidebarProps) => {
             <div className={cls.items}>
                 <div >
                     <AppLink theme={AppLinkTheme.SECONDARY} className={cls.item} to={RoutePath.main}>
+                    <img  alt="Main Icon" />
                         <MainIcon className={cls.icon}/>
                         <span className={cls.link}>{t('Главная') }</span>
                     </AppLink>

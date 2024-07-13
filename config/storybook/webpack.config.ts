@@ -1,8 +1,8 @@
-import webpack, { DefinePlugin, RuleSetRule } from 'webpack';
-import path from 'path';
+
 import { buildCssLoader } from '../build/loaders/buildCssLoader';
 import { BuildPaths } from '../build/types/config';
-
+import path from "path";
+import webpack, { RuleSetRule } from "webpack";
 
 export default ({ config }: {config: webpack.Configuration}) => {
     const paths: BuildPaths = {
@@ -25,13 +25,9 @@ export default ({ config }: {config: webpack.Configuration}) => {
 
     config.module.rules.push({
         test: /\.svg$/,
-        use: ['@svgr/webpack'],
+        use: 'file-loader',
     });
     config.module.rules.push(buildCssLoader(true));
-
-    config.plugins.push(new DefinePlugin({
-        __IS_DEV__: true,
-    }));
 
     return config;
 };

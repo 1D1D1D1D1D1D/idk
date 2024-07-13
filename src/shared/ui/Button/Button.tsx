@@ -23,7 +23,7 @@ export enum ButtonSize  {
     M = 'size_m',
     XL = 'size_xl'
 }
-const Button: FC<ButtonProps> = (props) => {
+const Button: FC <ButtonProps> = (props) => {
     const {
         className,
         children, 
@@ -42,7 +42,7 @@ const Button: FC<ButtonProps> = (props) => {
     }
     return (
         <button
-            className={classNames(cls.Button, mods, [className, ])}
+            className={classNames('', mods, [className, ])}
             {...otherProps}
         >
             {children}
