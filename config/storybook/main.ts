@@ -1,28 +1,24 @@
-import type { StorybookConfig } from "@storybook/react-webpack5";
+import type { StorybookConfig } from '@storybook/react-webpack5';
 
 const config: StorybookConfig = {
+    framework: '@storybook/react-webpack5',
     stories: [
-        '../../src/**/*.stories.@(ts|tsx)'
+        '../../src/**/*.stories.@(ts|tsx)',
     ],
     addons: [
-        "@storybook/addon-webpack5-compiler-swc",
-        // "@storybook/addon-onboarding",
-        // "@chromatic-com/storybook",
-        "@storybook/addon-links",
-        "@storybook/addon-essentials",
-        "@storybook/addon-interactions",
-       
+        '@storybook/addon-links',
+        '@storybook/addon-essentials',
+        '@storybook/addon-interactions',
+        '@storybook/addon-webpack5-compiler-swc',
     ],
-    framework: {
-        name: "@storybook/react-webpack5",
-        options: {
-            builder: {
-                useSWC: true
-            }
+    core: {
+        builder: {
+            name: '@storybook/builder-webpack5',
+            options: {
+                fsCache: true,
+                lazyCompilation: true,
+            },
         },
-    },
-    docs: {
-        autodocs: "tag",
     },
     swc: () => ({
         jsc: {

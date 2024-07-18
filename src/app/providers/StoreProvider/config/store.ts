@@ -1,22 +1,25 @@
-import { configureStore, ReducersMapObject } from '@reduxjs/toolkit'
-
-import { StateSchema } from '..';
+import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
+import { loginReducer } from 'features';
 import { counterReducer } from 'entities/Counter/model/slice/counterSlice';
 import { userReducer } from 'entities/User';
 
+import { StateSchema } from '..';
 
+export const store = createReduxStore();
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 export function createReduxStore(initialState?: StateSchema) {
+    const rootReducers: ReducersMapObject<StateSchema> = {
+        counter: counterReducer,
+        user: userReducer,
+        loginForm: loginReducer,
+    };
 
-  const rootReducers: ReducersMapObject<StateSchema> = {
-    counter: counterReducer,
-    user: userReducer
-  }
-
-  return configureStore<StateSchema>({
-      reducer: rootReducers, 
-      devTools: __IS_DEV__,
-      preloadedState: initialState,
-  });
+    return configureStore<StateSchema>({
+        reducer: rootReducers,
+        devTools: __IS_DEV__,
+        preloadedState: initialState,
+    });
 }
 
 // // Infer the `RootState` and ` AppDispatch` types from the store itself

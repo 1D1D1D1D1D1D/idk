@@ -1,4 +1,5 @@
 import Navbar from './ui/Navbar';
-export  {
+
+export {
     Navbar,
 };

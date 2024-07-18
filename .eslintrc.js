@@ -7,7 +7,7 @@ module.exports = {
     extends: [
         'plugin:react/recommended',
         'airbnb',
-        'plugin:storybook/recommended', 
+        'plugin:storybook/recommended',
         'plugin:i18next/recommended',
     ],
     parser: '@typescript-eslint/parser',
@@ -21,10 +21,10 @@ module.exports = {
     plugins: [
         'react',
         '@typescript-eslint',
-        "react-hooks",
+        'react-hooks',
         'i18next',
     ],
-   
+
     rules: {
         'react/jsx-indent': [2, 4],
         'react/jsx-indent-props': [2, 4],
@@ -40,10 +40,15 @@ module.exports = {
         'react/react-in-jsx-scope': 'off',
         'react/jsx-props-no-spreading': 'warn',
         'react/function-component-definition': 'off',
+        'react/button-has-type': 'off',
         'no-shadow': 'off',
         'import/extensions': 'off',
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
+        'linebreak-style': ['error', process.platform === 'win32' ? 'windows' : 'unix'],
+        'no-tabs': 0,
+        'no-use-before-define': 'warn',
+        'no-restricted-globals': 'off',
         'i18next/no-literal-string': [
             'error',
             {
@@ -56,7 +61,7 @@ module.exports = {
         'jsx-a11y/click-events-have-key-events': 'off',
         'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
         'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies
-        'no-param-reassign': 'off'
+        'no-param-reassign': 'off',
     },
     globals: {
         __IS_DEV__: true,

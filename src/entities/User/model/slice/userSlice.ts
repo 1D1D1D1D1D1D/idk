@@ -1,18 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit"
-import {  UserSchema } from "../types/User"
-
-
+import { createSlice } from '@reduxjs/toolkit';
+import { UserSchema } from '../types/User';
 
 const initialState: UserSchema = {
-}
+};
 export const userSlice = createSlice({
     name: 'user',
-     initialState: initialState,
+    initialState,
     reducers: {
- 
-     
-    },
-  })
 
-  export const {actions: userActions} = userSlice
-  export const {reducer: userReducer } = userSlice
+    },
+});
+
+export const { actions: userActions } = userSlice;
+export const { reducer: userReducer } = userSlice;

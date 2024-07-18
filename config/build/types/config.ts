@@ -4,7 +4,7 @@ export type BuildPaths = {
 	build: string;
 	html: string;
 	src: string;
- 
+
 };
 export type BuildEnv = {
 	mode: BuildMode;
@@ -16,5 +16,5 @@ export type BuildOptions = {
 	paths: BuildPaths;
 	isDev: boolean;
 	port: number;
-    
+
 };

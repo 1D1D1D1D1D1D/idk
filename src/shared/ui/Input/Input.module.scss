@@ -14,15 +14,20 @@ display: flex;
     &:focus {
         outline: none; 
     }
+
 }
 
 .placeholder {
     margin-right: 5px;
+
 }
 
 .caretWrapper {
     flex-grow: 1;
     position: relative;
+    text-overflow: clip;
+
+
 }
 
 .caret {

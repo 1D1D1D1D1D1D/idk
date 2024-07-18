@@ -3,9 +3,10 @@ import path from 'path';
 import webpack from 'webpack';
 
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import {type BuildOptions} from './types/config';
-import {BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
-export function buildPlugins({paths, isDev}: BuildOptions): webpack.WebpackPluginInstance[] {
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import { type BuildOptions } from './types/config';
+
+export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPluginInstance[] {
     const plugins = [
         new HTMLWebpackPlugin({
             template: paths.html,
@@ -13,9 +14,9 @@ export function buildPlugins({paths, isDev}: BuildOptions): webpack.WebpackPlugi
         new webpack.ProgressPlugin(),
         new MiniCssExtractPlugin({
             filename: 'css/[name].[contenthash:8].css',
-            chunkFilename:  'css/[name].[contenthash:8].css',
+            chunkFilename: 'css/[name].[contenthash:8].css',
         }),
-      
+
     ];
 
     if (isDev) {
@@ -24,10 +25,10 @@ export function buildPlugins({paths, isDev}: BuildOptions): webpack.WebpackPlugi
                 __IS_DEV__: JSON.stringify(isDev),
             }),
             new BundleAnalyzerPlugin({
-                openAnalyzer: false
-            }))
+                openAnalyzer: false,
+            }),
+        );
     }
-   
-    return plugins
+
+    return plugins;
 }
- 
