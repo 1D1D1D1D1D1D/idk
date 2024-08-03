@@ -5,6 +5,7 @@ import { StyleDecorator } from 'shared/config/storybook/StyleDecorator/StyleDeco
 import { Theme } from 'app/providers/ThemeProvider';
 import { RouteDecorator } from 'shared/config/storybook/RouteDecorator/RouteDecorator';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { I18nDecorator } from 'shared/config/storybook/I18nDecorator/I18nDecorator';
 
 const preview: Preview = {
     parameters: {
@@ -32,6 +33,11 @@ const preview: Preview = {
                 {RouteDecorator(Story)}
             </div>
         ),
+        // (Story) => (
+        //     <div>
+        //         {I18nDecorator(Story)}
+        //     </div>
+        // ),
 
     ],
 

@@ -89,6 +89,5 @@ SquareSizeXl.args = {
 export const Disabled: Story = {};
 Disabled.args = {
     children: 'Text',
-    theme: ThemeButton.OUTLINE,
     disabled: true,
 };

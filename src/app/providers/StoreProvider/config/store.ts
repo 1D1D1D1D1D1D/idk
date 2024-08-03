@@ -1,9 +1,8 @@
 import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
 import { loginReducer } from 'features';
-import { counterReducer } from 'entities/Counter/model/slice/counterSlice';
-import { userReducer } from 'entities/User';
-
-import { StateSchema } from '..';
+import { counterReducer } from 'entities/Counter/index';
+import { userReducer } from 'entities/User/index';
+import { StateSchema } from './StateSchema';
 
 export const store = createReduxStore();
 export type RootState = ReturnType<typeof store.getState>;

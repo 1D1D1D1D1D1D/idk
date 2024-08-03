@@ -1,9 +1,11 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Modal } from 'shared/ui/Modal/Modal';
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Button, { ThemeButton } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserAuthData } from 'entities/User/model/selectors/getUserAuthData/getUserAuthData';
+import { userActions } from 'entities/User';
 import cls from './Navbar.module.scss';
 
 type NavBarProps = {
@@ -13,19 +15,32 @@ type NavBarProps = {
 const Navbar = ({ className }: NavBarProps) => {
     const [isAuthModal, setIsAuthModal] = useState(false);
     const { t } = useTranslation();
-
+    const isLogin = useSelector(getUserAuthData);
+    const dispatch = useDispatch();
     const onCloseModal = useCallback(() => {
         setIsAuthModal(false);
     }, []);
     const onShowModal = useCallback(() => {
         setIsAuthModal(true);
     }, []);
+    const onLogout = useCallback(() => {
+        dispatch(userActions.logOut());
+    }, [dispatch]);
 
     return (
         <div className={classNames(cls.navbar, {}, [className])}>
-            <Button onClick={onShowModal} className={cls.links} theme={ThemeButton.CLEAR_INVERTED}>
-                {t('Войти')}
-            </Button>
+            {isLogin ? (
+                <Button onClick={onLogout} className={cls.links} theme={ThemeButton.CLEAR_INVERTED}>
+                    {t('Выйти')}
+                </Button>
+
+            )
+                : (
+                    <Button onClick={onShowModal} className={cls.links} theme={ThemeButton.CLEAR_INVERTED}>
+                        {t('Войти')}
+                    </Button>
+                )}
+
             <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
 
         </div>

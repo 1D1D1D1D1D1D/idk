@@ -66,4 +66,9 @@
 
 .disabled {
     opacity: 0.5;
+    &.Button {
+        cursor: default;
+
+    }
+    
 }

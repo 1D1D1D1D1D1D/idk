@@ -7,7 +7,8 @@ import { memo, useCallback } from 'react';
 import { getLoginState } from 'features/AuthByUsername/model/selectors/getLoginState';
 import { loginByUsername } from 'features/AuthByUsername/services/loginByUsername/loginByUsername';
 import { AppDispatch } from 'app/providers/StoreProvider/config/store';
-import { loginActions } from '../../model/slice/loginSlice';
+import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { loginActions } from 'features/AuthByUsername/model/slice/loginSlice';
 import cls from './LoginForm.module.scss';
 
 interface LoginFormProps {
@@ -16,9 +17,9 @@ interface LoginFormProps {
 
 export const LoginForm = memo(({ className }: LoginFormProps) => {
     const { t } = useTranslation();
-    /// / !!!!!!!!
+    /// / !!!!!!!! ЧЗХ??????????????
     const dispatch = useDispatch<AppDispatch>();
-    /// /!!!!!!!!!
+    /// /!!!!!!!!! ЧЗХ??????????????
     const {
         username, password, isLoading, error,
     } = useSelector(getLoginState);
@@ -35,6 +36,7 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
     }, [username, password, dispatch]);
     return (
         <div className={classNames(cls.LoginForm, {}, [className])}>
+            { error && <Text text={error} theme={TextTheme.ERROR} />}
             <Input
                 className={cls.input}
                 type="text"
