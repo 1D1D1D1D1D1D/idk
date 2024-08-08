@@ -33,7 +33,6 @@ const Navbar = ({ className }: NavBarProps) => {
                 <Button onClick={onLogout} className={cls.links} theme={ThemeButton.CLEAR_INVERTED}>
                     {t('Выйти')}
                 </Button>
-
             )
                 : (
                     <Button onClick={onShowModal} className={cls.links} theme={ThemeButton.CLEAR_INVERTED}>
@@ -41,7 +40,7 @@ const Navbar = ({ className }: NavBarProps) => {
                     </Button>
                 )}
 
-            <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
+            { isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />}
 
         </div>
     );

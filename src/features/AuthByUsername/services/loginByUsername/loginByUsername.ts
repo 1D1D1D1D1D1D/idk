@@ -2,8 +2,8 @@ import { createAsyncThunk, GetThunkAPI } from '@reduxjs/toolkit';
 // eslint-disable-next-line quotes
 import axios from "axios";
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
-import i18n from 'shared/config/i18n/i18n';
-import { User, userActions } from 'entities/User/index';
+
+import { User, userActions } from '../../../../entities/User/index';
 
 interface LoginByUsernameProps {
     username: string
@@ -26,7 +26,7 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, { re
             return response.data;
         } catch (e) {
             console.log(e);
-            return thunkAPI.rejectWithValue(i18n.t('Неверный логин или пароль'));
+            return thunkAPI.rejectWithValue(('error'));
         }
     },
 );

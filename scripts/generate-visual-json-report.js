@@ -1,6 +1,6 @@
-const {promisify} = require('util');
-const {readdir, writeFile} = require('fs');
-const {join: joinPath, relative} = require('path');
+const { promisify } = require('util');
+const { readdir, writeFile } = require('fs');
+const { join: joinPath, relative } = require('path');
 
 const asyncReaddir = promisify(readdir);
 const writeFileAsync = promisify(writeFile);
@@ -24,6 +24,6 @@ const diffDir = joinPath(lokiDir, 'difference');
         diffItems: diffs,
         actualDir: relative(lokiDir, actualDir),
         expectedDir: relative(lokiDir, expectedDir),
-        diffDir: relative(lokiDir, diffDir)
+        diffDir: relative(lokiDir, diffDir),
     }));
-})();
+}());

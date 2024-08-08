@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { LoginForm } from './LoginForm';
+import LoginForm from './LoginForm';
 
 const meta: Meta<typeof LoginForm> = {
     title: 'features/LoginForm',
@@ -13,8 +13,9 @@ type Story = StoryObj<typeof LoginForm>;
 export const Primary: Story = {};
 
 Primary.args = {
+
 };
-Primary.decorators = [StoreDecorator({ loginForm: { username: 'фыва', password: 'выап' } })];
+Primary.decorators = [StoreDecorator({ loginForm: { username: 'dssd', password: 'sadsd' } })];
 
 export const WithError: Story = {};
 WithError.args = {

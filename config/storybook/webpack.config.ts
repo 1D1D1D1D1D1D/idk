@@ -13,7 +13,7 @@ export default ({ config }: {config: webpack.Configuration, }) => {
     config.resolve = {
         ...config.resolve,
         modules: [paths.src, 'node_modules'],
-        extensions: ['.ts', '.tsx'],
+        extensions: ['.tsx', '.ts', '.js'],
         preferAbsolute: true,
     };
     config.resolve.modules.push(paths.src);
