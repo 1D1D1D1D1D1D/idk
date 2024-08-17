@@ -29,7 +29,7 @@ export const loginSlice = createSlice({
             .addCase(loginByUsername.fulfilled, (state) => {
                 state.isLoading = false;
             })
-            .addCase(loginByUsername.rejected, (state, action) => {
+            .addCase(loginByUsername.rejected, (state, action: PayloadAction<string>) => {
                 state.error = action.payload;
                 state.isLoading = false;
             });

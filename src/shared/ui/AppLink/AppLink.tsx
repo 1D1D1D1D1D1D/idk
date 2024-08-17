@@ -13,7 +13,7 @@ type AppLinkProps = {
 	theme?: AppLinkTheme;
 } & LinkProps;
 
-const AppLink: FC<AppLinkProps> = (props) => {
+const AppLink = (props: AppLinkProps) => {
     const {
         to,
         children,

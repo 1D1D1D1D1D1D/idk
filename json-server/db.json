@@ -1,29 +1,38 @@
 {
   "posts": [
     {
-      "id": 1,
+      "id": "1",
       "title": "json-server",
-      "userId": 1
+      "userId": "1"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "json-server",
       "userId": 2
     }
   ],
   "comments": [
     {
-      "id": 1,
+      "id": "1",
       "body": "some comment",
-      "postId": 1
+      "postId": "1"
     }
   ],
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "username": "admin",
       "password": "123"
     }
   ],
-  "profile": { "name": "typicode" }
+  "profile": {
+    "first": "Валентин",
+    "lastname": "Клоп",
+    "age": 39,
+    "currency": "RUB",
+    "country": "Russia",
+    "city": " Saint Petersburg",
+    "username": "admin",
+    "avatar": "https://cdn.viqeo.tv/storage/5a/86/1a832576e0316f3bc04ca418bfc6f0b7.webp"
+  }
 }

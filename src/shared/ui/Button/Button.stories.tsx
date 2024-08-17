@@ -32,6 +32,12 @@ Outline.args = {
     children: 'Text',
     theme: ThemeButton.OUTLINE,
 };
+export const OutlineSizeM: Story = {};
+OutlineSizeM.args = {
+    children: 'Text',
+    theme: ThemeButton.OUTLINE,
+    size: ButtonSize.M,
+};
 export const OutlineSizeL: Story = {};
 OutlineSizeL.args = {
     children: 'Text',
@@ -70,6 +76,13 @@ Square.args = {
     square: true,
 };
 
+export const SquareSizeM: Story = {};
+SquareSizeM.args = {
+    children: '<',
+    theme: ThemeButton.BACKGROUND_INVERTED,
+    square: true,
+    size: ButtonSize.M,
+};
 export const SquareSizeL: Story = {};
 SquareSizeL.args = {
     children: '<',

@@ -18,12 +18,11 @@ export default {
         'json',
         'node',
     ],
-    moduleDirectories: [
-        'node_modules',
-    ],
     modulePaths: [
-        '<rootDir>src',
+        '<rootDir>',
     ],
+    moduleDirectories: ['node_modules', 'src'],
+
     testMatch: [
 
         '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
@@ -31,6 +30,7 @@ export default {
     rootDir: '../../',
     setupFilesAfterEnv: ['<rootDir>config/jest/jest-setup.ts'],
     moduleNameMapper: {
+        '^entities/(.*)$': '<rootDir>/src/entities/$1',
         '\\.(s?css)$': 'identity-obj-proxy',
         // eslint-disable-next-line no-undef
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
