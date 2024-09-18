@@ -11,7 +11,7 @@ import cls from './Sidebar.module.scss';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 
 type SidebarProps = {
-className?: string;
+    className?: string;
 };
 export const Sidebar: FC<SidebarProps> = memo(({ className }: SidebarProps) => {
     const { t } = useTranslation();

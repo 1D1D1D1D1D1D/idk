@@ -2,7 +2,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import Button, { ThemeButton } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { memo, useCallback } from 'react';
 import { loginByUsername } from 'features/AuthByUsername/services/loginByUsername/loginByUsername';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
@@ -12,7 +12,6 @@ import { getLoginPassword } from 'features/AuthByUsername/model/selectors/getLog
 import { getLoginIsloading } from 'features/AuthByUsername/model/selectors/getLoginIsloading/getLoginIsloading';
 import { getLoginError } from 'features/AuthByUsername/model/selectors/getLoginError/getLoginError';
 import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { AppDispatch } from 'app/providers/StoreProvider';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import cls from './LoginForm.module.scss';
 
@@ -49,7 +48,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     return (
         <DynamicModuleLoader removeAfterUnmount reducers={initialReducers}>
             <div className={classNames(cls.LoginForm, {}, [className])}>
-                { error && <Text text={t('Неверный логин или пароль')} theme={TextTheme.ERROR} />}
+                {error && <Text text={t('Неверный логин или пароль')} theme={TextTheme.ERROR} />}
                 <Input
                     className={cls.input}
                     type="text"
@@ -61,7 +60,6 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
                 <Input
                     className={cls.input}
                     type="text"
-                    autofocus
                     onChange={onChangePassword}
                     value={password}
                     placeholder="password"

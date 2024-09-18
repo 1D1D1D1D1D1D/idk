@@ -5,9 +5,10 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Button.module.scss';
 
 export enum ThemeButton {
-	CLEAR = 'clear',
+    CLEAR = 'clear',
     CLEAR_INVERTED = 'clearInverted',
     OUTLINE = 'outline',
+    OUTLINE_RED = 'outlineRed',
     BACKGROUND = 'background',
     BACKGROUND_INVERTED = 'backgroundInverted',
 
@@ -18,8 +19,8 @@ export enum ButtonSize {
     XL = 'size_xl'
 }
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-	className?: string;
-	theme?: ThemeButton;
+    className?: string;
+    theme?: ThemeButton;
     square?: boolean;
     size?: ButtonSize;
     disabled?: boolean
@@ -31,13 +32,13 @@ const Button = memo((props: ButtonProps) => {
     const {
         className,
         children,
-        theme,
+        theme = ThemeButton.BACKGROUND_INVERTED,
         square,
         size = ButtonSize.M,
         disabled,
         ...otherProps
     } = props;
-    const mods: Record<string, boolean> = {
+    const mods: Record<string, boolean | undefined> = {
         [cls[theme]]: true,
         [cls.square]: square,
         [cls[size]]: true,

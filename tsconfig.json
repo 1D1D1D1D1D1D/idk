@@ -9,7 +9,6 @@
     // В какую спецификацию компилируем: для поддержки большинства браузеров
     "target": "es5",
     "jsx": "react-jsx",
-
     // Компилятор будет обрабатывать не только TS файлы, но и JS файлы
     "allowJs": true,
     "moduleResolution": "node",
@@ -29,6 +28,7 @@
     // import React from 'react';
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
+    "strict": true,
     "paths": {
       "*": ["./src/*"]
     },

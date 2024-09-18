@@ -26,13 +26,13 @@
     }
   ],
   "profile": {
-    "first": "Валентин",
-    "lastname": "Клоп",
-    "age": 39,
+    "first": "Макс",
+    "lastname": "Огр",
+    "age": 38,
     "currency": "RUB",
     "country": "Russia",
-    "city": " Saint Petersburg",
+    "city": "Oryol",
     "username": "admin",
-    "avatar": "https://cdn.viqeo.tv/storage/5a/86/1a832576e0316f3bc04ca418bfc6f0b7.webp"
+    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTonMt3t0fOLVhvo_2RYRKsD9hgts80cJWSIQ&s"
   }
 }

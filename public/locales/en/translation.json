@@ -1,13 +1,18 @@
 {
-    "Перевод" : "Translation",
-    "О сайте" : "About",
-    "Главная страница" : "Main page",
-    "Язык" : "English",
+    "Перевод": "Translation",
+    "О сайте": "About",
+    "Главная страница": "Main page",
+    "Язык": "English",
     "Страница не найдена": "Page not found",
     "Произошла непредвиденная ошибка": "An unexpected error occurred",
-    "Обновить страницу" :  "Reload Page",
+    "Обновить страницу": "Reload Page",
     "Короткое название": "En",
     "Главная": "Main",
     "Войти": "Login",
-    "Неверный логин или пароль": "Wrong password or login"
+    "Неверный логин или пароль": "Wrong password or login",
+    "Некорректный возраст": "Incorrect age",
+    "Некорректная страна": "Incorrect country",
+    "Поля имени и фамилии должны быть заполнены": "First and last name must not be empty",
+    "Введите данные": "Enter data",
+    "Серверная ошибка": "Server error"
 }

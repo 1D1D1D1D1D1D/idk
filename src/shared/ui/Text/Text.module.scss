@@ -4,8 +4,7 @@
 }
 
 .text {
-    color: var(--secondary-color);
-    font: var(--font-m);
+    font: var(--font-l);
 }
 
 .error {
@@ -16,4 +15,16 @@
     .text {
         color: var(--red-dark);
     }
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+.center {
+    text-align: center;
 }
