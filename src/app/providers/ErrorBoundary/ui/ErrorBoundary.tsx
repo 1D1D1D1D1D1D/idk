@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { Suspense, ErrorInfo, ReactNode } from 'react';
 
 import { PageError } from 'widgets/PageError/ui/PageError';
@@ -14,7 +15,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
         this.state = { hasError: false };
     }
 
-    static getDerivedStateFromError(error : Error) {
+    static getDerivedStateFromError(error: Error) {
         // Update state so the next render will show the fallback UI.
         return { hasError: true };
     }
@@ -29,8 +30,8 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
         const { children } = this.props;
         // eslint-disable-next-line react/destructuring-assignment
         if (this.state.hasError) {
-        // You can render any custom fallback UI
-        // без suspense не работает
+            // You can render any custom fallback UI
+            // без suspense не работает
             return <Suspense><PageError /></Suspense>;
         }
 

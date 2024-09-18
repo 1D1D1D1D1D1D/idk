@@ -29,7 +29,7 @@ const config: StorybookConfig = {
             },
         },
     }),
-    webpackFinal: async (config, { configType }) => config
+    webpackFinal: async (config) => config
     ,
 };
 export default config;

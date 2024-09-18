@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import Button, { ButtonSize, ThemeButton } from 'shared/ui/Button/Button';
 import { counterActions } from '../model/slice/counterSlice';
@@ -13,7 +12,6 @@ const Counter = () => {
     const decrement = () => {
         dispatch(counterActions.decrement());
     };
-    const { t } = useTranslation();
 
     return (
         <div>

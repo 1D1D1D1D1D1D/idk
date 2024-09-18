@@ -5,6 +5,7 @@ import { Profile } from 'entities/Profile';
 export const fetchProfileData = createAsyncThunk<Profile, void, ThunkConfig<string>>(
     'profile/fetchProfileData',
     async (_, thunkAPI) => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { extra, rejectWithValue } = thunkAPI;
         try {
             const response = await thunkAPI.extra.api.get<Profile>('/profile');

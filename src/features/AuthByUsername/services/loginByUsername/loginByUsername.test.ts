@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from 'axios';
 import { Dispatch } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/providers/StoreProvider';
 import { userActions } from 'entities/User';
-import { loginByUsername } from './loginByUsername';
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { loginByUsername } from './loginByUsername';
 
 jest.mock('axios');
 // @ts-ignore

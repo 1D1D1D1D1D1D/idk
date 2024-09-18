@@ -2,9 +2,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { Country } from 'entities/Country';
-import { ProfilePage } from '..';
-import { profile } from 'console';
 import { Currency } from 'entities/Currency';
+import { ProfilePage } from '..';
+
 const meta: Meta<typeof ProfilePage> = {
     title: 'pages/ProfilePage',
     component: ProfilePage,
@@ -20,7 +20,7 @@ Primary.args = {
 };
 Primary.decorators = [StoreDecorator({
     profile: {
-        form: {  
+        form: {
             first: 'Макс',
             lastname: 'Огр',
             age: 38,
@@ -28,14 +28,8 @@ Primary.decorators = [StoreDecorator({
             city: 'Oryol',
             username: 'admin',
             currency: Currency.RUB,
-            avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTonMt3t0fOLVhvo_2RYRKsD9hgts80cJWSIQ&s'
+            avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTonMt3t0fOLVhvo_2RYRKsD9hgts80cJWSIQ&s',
         },
-     
-        
-    }
-})]
 
-
-// {
-   
-// }
+    },
+})];

@@ -14,7 +14,6 @@ export interface StateSchema {
     loginForm: LoginSchema;
     profile: ProfileSchema;
 
-
 }
 
 export type StateSchemaKey = keyof StateSchema

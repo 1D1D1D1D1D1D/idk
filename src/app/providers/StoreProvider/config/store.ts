@@ -14,7 +14,6 @@ export function createReduxStore(
 
     navigate?: ReturnType<typeof useNavigate>,
 
-
 ) {
     const rootReducers = {
         ...asyncReducers,
@@ -25,15 +24,15 @@ export function createReduxStore(
 
     const extraArg: ThunkExtraArg = {
         api: $api,
-        navigate
-    }
+        navigate,
+    };
     const configuredStore = configureStore({
         reducer: reducerManager.reduce as Reducer<StateSchema>,
         devTools: __IS_DEV__,
         preloadedState: initialState,
         middleware: (getDefaultMiddleware) => getDefaultMiddleware({
             thunk: {
-                extraArgument: extraArg
+                extraArgument: extraArg,
             },
         }),
     });

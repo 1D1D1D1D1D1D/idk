@@ -1,15 +1,13 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import cls from './ProfileCard.module.scss';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { Input } from 'shared/ui/Input/Input';
 import { Profile } from 'entities/Profile/model/types/profile';
 import { Loader } from 'shared/ui/Loader/Loader';
-import { ChangeEvent, memo, useMemo, useState } from 'react';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { Select } from 'shared/ui/Select/Select';
 import { Currency, CurrencySelect } from 'entities/Currency';
 import { Country, CountrySelect } from 'entities/Country';
+import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
     className?: string;
@@ -36,14 +34,15 @@ export const ProfileCard = (props: ProfileCardProps) => {
         readonly,
         onChangeFirstname, onChangeLastname, onChangeAge,
         onChangeCity, onChangeUsername, onChangeAvatar,
-        onChangeCurrency, onChangeCountry } = props
+        onChangeCurrency, onChangeCountry,
+    } = props;
 
     const handleAgeChange = (value: string) => {
         const agePattern = /^\d*$/;
 
-        if (agePattern.test(value) && (value === "" || (parseInt(value) >= 0 && parseInt(value) <= 999))) {
+        if (agePattern.test(value) && (value === '' || (parseInt(value) >= 0 && parseInt(value) <= 999))) {
             onChangeAge(value);
-            6
+            6;
         }
     };
     if (isLoading) {
@@ -51,7 +50,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
             <div className={classNames(cls.ProfileCard, { [cls.loading]: true }, [className])}>
                 <Loader />
             </div>
-        )
+        );
     }
 
     if (error) {
@@ -59,7 +58,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
             <div className={classNames(cls.ProfileCard, { [cls.loading]: true }, [className, cls.error])}>
                 <Text theme={TextTheme.ERROR} title={t('Произошла ошибка')} text={t('Обновите страницу')} align={TextAlign.CENTER} />
             </div>
-        )
+        );
     }
 
     console.log(readonly);
@@ -139,7 +138,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
 
             </div>
 
-            <div className={cls.avatarContainer} >
+            <div className={cls.avatarContainer}>
                 <Avatar src={data?.avatar} width={300} height={340} round={false} className={cls.avatar} />
             </div>
 

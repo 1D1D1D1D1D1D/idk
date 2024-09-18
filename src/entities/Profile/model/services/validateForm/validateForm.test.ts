@@ -1,5 +1,3 @@
-import { StateSchema } from 'app/providers/StoreProvider';
-import { DeepPartial } from 'shared/lib/DeepPartialObject/DeepPartialObject';
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
 import { validateForm } from './validateForm';

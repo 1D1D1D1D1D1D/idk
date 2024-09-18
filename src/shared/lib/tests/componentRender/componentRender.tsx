@@ -19,12 +19,13 @@ export function componentRender(component: ReactNode, options: componentRenderOp
 
     return render(
         <MemoryRouter initialEntries={[route]}>
-        <StoreProvider initialState={initialState}>
+            <StoreProvider initialState={initialState}>
                 <I18nextProvider i18n={i18nForTests}>
                     {component}
                 </I18nextProvider>
-        </StoreProvider>,
-        </MemoryRouter>
+            </StoreProvider>
+            ,
+        </MemoryRouter>,
 
     );
 }

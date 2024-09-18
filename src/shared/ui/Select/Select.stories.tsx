@@ -1,8 +1,8 @@
 // Replace your-renderer with the renderer you are using (e.g., react, vue3, etc.)
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { Select } from './Select';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { Country } from 'entities/Country';
+
 const meta: Meta<typeof Select> = {
     title: 'shared/Select',
     component: Select,

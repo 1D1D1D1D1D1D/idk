@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import cls from './Avatar.module.scss';
 import { CSSProperties, useMemo } from 'react';
+import cls from './Avatar.module.scss';
 
 interface AvatarProps {
     className?: string;
@@ -18,12 +18,12 @@ export const Avatar = (props: AvatarProps) => {
         width,
         height,
         alt,
-        round = false
-    } = props
+        round = false,
+    } = props;
     const styles = useMemo<CSSProperties>(() => ({
-        width: width,
-        height: height
-    }), [width, height])
+        width,
+        height,
+    }), [width, height]);
 
     const mods: Record<string, boolean | undefined> = {
         [cls.round]: round,
@@ -32,4 +32,4 @@ export const Avatar = (props: AvatarProps) => {
     return (
         <img src={src} alt={alt} style={styles} className={classNames(cls.Avatar, mods, [className])} />
     );
-}; 
+};

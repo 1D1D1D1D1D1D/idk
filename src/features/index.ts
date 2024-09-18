@@ -5,5 +5,5 @@ import { loginReducer } from './AuthByUsername/model/slice/loginSlice';
 export {
     LoginModal,
     LoginSchema,
-    loginReducer
+    loginReducer,
 };

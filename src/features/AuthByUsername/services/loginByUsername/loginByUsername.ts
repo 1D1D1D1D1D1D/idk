@@ -1,5 +1,4 @@
-import { createAsyncThunk, GetThunkAPI } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
 
 import { User, userActions } from 'entities/User';
@@ -10,10 +9,10 @@ interface LoginByUsernameProps {
     password: string
 }
 
-
 export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, ThunkConfig<string>>(
     'login/loginByUsername',
     async (authData, thunkAPI) => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { extra, dispatch, rejectWithValue } = thunkAPI;
 
         try {

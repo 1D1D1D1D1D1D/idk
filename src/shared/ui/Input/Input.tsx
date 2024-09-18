@@ -3,7 +3,6 @@ import React, {
     ChangeEvent, InputHTMLAttributes, memo, useEffect, useRef, useState,
 } from 'react';
 import cls from './Input.module.scss';
-import { read } from 'node:fs';
 
 type HtmlInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>
 
@@ -32,7 +31,7 @@ export const Input = memo((props: InputProps) => {
         caretVisible = true,
         ...otherProps
     } = props;
-    const isCaretVisible = isFocused && !readonly
+    const isCaretVisible = isFocused && !readonly;
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         onChange?.(e.target.value);
@@ -52,7 +51,6 @@ export const Input = memo((props: InputProps) => {
         if (autofocus) {
             setIsFocused(true);
             ref.current?.focus();
-
         }
     }, [autofocus]);
     return (

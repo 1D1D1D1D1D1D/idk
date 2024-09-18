@@ -5,7 +5,6 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import LanguageSwitcher from 'widgets/LanguageSwitcher/LanguageSwitcher';
 import Button, { ButtonSize, ThemeButton } from 'shared/ui/Button/Button';
-import { useTranslation } from 'react-i18next';
 import { SidebarItemsList } from 'widgets/Sidebar/model/items';
 import cls from './Sidebar.module.scss';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
@@ -14,8 +13,6 @@ type SidebarProps = {
     className?: string;
 };
 export const Sidebar: FC<SidebarProps> = memo(({ className }: SidebarProps) => {
-    const { t } = useTranslation();
-
     const [collapsed, setCollapsed] = useState(false);
     const onToggle = () => {
         setCollapsed((prev) => !prev);
