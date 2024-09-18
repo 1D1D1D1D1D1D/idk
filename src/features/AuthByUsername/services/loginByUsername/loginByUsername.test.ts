@@ -17,7 +17,7 @@ describe('getCounter', () => {
         dispatch = jest.fn();
         getState = jest.fn();
     });
-    test('success login', async () => {
+    test('loginByUsername', async () => {
         const userValue = { username: '123', id: '1' };
 
         const thunk = new TestAsyncThunk(loginByUsername);
@@ -39,6 +39,6 @@ describe('getCounter', () => {
         expect(thunk.dispatch).toHaveBeenCalledTimes(2);
         expect(thunk.api.post).toHaveBeenCalled();
         expect(result.meta.requestStatus).toBe('rejected');
-        expect(result.payload).toBe('error');
+        expect(result.payload).toBe('Error');
     });
 });
