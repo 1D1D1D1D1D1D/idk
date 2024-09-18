@@ -6,7 +6,7 @@ on:
     branches: [ main ]
 jobs:
   pipeline:
-    runs-on: windows-2022
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [ 20.x ]
@@ -26,6 +26,14 @@ jobs:
         run: npm run lint:scss
       - name: unit testing
         run: npm run test:unit
+      - name: Install Docker
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker.io
+          sudo systemctl start docker
+          sudo systemctl enable docker
+      - name: Verify Docker installation
+        run: docker --version
       - name: build storybook
         run: npm run storybook:build
       - name: screenshot testing
