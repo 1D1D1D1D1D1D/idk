@@ -18,11 +18,9 @@ export const Light: Story = {};
 Light.args = {
 
 };
-
+Light.decorators = [StoreDecorator({ user: {} })];
 export const Dark: Story = {};
 Dark.args = {
 
 };
-Dark.decorators = [ThemeDecorator(Theme.DARK)];
-Light.decorators = [StoreDecorator({ user: {} })];
-Dark.decorators = [StoreDecorator({ user: {} })];
+Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({ user: {} })];
