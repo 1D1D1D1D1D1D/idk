@@ -10,7 +10,7 @@
     width: 100%;
 
     // How to remove the caret from an input element [duplicate]
-    caret-color: transparent;
+    // caret-color: transparent;
     color: var(--primary-color);
     padding: 0 8px;
 
@@ -25,25 +25,6 @@
 
 .placeholder {
     margin-right: 5px;
-
-}
-
-.caretWrapper {
-    flex-grow: 1;
-    position: relative;
-    text-overflow: clip;
-
-
-}
-
-.caret {
-    height: 3px;
-    width: 9px;
-    background: var(--primary-color);
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    animation: blink 0.8s forwards infinite;
 
 }
 

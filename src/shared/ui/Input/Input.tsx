@@ -16,8 +16,8 @@ interface InputProps extends HtmlInputProps {
 }
 
 export const Input = memo((props: InputProps) => {
-    const [isFocused, setIsFocused] = useState(false);
-    const [caretPosition, setCaterPosition] = useState(0);
+    const [, setIsFocused] = useState(false);
+    const [, setCaterPosition] = useState(0);
 
     const ref = useRef<HTMLInputElement>(null);
     const {
@@ -28,10 +28,8 @@ export const Input = memo((props: InputProps) => {
         type = 'text',
         autofocus,
         readonly,
-        caretVisible = true,
         ...otherProps
     } = props;
-    const isCaretVisible = isFocused && !readonly;
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         onChange?.(e.target.value);
@@ -73,12 +71,7 @@ export const Input = memo((props: InputProps) => {
                     readOnly={readonly}
                     {...otherProps}
                 />
-                {caretVisible && isCaretVisible && (
-                    <span
-                        className={cls.caret}
-                        style={{ left: `${caretPosition * 9}px` }}
-                    />
-                )}
+
             </div>
 
         </div>
