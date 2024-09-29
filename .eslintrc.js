@@ -26,10 +26,10 @@ module.exports = {
     ],
 
     rules: {
-        "no-unused-vars": "off",
-        "@typescript-eslint/no-unused-vars": [
-            "error",
-            { "argsIgnorePattern": "^_" }
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': [
+            'error',
+            { argsIgnorePattern: '^_' },
         ],
         'react/jsx-indent': [2, 4],
         'react/jsx-indent-props': [2, 4],
@@ -45,7 +45,6 @@ module.exports = {
         'react/jsx-props-no-spreading': 'warn',
         'react/function-component-definition': 'off',
         'react/button-has-type': 'off',
-        "radix": 'off',
         'no-shadow': 'off',
         'import/extensions': 'off',
         'import/no-extraneous-dependencies': 'off',

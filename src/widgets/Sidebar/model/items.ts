@@ -2,6 +2,7 @@ import React, { SVGProps } from 'react';
 import AboutIcon from 'shared/assets/icons/about-20-20.svg';
 import MainIcon from 'shared/assets/icons/main-20-20.svg';
 import ProfileIcon from 'shared/assets/icons/profile-user-svgrepo-com.svg';
+import ArticleIcon from 'shared/assets/icons/page-file-icon.svg';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 
 export interface SidebarItemType {
@@ -28,4 +29,14 @@ export const SidebarItemsList: SidebarItemType[] = [
         text: 'Профиль',
         authOnly: true,
     },
+    {
+        path: RoutePath.articles,
+        Icon: ArticleIcon,
+        text: 'Статьи',
+    },
+    // {
+    //     path: RoutePath.article_details,
+    //     Icon: ArticleIcon,
+    //     text: 'Статьи2',
+    // },
 ];

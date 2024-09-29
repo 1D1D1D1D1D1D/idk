@@ -24,7 +24,7 @@ export const DynamicModuleLoader = (props: DynamicModuleLoaderProps) => {
         Object.entries(reducers).forEach(([name, reducer]) => {
             const reducerManager = store.reducerManager!;
             reducerManager.add(name as StateSchemaKey, reducer);
-            dispatch({ type: '@INIT LoginFormReducer' });
+            dispatch({ type: ` @INIT ${name} reducer` });
         });
 
         return () => {
@@ -32,7 +32,7 @@ export const DynamicModuleLoader = (props: DynamicModuleLoaderProps) => {
                 Object.entries(reducers).forEach(([name]) => {
                     const reducerManager = store.reducerManager!;
                     reducerManager.remove(name as StateSchemaKey);
-                    dispatch({ type: '@DELETE LoginFormReducer' });
+                    dispatch({ type: ` @DELETE ${name} reducer` });
                 });
             }
         };

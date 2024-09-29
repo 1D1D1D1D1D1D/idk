@@ -74,7 +74,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
                         onChange={onChangeFirstname}
                         readonly={readonly}
                         autofocus={!readonly}
-                        caretVisible={false}
 
                     />
                     <Input
@@ -83,7 +82,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
                         className={cls.input}
                         onChange={onChangeLastname}
                         readonly={readonly}
-                        caretVisible={false}
 
                     />
                     <Input
@@ -92,14 +90,12 @@ export const ProfileCard = (props: ProfileCardProps) => {
                         className={cls.input}
                         onChange={handleAgeChange}
                         readonly={readonly}
-                        caretVisible={false}
                     />
                     <Input
                         value={data?.country}
                         placeholder={t('Страна')}
                         className={cls.input}
                         readonly={readonly}
-                        caretVisible={false}
                     />
                     <Input
                         value={data?.city}
@@ -107,7 +103,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
                         onChange={onChangeCity}
                         className={cls.input}
                         readonly={readonly}
-                        caretVisible={false}
                     />
                     <Input
                         value={data?.username}
@@ -115,14 +110,12 @@ export const ProfileCard = (props: ProfileCardProps) => {
                         className={cls.input}
                         onChange={onChangeUsername}
                         readonly={readonly}
-                        caretVisible={false}
                     />
                     <Input
                         value={data?.currency}
                         placeholder={t('Валюта')}
                         className={cls.input}
                         readonly={readonly}
-                        caretVisible={false}
                     />
                     <Input
                         value={data?.avatar}
@@ -130,7 +123,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
                         className={cls.input}
                         readonly={readonly}
                         onChange={onChangeAvatar}
-                        caretVisible={false}
                     />
                     <CurrencySelect value={data?.currency} onChange={onChangeCurrency} readonly={readonly} className={cls.select} />
                     <CountrySelect value={data?.country} onChange={onChangeCountry} readonly={readonly} className={cls.select} />
