@@ -1,9 +1,10 @@
 .Sidebar {
     height: calc(100vh - var(--navbar-height));
-    width: var(--sidebar-width);
+    max-width: var(--sidebar-width);
     background: var(--inverted-bg-color);
     transition: width 0.3s;
     position: relative;
+    width: 100%;
 }
 
 .lang {

@@ -12,12 +12,10 @@ export const fetchArticleById = createAsyncThunk<Article, string, ThunkConfig<st
             if (!response.data) {
                 throw new Error();
             }
-            console.log(response);
 
             return response.data;
         } catch (e) {
-            console.log(e);
-            return rejectWithValue('error');
+            return rejectWithValue(e instanceof Error ? e.message : String(e));
         }
     },
 );

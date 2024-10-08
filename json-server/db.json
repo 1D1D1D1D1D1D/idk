@@ -36,13 +36,15 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "role": "ADMIN"
+      "role": "ADMIN",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTonMt3t0fOLVhvo_2RYRKsD9hgts80cJWSIQ&s"
     },
     {
       "id": "2",
       "username": "user",
       "password": "123",
-      "role": "USER"
+      "role": "USER",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTonMt3t0fOLVhvo_2RYRKsD9hgts80cJWSIQ&s"
     }
   ],
   "articles": [
@@ -121,7 +123,7 @@
   "profile": {
     "first": "Макс",
     "lastname": "Огр",
-    "age": 38,
+    "age": 39,
     "currency": "RUB",
     "country": "Russia",
     "city": "Oryol",

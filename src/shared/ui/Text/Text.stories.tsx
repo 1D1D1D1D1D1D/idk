@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import { Text, TextTheme } from './Text';
+import { Text, TextSize, TextTheme } from './Text';
 
 const meta: Meta<typeof Text> = {
     title: 'shared/Text',
@@ -56,4 +56,18 @@ Error.args = {
     title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     theme: TextTheme.ERROR,
+};
+
+export const SizeM: Story = {};
+SizeM.args = {
+    title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    size: TextSize.M,
+};
+
+export const SizeL: Story = {};
+SizeL.args = {
+    title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    size: TextSize.L,
 };

@@ -4,10 +4,12 @@ import { loginReducer } from 'features';
 import { ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { DeepPartial } from 'shared/lib/DeepPartialObject/DeepPartialObject';
 import { profileReducer } from 'entities/Profile';
+import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice';
 
 const defaultAsyncReducers: ReducerList = {
     loginForm: loginReducer,
     profile: profileReducer,
+    articleDetails: articleDetailsReducer,
 };
 
 export const StoreDecorator = (
