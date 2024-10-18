@@ -1,17 +1,21 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { ArticleDetails } from 'entities/Article';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { CommentList } from 'entities/Comment';
 import { Text, TextAlign } from 'shared/ui/Text/Text';
 import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { AddCommentForm } from 'features/addCommentForm/';
+import { ArticleDetails } from 'entities/Article/ui/ArticleDetails/ArticleDetails';
+import Button from 'shared/ui/Button/Button';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import cls from './ArticleDetailsPage.module.scss';
 import { ArticleDetailsCommentReducer, getArticleComments } from '../model/slice/ArticleDetailsCommentSlice';
 import { getArticleCommentError, getArticleCommentIsLoading } from '../model/selectors/comments';
 import { fetchCommentByArticleId } from '../model/services/fetchCommentByArticleId/fetchCommentByArticleId';
+import { addCommentForArticle } from '../model/services/addCommentForArticle/addCommentForArticle';
 
 interface ArticleDetailsPageProps {
     className?: string;
@@ -26,6 +30,11 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     const commentsIsLoading = useSelector(getArticleCommentIsLoading);
     const error = useSelector(getArticleCommentError);
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+
+    const onSendComment = useCallback((text: string) => {
+        dispatch(addCommentForArticle(text));
+    }, [dispatch]);
     useEffect(() => {
         console.log('useEffect triggered', id);
         if (__PROJECT__ !== 'storybook') {
@@ -41,18 +50,19 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
             </div>
         );
     }
-
+    const onBack = useCallback(() => {
+        navigate(RoutePath.articles);
+    }, [navigate]);
     return (
         <DynamicModuleLoader removeAfterUnmount reducers={reducersList}>
             <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+                <Button onClick={onBack}>{t('Назад')}</Button>
                 <ArticleDetails id={id} />
                 <Text align={TextAlign.LEFT} title={t('Комментарии')} />
+                <AddCommentForm onSendComment={onSendComment} />
                 <CommentList isLoading={commentsIsLoading} comments={comments} />
             </div>
         </DynamicModuleLoader>
     );
 };
 export default ArticleDetailsPage;
-function dispatch(arg0: any) {
-    throw new Error('Function not implemented.');
-}

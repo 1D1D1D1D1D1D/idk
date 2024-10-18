@@ -29,6 +29,42 @@
       "text": "some comment 3",
       "articleId": "1",
       "userId": "1"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "TEST COMMENT",
+      "id": "9Ynl0u4"
+    },
+    {
+      "text": "123123123",
+      "articleId": "1",
+      "userId": "1",
+      "id": "Kk8dI21"
+    },
+    {
+      "text": "TEST",
+      "articleId": "1",
+      "userId": "1",
+      "id": "rSU23JJ"
+    },
+    {
+      "text": "DASDSDASAD",
+      "articleId": "1",
+      "userId": "1",
+      "id": "gOMwMSP"
+    },
+    {
+      "text": "admin 2 ",
+      "articleId": "1",
+      "userId": "2",
+      "id": "8gXqw8I"
+    },
+    {
+      "text": "sdsd",
+      "articleId": "1",
+      "userId": "2",
+      "id": "HpJm4cH"
     }
   ],
   "users": [
@@ -54,6 +90,7 @@
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
+      "user": "1",
       "createdAt": "26.02.2022",
       "type": [
         "IT"
@@ -120,14 +157,28 @@
       ]
     }
   ],
-  "profile": {
-    "first": "Макс",
-    "lastname": "Огр",
-    "age": 39,
-    "currency": "RUB",
-    "country": "Russia",
-    "city": "Oryol",
-    "username": "admin",
-    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTonMt3t0fOLVhvo_2RYRKsD9hgts80cJWSIQ&s"
-  }
+  "profile": [
+    {
+      "id": "1",
+      "first": "Макс",
+      "lastname": "Огр",
+      "age": 39,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Oryol",
+      "username": "admin",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTonMt3t0fOLVhvo_2RYRKsD9hgts80cJWSIQ&s"
+    },
+    {
+      "id": "2",
+      "first": "Макс",
+      "lastname": "Огр",
+      "age": 39,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Oryol",
+      "username": "admin2",
+      "avatar": "https://i.ytimg.com/vi/5lV1F0b0iJ4/maxresdefault.jp"
+    }
+  ]
 }

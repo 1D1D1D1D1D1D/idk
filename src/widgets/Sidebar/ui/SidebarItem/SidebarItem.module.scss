@@ -1,27 +1,33 @@
 .item {
-    margin-top: 10px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #3e3e3e;
+    margin-top: 10px;
 
 }
 
 .link {
     margin-left: 10px;
+    opacity: 1;
 }
 
 .icon {
     fill: var(--inverted-primary-color);
-
+    margin: 0;
+    padding: 0;
 }
 
 .collapsed {
     .link {
-        opacity: 0;
-        transition: .2s opacity;
-        width: 0;
+        display: none;
+
     }
 
+    &.item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
 
 
 }

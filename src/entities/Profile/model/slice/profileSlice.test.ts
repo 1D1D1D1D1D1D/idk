@@ -7,6 +7,7 @@ import { updateProfileData } from '../services/updateProfileData/updateProfileDa
 
 describe('test profile slice', () => {
     const data = {
+
         first: 'Макс',
         lastname: 'Огр',
         age: 38,

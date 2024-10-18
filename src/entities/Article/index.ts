@@ -1,5 +1,7 @@
-import { Article } from './model/types/article';
-import { ArticleDetails } from './ui/ArticleDetails/ArticleDetails';
+import { Article, ArticleView } from './model/types/article';
 import { ArticleDetailsSchema } from './model/types/ArticleDetailsSchema';
+import { ArticleList } from './ui/ArticleList/ArticleList';
 
-export { ArticleDetails, Article, ArticleDetailsSchema };
+export {
+    Article, ArticleDetailsSchema, ArticleView, ArticleList,
+};

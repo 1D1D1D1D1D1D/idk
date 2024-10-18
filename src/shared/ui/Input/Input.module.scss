@@ -1,5 +1,7 @@
 .InputWrapper {
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .input {
@@ -8,7 +10,6 @@
     border-color: transparent;
     outline: none;
     width: 100%;
-
     // How to remove the caret from an input element [duplicate]
     // caret-color: transparent;
     color: var(--primary-color);
@@ -23,24 +24,8 @@
 
 }
 
-.placeholder {
-    margin-right: 5px;
-}
+.placeholder {}
 
 .readonly {
     opacity: 0.7;
-}
-
-@keyframes blink {
-    0% {
-        opacity: 0;
-    }
-
-    50% {
-        opacity: 0.1;
-    }
-
-    100% {
-        opacity: 1;
-    }
 }
