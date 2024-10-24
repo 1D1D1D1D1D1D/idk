@@ -5,7 +5,6 @@ import cls from './Avatar.module.scss';
 interface AvatarProps {
     className?: string;
     src?: string
-    Svg?: React.VFC<React.SVGProps<SVGSVGElement>>
     width?: number
     height?: number
     round?: boolean
@@ -18,7 +17,6 @@ export const Avatar = (props: AvatarProps) => {
         width,
         height,
         alt,
-        Svg,
         round = false,
     } = props;
     const styles = useMemo<CSSProperties>(() => ({
@@ -30,11 +28,7 @@ export const Avatar = (props: AvatarProps) => {
         [cls.round]: round,
 
     };
-    if (Svg) {
-        return (
-            <Svg className={classNames(cls.Icon, {}, [className])} />
-        );
-    }
+
     return (
         <img src={src} alt={alt} style={styles} className={classNames(cls.Avatar, mods, [className])} />
 

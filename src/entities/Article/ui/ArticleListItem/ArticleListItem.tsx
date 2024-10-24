@@ -4,8 +4,6 @@ import { Text } from 'shared/ui/Text/Text';
 import { Icon } from 'shared/ui/Icon/Icon';
 import ViewsIcon from 'shared/assets/icons/eye-20-20.svg';
 import { Card } from 'shared/ui/Card/Card';
-import { useHover } from 'shared/lib/hooks/useHover/useHover';
-
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import Button, { ThemeButton } from 'shared/ui/Button/Button';
 import { useCallback } from 'react';
@@ -31,6 +29,7 @@ export const ArticleListItem = ({ className, article, view }: ArticleListItemPro
     const onOpenArticle = useCallback(() => {
         navigate(RoutePath.article_details + article.id);
     }, [article.id, navigate]);
+
     if (view === ArticleView.LIST) {
         const textBlock = article.blocks.find((block) => block.type === ArticleBlockType.TEXT) as ArticleTextBlock;
         return (
@@ -62,11 +61,11 @@ export const ArticleListItem = ({ className, article, view }: ArticleListItemPro
     return (
         <div
             className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
-
+            onClick={onOpenArticle}
             // onMouseEnter={onMouseEnter}
             // onMouseLeave={onMouseLeave}
         >
-            <Card className={classNames(cls.card, {}, [className, cls[view]])} onClick={onOpenArticle}>
+            <Card className={classNames(cls.card, {}, [className, cls[view]])}>
                 <div className={cls.imageWrapper}>
                     <img src={article.img} alt={article.title} className={cls.image} />
                     <Text text={article.createdAt} className={cls.date} />
