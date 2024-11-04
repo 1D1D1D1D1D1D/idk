@@ -1,3 +1,11 @@
+.ArticleViewSelector {
+    display: flex;
+}
+
 .selected {
     fill: var(--secondary-color);
+}
+
+.viewSelectorItem {
+    margin-left: auto;
 }

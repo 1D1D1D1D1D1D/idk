@@ -52,7 +52,11 @@ export const ArticleListItem = ({ className, article, view }: ArticleListItemPro
                         <Button theme={ThemeButton.OUTLINE} onClick={onOpenArticle}>
                             {t('Читать')}
                         </Button>
-                        <Text text={String(article.views)} className={cls.views} />
+                        <div className={cls.viewsBlock}>
+                            <Icon Svg={ViewsIcon} />
+                            <Text text={String(article.views)} className={cls.views} />
+                        </div>
+
                     </div>
                 </Card>
             </div>

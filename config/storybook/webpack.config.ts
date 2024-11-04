@@ -18,6 +18,9 @@ export default ({ config }: { config: webpack.Configuration }) => {
         modules: [paths.src, 'node_modules'],
         extensions: ['.tsx', '.ts', '.js'],
         preferAbsolute: true,
+        alias: {
+            '@components': path.resolve(__dirname, 'src/components/'),
+        },
     };
 
     // eslint-disable-next-line no-param-reassign

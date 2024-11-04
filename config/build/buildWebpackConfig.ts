@@ -15,7 +15,6 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
             filename: '[name].[contenthash].js',
             path: paths.build,
             clean: true,
-            // ебааать как важно динамические роуты без него этого не работают)
             publicPath: '/',
         },
         plugins: buildPlugins(options),

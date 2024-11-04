@@ -8,9 +8,13 @@ import {
 import { useCallback } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getUserAuthData } from 'entities/User';
+import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './ProfilePageHeader.module.scss';
 
-export const ProfilePageHeader = () => {
+interface ProfilePageHeaderProps {
+    className?: string
+}
+export const ProfilePageHeader = ({ className }:ProfilePageHeaderProps) => {
     const { t } = useTranslation();
     const readonly = useSelector(getProfileReadonly);
     const dispatch = useAppDispatch();
@@ -28,7 +32,7 @@ export const ProfilePageHeader = () => {
         dispatch(updateProfileData());
     }, [dispatch]);
     return (
-        <div className={cls.ProfilePageHeader}>
+        <div className={classNames(cls.ProfilePageHeader, {}, [className])}>
             <Text text={t('Профиль')} className={cls.text} />
             {canEdit && (
                 <div className={cls.btnWrapper}>

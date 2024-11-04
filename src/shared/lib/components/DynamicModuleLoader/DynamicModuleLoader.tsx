@@ -39,7 +39,7 @@ export const DynamicModuleLoader = (props: DynamicModuleLoaderProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     return (
-        <div>
+        <div style={{ display: 'flex', flexGrow: '1' }}>
             {children}
         </div>
     );

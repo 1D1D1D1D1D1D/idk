@@ -74,7 +74,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
         );
     } else {
         content = (
-            <>
+            <div className={cls.ArticleDetails}>
                 <div className={cls.avatarWrapper}>
                     <Avatar height={200} width={200} round src={article?.img} className={cls.avatar} />
                 </div>
@@ -90,7 +90,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
                 </div>
                 {article?.blocks.map(renderBlock)}
-            </>
+            </div>
         );
     }
 

@@ -2,7 +2,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { ArticleView } from 'entities/Article/model/types/article';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { Card } from 'shared/ui/Card/Card';
-import cls from './ArticleListItemSkeleton.module.scss';
+import cls from './ArticleListItem.module.scss';
 
 interface ArticleListItemSkeletonProps {
     className?: string;
@@ -30,9 +30,7 @@ export const ArticleListItemSkeleton = ({ className, view }: ArticleListItemSkel
         );
     }
     return (
-        <div
-            className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
-        >
+        <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
             <Card className={classNames(cls.card, {}, [className, cls[view]])}>
                 <Skeleton height={200} width={200} className={cls.image} />
                 <Skeleton width={130} height={16} className={cls.types} />
