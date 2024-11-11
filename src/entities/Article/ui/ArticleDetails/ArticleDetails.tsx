@@ -9,7 +9,7 @@ import { getArticleDetailsData, getArticleDetailsError, getArticleDetailsIsLoadi
 import {
     Text, TextAlign, TextSize, TextTheme,
 } from 'shared/ui/Text/Text';
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import { Skeleton, SkeletonAlign } from 'shared/ui/Skeleton/Skeleton';
 import ViewsIcon from 'shared/assets/icons/eye-20-20.svg';
 import CreatedAtIcon from 'shared/assets/icons/date-range-svgrepo-com.svg';
 
@@ -31,8 +31,8 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
         id,
     } = props;
     const dispatch = useAppDispatch();
-    // const isLoading = true;
-    const isLoading = useSelector(getArticleDetailsIsLoading);
+    const isLoading = true;
+    // const isLoading = useSelector(getArticleDetailsIsLoading);
     const article = useSelector(getArticleDetailsData);
     const error = useSelector(getArticleDetailsError);
     const reducers: ReducerList = {
@@ -60,13 +60,14 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     let content;
     if (isLoading) {
         content = (
-            <>
+            <div className={cls.ArticleDetails}>
+
                 <Skeleton className={cls.avatar} width={200} height={200} border="50%" />
-                <Skeleton className={cls.title} width={300} height={32} />
+                <Skeleton className={cls.title} width={300} height={32} justifyContent={SkeletonAlign.LEFT} />
                 <Skeleton className={cls.skeleton} width={600} height={24} />
                 <Skeleton className={cls.skeleton} width="100%" height={200} />
                 <Skeleton className={cls.skeleton} width="100%" height={200} />
-            </>
+            </div>
         );
     } else if (error) {
         content = (

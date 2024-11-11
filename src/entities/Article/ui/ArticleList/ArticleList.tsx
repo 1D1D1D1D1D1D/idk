@@ -1,7 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Article } from 'entities/Article/model/types/article';
-import { useScroll } from 'shared/lib/hooks/useScroll/useScroll';
 import { ArticleView } from '../../index';
 import cls from './ArticleList.module.scss';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
@@ -22,7 +21,7 @@ export const ArticleList = (props: ArticleListProps) => {
         view,
     } = props;
     const { t } = useTranslation();
-    const getSkeletons = (view: ArticleView) => new Array(view === ArticleView.GRID ? 9 : 3)
+    const getSkeletons = (view: ArticleView) => new Array(view === ArticleView.GRID ? 15 : 4)
         .fill(0)
         .map((item, index) => (
             <ArticleListItemSkeleton className={cls.card} key={index} view={view} />

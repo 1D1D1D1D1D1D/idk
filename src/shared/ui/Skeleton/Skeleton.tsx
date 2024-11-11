@@ -1,12 +1,19 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import { CSSProperties } from 'react';
 import cls from './Skeleton.module.scss';
 
+export enum SkeletonAlign {
+    CENTER = 'center',
+    LEFT = 'left',
+    RIGHT = 'right',
+
+}
 interface SkeletonProps {
     className?: string;
     height?: string | number
     width?: string | number
     border?: string
+    justifyContent?: SkeletonAlign
 
 }
 
@@ -16,16 +23,20 @@ export const Skeleton = (props: SkeletonProps) => {
         height,
         width,
         border,
+        justifyContent,
 
     } = props;
-
+    const mods: Mods = {
+        [cls.justifyContent]: justifyContent,
+    };
     const styles: CSSProperties = {
         width,
         height,
         borderRadius: border,
     };
+
     return (
 
-        <div className={classNames(cls.Skeleton, { }, [className])} style={styles} />
+        <div className={classNames(cls.Skeleton, mods, [className])} style={styles} />
     );
 };

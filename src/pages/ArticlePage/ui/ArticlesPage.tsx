@@ -11,11 +11,11 @@ import { ArticleViewSelector } from 'features/ArticleViewSelector';
 import { Page } from 'shared/ui/Page/Page';
 import cls from './ArticlesPage.module.scss';
 import { articlesPageSliceActions, articlesPageSliceReducer, getArticle } from '../model/slice/articlesPageSlice';
-import { fetchArticlesList } from '../model/services/fetchArticlesList/fetchArticlesList';
 import {
-    getArticlePageError, getArticlePageHasMore, getArticlePageIsLoading, getArticlePageNum, getArticlePageView,
+    getArticlePageIsLoading, getArticlePageView,
 } from '../model/selectors/articlePageSelectors';
 import { fetchArticleNextPage } from '../model/services/fetchArticleNextPage/fetchArticleNextPage';
+import { initArticlesPage } from '../model/services/initArticlesPage/initArticlesPage';
 
 interface ArticlePageProps {
     className?: string;
@@ -29,17 +29,11 @@ const ArticlesPage = memo(({ className }: ArticlePageProps) => {
     const dispatch = useAppDispatch();
     const articles = useSelector(getArticle.selectAll);
     const isLoading = useSelector(getArticlePageIsLoading);
-    const error = useSelector(getArticlePageError);
     const view = useSelector(getArticlePageView);
-    const currentPage = useSelector(getArticlePageNum);
-    const hasMore = useSelector(getArticlePageHasMore);
 
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
-            dispatch(articlesPageSliceActions.initState());
-            dispatch(fetchArticlesList({
-                page: 1,
-            }));
+            dispatch(initArticlesPage());
         }
     }, [dispatch]);
 
@@ -51,7 +45,7 @@ const ArticlesPage = memo(({ className }: ArticlePageProps) => {
         dispatch(articlesPageSliceActions.setView(view));
     }, [dispatch]);
     return (
-        <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
             <Page className={classNames(cls.ArticlePage, {}, [className])} onScroll={onLoadNextPage}>
                 <ArticleViewSelector onViewClick={onChangeView} view={view} className={cls.viewSelector} />
                 <ArticleList

@@ -18,6 +18,19 @@
     }
 }
 
+.left {
+    justify-content: left;
+    border: 1px solid red;
+}
+
+.right {
+    justify-content: right;
+}
+
+.center {
+    justify-content: center;
+}
+
 @keyframes load {
     from {
         left: -150px;

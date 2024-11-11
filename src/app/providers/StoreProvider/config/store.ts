@@ -12,7 +12,7 @@ export function createReduxStore(
 
     initialState?: StateSchema,
 
-    navigate?: ReturnType<typeof useNavigate>,
+    // navigate?: ReturnType<typeof useNavigate>,
 
 ) {
     const rootReducers = {
@@ -24,7 +24,7 @@ export function createReduxStore(
 
     const extraArg: ThunkExtraArg = {
         api: $api,
-        navigate,
+        // navigate,
     };
     const configuredStore = configureStore({
         reducer: reducerManager.reduce as Reducer<StateSchema>,

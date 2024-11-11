@@ -1,10 +1,22 @@
 .Sidebar {
+    display: flex;
+
     height: calc(100vh - var(--navbar-height));
     width: var(--sidebar-width);
     background: var(--inverted-bg-color);
     position: relative;
-    transition: width 0.3s;
-    display: flex;
+    transition: width 0.3s ease-in-out;
+
+    &.collapsed {
+        width: var(--sidebar-width-collapsed);
+    }
+
+
+}
+
+.items {
+    width: inherit;
+
 
 }
 
@@ -29,7 +41,14 @@
 
 
 .collapsed {
-    width: var(--sidebar-width-collapsed);
+    .items {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        transition: width 0.4s ease-in-out;
+        width: var(--sidebar-width-collapsed);
+
+    }
 
     .switchers {
         flex-direction: column;

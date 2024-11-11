@@ -32,14 +32,13 @@ export const Sidebar: FC<SidebarProps> = memo(({ className }: SidebarProps) => {
             data-testid="sidebar"
             className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}
         >
-
             <Button
                 data-testid="sidebar-toggle"
                 onClick={onToggle}
                 className={cls.collapsedBtn}
                 theme={ThemeButton.BACKGROUND_INVERTED}
                 square
-                size={ButtonSize.L}
+                size={ButtonSize.XL}
 
             >
                 {collapsed ? '>' : '<'}
@@ -52,6 +51,7 @@ export const Sidebar: FC<SidebarProps> = memo(({ className }: SidebarProps) => {
                 <ThemeSwitcher />
                 <LanguageSwitcher className={cls.lang} short={collapsed} />
             </div>
+
         </menu>
     );
 });

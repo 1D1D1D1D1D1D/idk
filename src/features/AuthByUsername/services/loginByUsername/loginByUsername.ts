@@ -24,9 +24,9 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, Thun
 
             localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(response.data));
             thunkAPI.dispatch(userActions.setAuthData(response.data));
-            if (typeof extra.navigate === 'function') {
-                extra.navigate('/profile');
-            }
+            // if (typeof extra.navigate === 'function') {
+            //     extra.navigate('/profile');
+            // }
 
             return response.data;
         } catch (e) {
