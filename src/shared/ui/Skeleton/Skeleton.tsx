@@ -13,7 +13,7 @@ interface SkeletonProps {
     height?: string | number
     width?: string | number
     border?: string
-    justifyContent?: SkeletonAlign
+    align?: SkeletonAlign
 
 }
 
@@ -23,11 +23,11 @@ export const Skeleton = (props: SkeletonProps) => {
         height,
         width,
         border,
-        justifyContent,
+        align = SkeletonAlign.LEFT,
 
     } = props;
     const mods: Mods = {
-        [cls.justifyContent]: justifyContent,
+        [cls[align]]: align,
     };
     const styles: CSSProperties = {
         width,

@@ -10,7 +10,7 @@ import { LoginSchema } from 'features';
 import { AddCommentSchema } from 'features/addCommentForm';
 import { ArticleDetailsCommentSchema } from 'pages/ArticleDetailsPage/model/types/ArticleDetailsCommentSchema';
 import { ArticlesPageSchema } from 'pages/ArticlePage';
-import { useNavigate } from 'react-router-dom';
+import { ScrollPositionSchema } from 'widgets/Page/features/ScrollPosition';
 
 export interface StateSchema {
     counter: CounterSchema;
@@ -21,6 +21,7 @@ export interface StateSchema {
     articleDetailsComments: ArticleDetailsCommentSchema
     addCommentForm: AddCommentSchema
     articlesPage: ArticlesPageSchema
+    scrollPosition: ScrollPositionSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

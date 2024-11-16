@@ -5,6 +5,7 @@
     box-shadow: 0 2px 10px 0 var(--skeleton-shadow);
     overflow: hidden;
 
+
     &::before {
         content: "";
         display: block;
@@ -19,16 +20,17 @@
 }
 
 .left {
-    justify-content: left;
-    border: 1px solid red;
+    left: 0;
 }
 
 .right {
-    justify-content: right;
+    left: auto;
+    right: -150px;
 }
 
 .center {
-    justify-content: center;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 @keyframes load {

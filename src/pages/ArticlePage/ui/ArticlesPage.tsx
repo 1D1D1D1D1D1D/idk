@@ -8,7 +8,7 @@ import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicM
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { ArticleViewSelector } from 'features/ArticleViewSelector';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page/ui/Page';
 import cls from './ArticlesPage.module.scss';
 import { articlesPageSliceActions, articlesPageSliceReducer, getArticle } from '../model/slice/articlesPageSlice';
 import {
@@ -44,6 +44,7 @@ const ArticlesPage = memo(({ className }: ArticlePageProps) => {
     const onChangeView = useCallback((view: ArticleView) => {
         dispatch(articlesPageSliceActions.setView(view));
     }, [dispatch]);
+
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
             <Page className={classNames(cls.ArticlePage, {}, [className])} onScroll={onLoadNextPage}>

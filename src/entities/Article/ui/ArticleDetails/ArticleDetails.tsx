@@ -31,8 +31,8 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
         id,
     } = props;
     const dispatch = useAppDispatch();
-    const isLoading = true;
-    // const isLoading = useSelector(getArticleDetailsIsLoading);
+    // const isLoading = true;
+    const isLoading = useSelector(getArticleDetailsIsLoading);
     const article = useSelector(getArticleDetailsData);
     const error = useSelector(getArticleDetailsError);
     const reducers: ReducerList = {
@@ -63,7 +63,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
             <div className={cls.ArticleDetails}>
 
                 <Skeleton className={cls.avatar} width={200} height={200} border="50%" />
-                <Skeleton className={cls.title} width={300} height={32} justifyContent={SkeletonAlign.LEFT} />
+                <Skeleton className={cls.title} width={300} height={32} align={SkeletonAlign.CENTER} />
                 <Skeleton className={cls.skeleton} width={600} height={24} />
                 <Skeleton className={cls.skeleton} width="100%" height={200} />
                 <Skeleton className={cls.skeleton} width="100%" height={200} />

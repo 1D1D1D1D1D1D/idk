@@ -11,7 +11,7 @@ import { AddCommentForm } from 'features/addCommentForm/';
 import { ArticleDetails } from 'entities/Article/ui/ArticleDetails/ArticleDetails';
 import Button from 'shared/ui/Button/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page/ui/Page';
 import cls from './ArticleDetailsPage.module.scss';
 import { ArticleDetailsCommentReducer, getArticleComments } from '../model/slice/ArticleDetailsCommentSlice';
 import { getArticleCommentError, getArticleCommentIsLoading } from '../model/selectors/comments';

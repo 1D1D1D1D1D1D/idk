@@ -2,7 +2,7 @@ import { configureStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { counterReducer } from 'entities/Counter/index';
 import { userReducer } from 'entities/User/index';
 import { $api } from 'shared/api/api';
-import { useNavigate } from 'react-router-dom';
+import { scrollPositionReducer } from 'widgets/Page/features/ScrollPosition';
 import { StateSchema, ThunkExtraArg } from './StateSchema';
 import { createReducerManager } from './reducerManager';
 
@@ -17,6 +17,7 @@ export function createReduxStore(
 ) {
     const rootReducers = {
         ...asyncReducers,
+        scrollPosition: scrollPositionReducer,
         counter: counterReducer,
         user: userReducer,
     };
