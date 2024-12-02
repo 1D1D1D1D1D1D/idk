@@ -15,13 +15,14 @@ import { ScrollPositionSchema } from 'widgets/Page/features/ScrollPosition';
 export interface StateSchema {
     counter: CounterSchema;
     user: UserSchema;
-    loginForm: LoginSchema;
-    profile: ProfileSchema;
-    articleDetails: ArticleDetailsSchema;
-    articleDetailsComments: ArticleDetailsCommentSchema
-    addCommentForm: AddCommentSchema
-    articlesPage: ArticlesPageSchema
-    scrollPosition: ScrollPositionSchema
+    scrollPosition: ScrollPositionSchema;
+
+    loginForm: LoginSchema | undefined
+    profile: ProfileSchema | undefined
+    articleDetails: ArticleDetailsSchema | undefined
+    articleDetailsComments: ArticleDetailsCommentSchema | undefined
+    addCommentForm: AddCommentSchema | undefined
+    articlesPage: ArticlesPageSchema | undefined
 }
 
 export type StateSchemaKey = keyof StateSchema

@@ -7,20 +7,23 @@ import { StateSchema, ThunkExtraArg } from './StateSchema';
 import { createReducerManager } from './reducerManager';
 
 export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch']
+
 export function createReduxStore(
     asyncReducers: ReducersMapObject<StateSchema>,
-
     initialState?: StateSchema,
 
     // navigate?: ReturnType<typeof useNavigate>,
 
 ) {
-    const rootReducers = {
+    const rootReducers: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
         scrollPosition: scrollPositionReducer,
         counter: counterReducer,
         user: userReducer,
+
     };
+    console.log(rootReducers);
+
     const reducerManager = createReducerManager(rootReducers);
 
     const extraArg: ThunkExtraArg = {

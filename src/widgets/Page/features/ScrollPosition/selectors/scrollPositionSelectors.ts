@@ -5,9 +5,5 @@ export const getScrollPosition = (state: StateSchema) => state.scrollPosition?.s
 export const getScrollPositionByPath = createSelector(
     getScrollPosition,
     (state: StateSchema, path: string) => path,
-    (scroll, path) => {
-        console.log('Scroll:', scroll);
-        console.log('Path:', path);
-        return (scroll && scroll[path] !== undefined ? scroll[path] : 0);
-    },
+    (scroll, path) => (scroll && scroll[path] !== undefined ? scroll[path] : 0),
 );

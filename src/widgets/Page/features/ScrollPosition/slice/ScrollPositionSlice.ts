@@ -4,7 +4,7 @@ import { ScrollPositionSchema } from '..';
 
 const initialState: ScrollPositionSchema = {
     scroll: {
-    }
+    },
 };
 
 export const scrollPositionSlice = createSlice({
@@ -14,7 +14,7 @@ export const scrollPositionSlice = createSlice({
         setScrollPosition: (state, { payload }: PayloadAction<{ path: string; position: number }>) => {
             state.scroll[payload.path] = payload.position;
         },
-       
+
     },
 
 });
