@@ -7,7 +7,7 @@ import {
 } from 'pages/ArticlePage/model/selectors/articlePageSelectors';
 import { articlesPageSliceActions } from 'pages/ArticlePage/model/slice/articlesPageSlice';
 import { ArticleSortField, ArticleTypeTabs, ArticleView } from 'entities/Article';
-import { useCallback, useMemo } from 'react';
+import { useCallback } from 'react';
 
 import { Card } from 'shared/ui/Card/Card';
 import { Input } from 'shared/ui/Input/Input';
@@ -15,8 +15,7 @@ import { ArticleSortSelector } from 'entities/Article/ui/ArticleSortSelector/ui/
 import { ArticleType, SortOrder } from 'entities/Article/model/types/article';
 import { fetchArticlesList } from 'pages/ArticlePage/model/services/fetchArticlesList/fetchArticlesList';
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
-import { TabItem, Tabs } from 'shared/ui/Tabs/Tabs';
-import { t } from 'i18next';
+
 import cls from './ArticlesPageFilters.module.scss';
 
 interface ArticlesPageFiltersProps {
