@@ -8,6 +8,7 @@ import { ProfileSchema } from 'entities/Profile';
 import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features';
 import { AddCommentSchema } from 'features/addCommentForm';
+import { ArticleDetailsRecomentationSchema } from 'pages/ArticleDetailsPage';
 import { ArticleDetailsCommentSchema } from 'pages/ArticleDetailsPage/model/types/ArticleDetailsCommentSchema';
 import { ArticlesPageSchema } from 'pages/ArticlePage';
 import { ScrollPositionSchema } from 'widgets/Page/features/ScrollPosition';
@@ -21,8 +22,10 @@ export interface StateSchema {
     profile: ProfileSchema | undefined
     articleDetails: ArticleDetailsSchema | undefined
     articleDetailsComments: ArticleDetailsCommentSchema | undefined
+    articleDetailsRecomendation: ArticleDetailsRecomentationSchema | undefined
     addCommentForm: AddCommentSchema | undefined
     articlesPage: ArticlesPageSchema | undefined
+
 }
 
 export type StateSchemaKey = keyof StateSchema

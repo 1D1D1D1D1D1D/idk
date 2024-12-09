@@ -5,14 +5,13 @@ import { Routes, Route } from 'react-router-dom';
 import { AppRouteProps, routeConfig } from 'shared/config/routeConfig/routeConfig';
 import { PageLoader } from 'widgets/PageLoader/ui/PageLoader';
 import { RequireAuth } from './RequireAuth';
+import cls from '../../../styles/index.scss';
 
 const AppRouter = () => {
     const renderWithWrapper = useCallback((route: AppRouteProps) => {
         const element = (
             <Suspense fallback={<PageLoader />}>
-                {/* <div className="page-wrapper"> */}
                 {route.element}
-                {/* </div> */}
             </Suspense>
         );
         return (

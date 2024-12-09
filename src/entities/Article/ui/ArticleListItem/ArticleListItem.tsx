@@ -6,9 +6,10 @@ import ViewsIcon from 'shared/assets/icons/eye-20-20.svg';
 import { Card } from 'shared/ui/Card/Card';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import Button, { ThemeButton } from 'shared/ui/Button/Button';
-import { useCallback } from 'react';
+import { HTMLAttributeAnchorTarget, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import AppLink from 'shared/ui/AppLink/AppLink';
 import cls from './ArticleListItem.module.scss';
 import { Article, ArticleBlockType, ArticleTextBlock } from '../../model/types/article';
 import { ArticleView } from '../../index';
@@ -21,14 +22,10 @@ interface ArticleListItemProps {
 
 }
 
-export const ArticleListItem = ({ className, article, view }: ArticleListItemProps) => {
+export const ArticleListItem = ({
+    className, article, view,
+}: ArticleListItemProps) => {
     const { t } = useTranslation();
-    const navigate = useNavigate();
-    // const { isHover, onMouseEnter, onMouseLeave } = useHover();
-
-    const onOpenArticle = useCallback(() => {
-        navigate(RoutePath.article_details + article.id);
-    }, [article.id, navigate]);
 
     if (view === ArticleView.LIST) {
         const textBlock = article.blocks.find((block) => block.type === ArticleBlockType.TEXT) as ArticleTextBlock;
@@ -49,38 +46,39 @@ export const ArticleListItem = ({ className, article, view }: ArticleListItemPro
                     </div>
 
                     <div className={cls.footer}>
-                        <Button theme={ThemeButton.OUTLINE} onClick={onOpenArticle}>
-                            {t('Читать')}
-                        </Button>
-                        <div className={cls.viewsBlock}>
-                            <Icon Svg={ViewsIcon} />
-                            <Text text={String(article.views)} className={cls.views} />
-                        </div>
-
+                        <AppLink to={RoutePath.article_details + article.id} target="_blank">
+                            <Button theme={ThemeButton.OUTLINE}>
+                                {t('Читать')}
+                            </Button>
+                            <div className={cls.viewsBlock}>
+                                <Icon Svg={ViewsIcon} />
+                                <Text text={String(article.views)} className={cls.views} />
+                            </div>
+                        </AppLink>
                     </div>
                 </Card>
             </div>
         );
     }
     return (
-        <div
-            className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
-            onClick={onOpenArticle}
-            // onMouseEnter={onMouseEnter}
-            // onMouseLeave={onMouseLeave}
-        >
-            <Card className={classNames(cls.card, {}, [className, cls[view]])}>
-                <div className={cls.imageWrapper}>
-                    <img src={article.img} alt={article.title} className={cls.image} />
-                    <Text text={article.createdAt} className={cls.date} />
-                </div>
-                <div className={cls.infoWrapper}>
-                    <Text text={article.type.join(',')} className={cls.types} />
-                    <Text text={String(article.views)} className={cls.views} />
-                    <Icon Svg={ViewsIcon} />
-                </div>
-                <Text text={article.title} />
-            </Card>
-        </div>
+        <AppLink to={RoutePath.article_details + article.id} target="_blank">
+            <div
+                className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
+
+            >
+                <Card className={classNames(cls.card, {}, [className, cls[view]])}>
+                    <div className={cls.imageWrapper}>
+                        <img src={article.img} alt={article.title} className={cls.image} />
+                        <Text text={article.createdAt} className={cls.date} />
+                    </div>
+                    <div className={cls.infoWrapper}>
+                        <Text text={article.type.join(',')} className={cls.types} />
+                        <Text text={String(article.views)} className={cls.views} />
+                        <Icon Svg={ViewsIcon} />
+                    </div>
+                    <Text text={article.title} />
+                </Card>
+            </div>
+        </AppLink>
     );
 };

@@ -1,6 +1,6 @@
 import { Reducer } from '@reduxjs/toolkit';
 import { ReduxStoreWithManager } from 'app/providers/StoreProvider';
-import { StateSchemaKey } from 'app/providers/StoreProvider/config/StateSchema';
+import { StateSchema, StateSchemaKey } from 'app/providers/StoreProvider/config/StateSchema';
 import { ReactNode, useEffect } from 'react';
 import { useDispatch, useStore } from 'react-redux';
 
@@ -40,11 +40,11 @@ export const DynamicModuleLoader = (props: DynamicModuleLoaderProps) => {
                 });
             }
         };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
     }, []);
     return (
-        <div style={{ display: 'flex', flexGrow: '1' }}>
+        <>
             {children}
-        </div>
+        </>
     );
 };

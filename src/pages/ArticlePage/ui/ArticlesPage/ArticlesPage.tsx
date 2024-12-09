@@ -31,7 +31,6 @@ const ArticlesPage = memo(({ className }: ArticlePageProps) => {
     const isLoading = useSelector(getArticlePageIsLoading);
     const view = useSelector(getArticlePageView);
     const [searchParams, setSearchParams] = useSearchParams();
-    console.log(searchParams);
 
     const dispatch = useAppDispatch();
 

@@ -12,17 +12,22 @@ import { ArticleDetails } from 'entities/Article/ui/ArticleDetails/ArticleDetail
 import Button from 'shared/ui/Button/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Page } from 'widgets/Page/ui/Page';
+import { ArticleList, ArticleView } from 'entities/Article';
 import cls from './ArticleDetailsPage.module.scss';
 import { ArticleDetailsCommentReducer, getArticleComments } from '../model/slice/ArticleDetailsCommentSlice';
 import { getArticleCommentError, getArticleCommentIsLoading } from '../model/selectors/comments';
 import { fetchCommentByArticleId } from '../model/services/fetchCommentByArticleId/fetchCommentByArticleId';
 import { addCommentForArticle } from '../model/services/addCommentForArticle/addCommentForArticle';
+import { ArticleDetailsRecomendationtReducer, getArticleRecomendation } from '../model/slice/ArticleDetailsRecomendationSlice';
+import { getArticleRecomendationIsLoading } from '../model/selectors/recomendations';
+import { fetchArticleRecomendations } from '../model/services/fetchArticleRecomendations/fetchArticleRecomendations';
 
 interface ArticleDetailsPageProps {
     className?: string;
 }
 const reducersList : ReducerList = {
     articleDetailsComments: ArticleDetailsCommentReducer,
+    articleDetailsRecomendation: ArticleDetailsRecomendationtReducer,
 };
 const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     const { t } = useTranslation();
@@ -30,6 +35,8 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     const comments = useSelector(getArticleComments.selectAll);
     const commentsIsLoading = useSelector(getArticleCommentIsLoading);
     const error = useSelector(getArticleCommentError);
+    const recomendations = useSelector(getArticleRecomendation.selectAll);
+    const recomendationsIsLoading = useSelector(getArticleRecomendationIsLoading);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
@@ -40,8 +47,12 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
         console.log('useEffect triggered', id);
         if (__PROJECT__ !== 'storybook') {
             dispatch(fetchCommentByArticleId(id));
+            dispatch(fetchArticleRecomendations());
         }
     }, [id, dispatch]);
+    const onBack = useCallback(() => {
+        navigate(RoutePath.articles);
+    }, [navigate]);
     if (!id) {
         console.log(id);
 
@@ -51,14 +62,14 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
             </div>
         );
     }
-    const onBack = useCallback(() => {
-        navigate(RoutePath.articles);
-    }, [navigate]);
+
     return (
         <DynamicModuleLoader removeAfterUnmount reducers={reducersList}>
             <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
                 <Button onClick={onBack}>{t('Назад')}</Button>
                 <ArticleDetails id={id} />
+                <Text align={TextAlign.LEFT} title={t('Рекомендации')} />
+                <ArticleList article={recomendations} isLoading={recomendationsIsLoading} view={ArticleView.GRID} className={cls.recomendations} />
                 <Text align={TextAlign.LEFT} title={t('Комментарии')} />
                 <AddCommentForm onSendComment={onSendComment} />
                 <CommentList isLoading={commentsIsLoading} comments={comments} />

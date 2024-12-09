@@ -1,5 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Link, type LinkProps } from 'react-router-dom';
+import { HTMLAttributeAnchorTarget } from 'react';
 import cls from './AppLink.module.scss';
 
 export enum AppLinkTheme {
@@ -10,6 +11,8 @@ export enum AppLinkTheme {
 type AppLinkProps = {
 	className?: string;
 	theme?: AppLinkTheme;
+    target?: HTMLAttributeAnchorTarget
+
 } & LinkProps;
 
 const AppLink = (props: AppLinkProps) => {
@@ -18,9 +21,10 @@ const AppLink = (props: AppLinkProps) => {
         children,
         className,
         theme = AppLinkTheme.PRIMARY,
+        target,
     } = props;
     return (
-        <Link className={classNames(cls.AppLink, {}, [className, cls[theme]])} to={to}>
+        <Link className={classNames(cls.AppLink, {}, [className, cls[theme]])} to={to} target={target}>
             {children}
         </Link>
     );

@@ -14,13 +14,13 @@ interface AddCommentFormProps {
     className?: string;
     onSendComment: (text: string) => void
 }
-const AddCommentForm = ({ className, onSendComment }: AddCommentFormProps) => {
+const AddCommentForm = ({ onSendComment }: AddCommentFormProps) => {
     const reducerList: ReducerList = {
         addCommentForm: AddCommentFormReducer,
     };
     const { t } = useTranslation();
     const text = useSelector(getAddCommentFormText);
-    const error = useSelector(getAddCommentFormError);
+
     const dispatch = useAppDispatch();
 
     const onCommentTextChange = useCallback((value: string) => {

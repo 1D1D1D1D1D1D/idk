@@ -16,14 +16,11 @@ const App = () => {
     }, [dispatch]);
     return (
         <div className={classNames('app', {}, [theme])}>
-
-            <Suspense>
+            <Suspense fallback="">
                 <Navbar />
-
                 <div className="content-page">
                     <Sidebar />
                     {isMounted && <AppRouter />}
-
                 </div>
             </Suspense>
         </div>

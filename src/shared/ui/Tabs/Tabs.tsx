@@ -26,7 +26,7 @@ export const Tabs = (props: TabProps) => {
         return () => {
             onTabClick(tab);
         };
-    }, []);
+    }, [onTabClick]);
     return (
         <div className={classNames(cls.Tabs, {}, [className])}>
             {tabs.map((tab) => (

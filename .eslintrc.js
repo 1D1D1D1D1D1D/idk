@@ -55,6 +55,7 @@ module.exports = {
         'no-restricted-globals': 'off',
         'no-unused-expressions': 'off',
         'no-restricted-syntax': 'off',
+        'react-hooks/exhaustive-deps': 'off',
         'i18next/no-literal-string': [
             'error',
             {
