@@ -14,13 +14,14 @@ import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Page } from 'widgets/Page/ui/Page';
 import { ArticleList, ArticleView } from 'entities/Article';
 import cls from './ArticleDetailsPage.module.scss';
-import { ArticleDetailsCommentReducer, getArticleComments } from '../model/slice/ArticleDetailsCommentSlice';
-import { getArticleCommentError, getArticleCommentIsLoading } from '../model/selectors/comments';
-import { fetchCommentByArticleId } from '../model/services/fetchCommentByArticleId/fetchCommentByArticleId';
-import { addCommentForArticle } from '../model/services/addCommentForArticle/addCommentForArticle';
-import { ArticleDetailsRecomendationtReducer, getArticleRecomendation } from '../model/slice/ArticleDetailsRecomendationSlice';
-import { getArticleRecomendationIsLoading } from '../model/selectors/recomendations';
-import { fetchArticleRecomendations } from '../model/services/fetchArticleRecomendations/fetchArticleRecomendations';
+import { ArticleDetailsCommentReducer, getArticleComments } from '../../model/slice/ArticleDetailsCommentSlice';
+import { getArticleCommentIsLoading } from '../../model/selectors/comments';
+import { fetchCommentByArticleId } from '../../model/services/fetchCommentByArticleId/fetchCommentByArticleId';
+import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
+import { ArticleDetailsRecomendationtReducer, getArticleRecomendation } from '../../model/slice/ArticleDetailsRecomendationSlice';
+import { getArticleRecomendationIsLoading } from '../../model/selectors/recomendations';
+import { fetchArticleRecomendations } from '../../model/services/fetchArticleRecomendations/fetchArticleRecomendations';
+import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
 interface ArticleDetailsPageProps {
     className?: string;
@@ -34,11 +35,9 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     const { id } = useParams<{id: string}>();
     const comments = useSelector(getArticleComments.selectAll);
     const commentsIsLoading = useSelector(getArticleCommentIsLoading);
-    const error = useSelector(getArticleCommentError);
     const recomendations = useSelector(getArticleRecomendation.selectAll);
     const recomendationsIsLoading = useSelector(getArticleRecomendationIsLoading);
     const dispatch = useAppDispatch();
-    const navigate = useNavigate();
 
     const onSendComment = useCallback((text: string) => {
         dispatch(addCommentForArticle(text));
@@ -50,9 +49,6 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
             dispatch(fetchArticleRecomendations());
         }
     }, [id, dispatch]);
-    const onBack = useCallback(() => {
-        navigate(RoutePath.articles);
-    }, [navigate]);
     if (!id) {
         console.log(id);
 
@@ -66,7 +62,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     return (
         <DynamicModuleLoader removeAfterUnmount reducers={reducersList}>
             <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-                <Button onClick={onBack}>{t('Назад')}</Button>
+                <ArticleDetailsPageHeader />
                 <ArticleDetails id={id} />
                 <Text align={TextAlign.LEFT} title={t('Рекомендации')} />
                 <ArticleList article={recomendations} isLoading={recomendationsIsLoading} view={ArticleView.GRID} className={cls.recomendations} />

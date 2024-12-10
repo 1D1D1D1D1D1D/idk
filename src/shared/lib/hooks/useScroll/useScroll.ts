@@ -25,15 +25,15 @@ export function useScroll(props: UseScrollProps) {
             }, options);
 
             if (elementRef.current) {
-                observer.observe(elementRef.current); // Observer the current elementRef
+                observer.observe(elementRef.current);
             }
         }
 
         return () => {
             if (elementRef.current) {
                 // eslint-disable-next-line react-hooks/exhaustive-deps
-                observer.unobserve(elementRef.current); // Unobserve when unmounted
+                observer.unobserve(elementRef.current);
             }
         };
-    }, [callback, elementRef, pageRef]); // Ensure callback is included in deps array
+    }, [callback, elementRef, pageRef]);
 }

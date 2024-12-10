@@ -8,7 +8,11 @@ export const fetchArticleById = createAsyncThunk<Article, string, ThunkConfig<st
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { extra, rejectWithValue } = thunkAPI;
         try {
-            const response = await thunkAPI.extra.api.get<Article>(`/articles/${articleId}`);
+            const response = await thunkAPI.extra.api.get<Article>(`/articles/${articleId}`, {
+                params: {
+                    _expand: 'user',
+                },
+            });
             if (!response.data) {
                 throw new Error();
             }

@@ -21,7 +21,7 @@ const AppLink = (props: AppLinkProps) => {
         children,
         className,
         theme = AppLinkTheme.PRIMARY,
-        target,
+        target = '_self',
     } = props;
     return (
         <Link className={classNames(cls.AppLink, {}, [className, cls[theme]])} to={to} target={target}>

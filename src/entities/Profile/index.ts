@@ -1,6 +1,7 @@
 import { getProfileData } from 'entities/Profile/model/selectors/getProfileData/getProfileData';
 import { getProfileError } from 'entities/Profile/model/selectors/getProfileError/getProfileError';
 import { getProfileIsloading } from 'entities/Profile/model/selectors/getProfileIsloading/getProfileIsloading';
+import { getArticleDetailsData } from 'entities/Article/model/selectors/articleDetails';
 import { getProfileForm } from './model/selectors/getProfileForm/getProfileForm';
 import { getProfileReadonly } from './model/selectors/getProfileReadonly/getProfileReadonly';
 import { getProfileValidateError } from './model/selectors/getProfileValidateError/getProfileValidateError';
@@ -19,5 +20,6 @@ export {
     getProfileReadonly,
     getProfileForm,
     getProfileValidateError,
+    getArticleDetailsData,
 
 };
