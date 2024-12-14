@@ -4,13 +4,15 @@ export type BuildPaths = {
 	build: string;
 	html: string;
 	src: string;
+	locales?: string;
+	buildLocales?: string;
+}
 
-};
 export type BuildEnv = {
 	mode: BuildMode;
 	port: number;
 	apiUrl: string
-};
+}
 
 export type BuildOptions = {
 	mode: BuildMode;
@@ -19,4 +21,4 @@ export type BuildOptions = {
 	port: number;
 	apiUrl: string;
 	project: 'storybook' | 'frontend' | 'jest'
-};
+}

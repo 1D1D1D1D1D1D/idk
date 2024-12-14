@@ -2,6 +2,7 @@ import HTMLWebpackPlugin from 'html-webpack-plugin';
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import CopyPlugin from 'copy-webpack-plugin';
 import { type BuildOptions } from './types/config';
 
 export function buildPlugins({
@@ -16,9 +17,15 @@ export function buildPlugins({
             filename: 'css/[name].[contenthash:8].css',
             chunkFilename: 'css/[name].[contenthash:8].css',
         }),
-
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: 'public/locales',
+                    to: paths.buildLocales,
+                },
+            ],
+        }),
     ];
-
     if (isDev) {
         plugins.push(
             new webpack.DefinePlugin({
@@ -27,6 +34,7 @@ export function buildPlugins({
                 __API__: JSON.stringify(apiUrl),
 
             }),
+
         );
         plugins.push(new BundleAnalyzerPlugin({
             openAnalyzer: false,

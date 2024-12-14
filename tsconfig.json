@@ -30,9 +30,10 @@
     "baseUrl": ".",
     "strict": true,
     "paths": {
-      "*": ["./src/*"]
+      "*": [
+        "./src/*"
+      ]
     },
-  
   },
   "ts-node": {
     "compilerOptions": {
@@ -42,5 +43,4 @@
   // "include": [
   //   "./config/jest/jest-setup.ts"
   // ]
-
 }
