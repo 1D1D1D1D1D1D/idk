@@ -16,8 +16,7 @@ export default (env: BuildEnv) => {
 
     const mode = env.mode || 'development';
     const PORT = env.port || 3000;
-    const apiUrl = env.apiUrl || 'http://localhost:8000';
-    console.log(env.apiUrl);
+    // const apiUrl = env.apiUrl || 'http://localhost:8000';
 
     console.log(env.port);
     const isDev = mode === 'development';
@@ -27,9 +26,12 @@ export default (env: BuildEnv) => {
         paths,
         isDev,
         port: PORT,
-        apiUrl,
+        apiUrl: isDev ? 'http://localhost:8000' : 'https://server-kohl-eta.vercel.app',
         project: 'frontend',
     });
+    console.log(env.apiUrl);
+
+    console.log(config);
 
     return config;
 };
