@@ -71,7 +71,7 @@ module.exports = {
         'no-param-reassign': 'off',
     },
     globals: {
-        __IS_DEV__: true,
+        IS_DEV: true,
         __API__: true,
         __PROJECT__: true,
 

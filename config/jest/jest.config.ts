@@ -74,7 +74,7 @@ export default {
     // globalTeardown: undefined,
 
     globals: {
-        __IS_DEV__: true,
+        IS_DEV: true,
         __API__: '',
         __PROJECT__: 'jest',
     },
