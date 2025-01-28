@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { LoginSchema } from 'features';
-import { loginByUsername } from 'features/AuthByUsername/services/loginByUsername/loginByUsername';
+import { loginByUsername } from '../../services/loginByUsername/loginByUsername';
+import { LoginSchema } from '../types/loginSchema';
 
 const initialState: LoginSchema = {
     isLoading: false,

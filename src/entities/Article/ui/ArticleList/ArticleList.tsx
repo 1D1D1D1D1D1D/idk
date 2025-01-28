@@ -1,7 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Article } from 'entities/Article/model/types/article';
-
+import { Article } from '../../model/types/article';
 import { ArticleView } from '../../index';
 import cls from './ArticleList.module.scss';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
@@ -23,6 +22,7 @@ export const ArticleList = (props: ArticleListProps) => {
         view,
     } = props;
     const { t } = useTranslation();
+
     const getSkeletons = (view: ArticleView) => new Array(view === ArticleView.GRID ? 15 : 4)
         .fill(0)
         .map((item, index) => (
@@ -30,7 +30,13 @@ export const ArticleList = (props: ArticleListProps) => {
         ));
 
     const renderArticle = (article: Article) => (
-        <ArticleListItem article={article} view={view} className={cls.card} key={article.id} />
+        <ArticleListItem
+            article={article}
+            view={view}
+            className={cls.card}
+            key={article.id}
+        />
+
     );
 
     return (
@@ -39,6 +45,8 @@ export const ArticleList = (props: ArticleListProps) => {
                 ? article.map(renderArticle)
                 : null}
             {isLoading && getSkeletons(view)}
+
         </div>
+
     );
 };

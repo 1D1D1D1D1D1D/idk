@@ -31,8 +31,8 @@ export const ArticleListItem = ({
             <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
                 <Card>
                     <div className={cls.header}>
-                        <Avatar width={30} height={30} src={article.user.avatar} round />
-                        <Text text={article.user.username} className={cls.username} />
+                        <Avatar width={30} height={30} src={article.user?.avatar} round />
+                        <Text text={article.user?.username} className={cls.username} />
                         <Text text={article.createdAt} className={cls.date} />
                     </div>
                     <Text title={article.title} className={cls.title} />

@@ -23,10 +23,12 @@ module.exports = {
         '@typescript-eslint',
         'react-hooks',
         'i18next',
+        'fsd-rel-path-checker',
     ],
 
     rules: {
         'no-unused-vars': 'off',
+        'fsd-rel-path-checker/path-check': 'error',
         '@typescript-eslint/no-unused-vars': [
             'error',
             { argsIgnorePattern: '^_' },
@@ -57,7 +59,7 @@ module.exports = {
         'no-restricted-syntax': 'off',
         'react-hooks/exhaustive-deps': 'off',
         'i18next/no-literal-string': [
-            'error',
+            'off',
             {
                 markupOnly: true,
                 ignoreAttribute: ['data-testid', 'to'],
@@ -69,6 +71,7 @@ module.exports = {
         'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
         'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies
         'no-param-reassign': 'off',
+
     },
     globals: {
         __IS_DEV__: true,

@@ -7,6 +7,8 @@ import { Loader } from 'shared/ui/Loader/Loader';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Currency, CurrencySelect } from 'entities/Currency';
 import { Country, CountrySelect } from 'entities/Country';
+import { VFlex } from 'shared/ui/Stack/VFlex/VFlex';
+import { Flex } from 'shared/ui/Stack/Flex/Flex';
 import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
@@ -64,76 +66,65 @@ export const ProfileCard = (props: ProfileCardProps) => {
     console.log(readonly);
 
     return (
-        <div className={classNames(cls.ProfileCard, {}, [className])}>
-            <div>
-                <div className={cls.data}>
-                    <Input
-                        value={data?.first}
-                        placeholder={t('Имя')}
-                        className={cls.input}
-                        onChange={onChangeFirstname}
-                        readonly={readonly}
-                        autofocus={!readonly}
+        <Flex className={classNames(cls.ProfileCard, {}, [className])} direction="row" align="center" justify="center">
+            <VFlex className={cls.data} align="start" justify="center" gap="16">
+                <Input
+                    value={data?.first}
+                    placeholder={t('Имя')}
+                    onChange={onChangeFirstname}
+                    readonly={readonly}
+                    autofocus={!readonly}
 
-                    />
-                    <Input
-                        value={data?.lastname}
-                        placeholder={t('Фамилия')}
-                        className={cls.input}
-                        onChange={onChangeLastname}
-                        readonly={readonly}
+                />
+                <Input
+                    value={data?.lastname}
+                    placeholder={t('Фамилия')}
+                    onChange={onChangeLastname}
+                    readonly={readonly}
 
-                    />
-                    <Input
-                        value={data?.age}
-                        placeholder={t('Возраст')}
-                        className={cls.input}
-                        onChange={handleAgeChange}
-                        readonly={readonly}
-                    />
-                    <Input
-                        value={data?.country}
-                        placeholder={t('Страна')}
-                        className={cls.input}
-                        readonly={readonly}
-                    />
-                    <Input
-                        value={data?.city}
-                        placeholder={t('Город')}
-                        onChange={onChangeCity}
-                        className={cls.input}
-                        readonly={readonly}
-                    />
-                    <Input
-                        value={data?.username}
-                        placeholder={t('Username')}
-                        className={cls.input}
-                        onChange={onChangeUsername}
-                        readonly={readonly}
-                    />
-                    <Input
-                        value={data?.currency}
-                        placeholder={t('Валюта')}
-                        className={cls.input}
-                        readonly={readonly}
-                    />
-                    <Input
-                        value={data?.avatar}
-                        placeholder={t('Ссылка на аватар')}
-                        className={cls.input}
-                        readonly={readonly}
-                        onChange={onChangeAvatar}
-                    />
-                    <CurrencySelect value={data?.currency} onChange={onChangeCurrency} readonly={readonly} className={cls.select} />
-                    <CountrySelect value={data?.country} onChange={onChangeCountry} readonly={readonly} className={cls.select} />
-                </div>
-
-            </div>
+                />
+                <Input
+                    value={data?.age}
+                    placeholder={t('Возраст')}
+                    onChange={handleAgeChange}
+                    readonly={readonly}
+                />
+                <Input
+                    value={data?.country}
+                    placeholder={t('Страна')}
+                    readonly={readonly}
+                />
+                <Input
+                    value={data?.city}
+                    placeholder={t('Город')}
+                    onChange={onChangeCity}
+                    readonly={readonly}
+                />
+                <Input
+                    value={data?.username}
+                    placeholder={t('Username')}
+                    onChange={onChangeUsername}
+                    readonly={readonly}
+                />
+                <Input
+                    value={data?.currency}
+                    placeholder={t('Валюта')}
+                    readonly={readonly}
+                />
+                <Input
+                    value={data?.avatar}
+                    placeholder={t('Ссылка на аватар')}
+                    readonly={readonly}
+                    onChange={onChangeAvatar}
+                />
+                <CurrencySelect value={data?.currency} onChange={onChangeCurrency} readonly={readonly} className={cls.select} />
+                <CountrySelect value={data?.country} onChange={onChangeCountry} readonly={readonly} className={cls.select} />
+            </VFlex>
 
             <div className={cls.avatarContainer}>
                 <Avatar src={data?.avatar} width={300} height={340} round={false} className={cls.avatar} />
             </div>
 
-        </div>
+        </Flex>
     );
 };

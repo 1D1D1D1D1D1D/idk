@@ -1,16 +1,12 @@
 .ProfileCard {
     padding: 20px;
     border: 2px solid var(--inverted-bg-color);
-    display: flex;
 }
 
 .data {
     margin-bottom: 30px;
 }
 
-.input {
-    margin-top: 10px;
-}
 
 
 .avatar {
@@ -23,9 +19,7 @@
 
 }
 
-.select {
-    margin-top: 5px;
-}
+
 
 .loading,
 .error {

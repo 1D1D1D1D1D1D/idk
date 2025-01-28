@@ -1,14 +1,17 @@
 import { useTranslation } from 'react-i18next';
 import Button, { ThemeButton } from 'shared/ui/Button/Button';
-import { Text } from 'shared/ui/Text/Text';
+import { Text, TextAlign } from 'shared/ui/Text/Text';
 import { useSelector } from 'react-redux';
-import {
-    getProfileData, getProfileReadonly, profileActions, updateProfileData,
-} from 'entities/Profile';
+
 import { useCallback } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getUserAuthData } from 'entities/User';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { HFlex } from 'shared/ui/Stack/HFlex/HFlex';
+import { getProfileReadonly } from 'features/EditableProfileCard/model/selectors/getProfileReadonly/getProfileReadonly';
+import { getProfileData } from 'features/EditableProfileCard/model/selectors/getProfileData/getProfileData';
+import { profileActions } from 'features/EditableProfileCard/model/slice/profileSlice';
+import { updateProfileData } from 'features/EditableProfileCard/model/services/updateProfileData/updateProfileData';
 import cls from './ProfilePageHeader.module.scss';
 
 interface ProfilePageHeaderProps {
@@ -32,7 +35,7 @@ export const ProfilePageHeader = ({ className }:ProfilePageHeaderProps) => {
         dispatch(updateProfileData());
     }, [dispatch]);
     return (
-        <div className={classNames(cls.ProfilePageHeader, {}, [className])}>
+        <HFlex className={classNames(cls.ProfilePageHeader, {}, [className])}>
             <Text text={t('Профиль')} className={cls.text} />
             {canEdit && (
                 <div className={cls.btnWrapper}>
@@ -55,6 +58,6 @@ export const ProfilePageHeader = ({ className }:ProfilePageHeaderProps) => {
                 </div>
             )}
 
-        </div>
+        </HFlex>
     );
 };

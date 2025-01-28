@@ -2,21 +2,25 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Button, { ThemeButton } from 'shared/ui/Button/Button';
-import { LoginModal } from 'features';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserAuthData } from 'entities/User/model/selectors/getUserAuthData/getUserAuthData';
 import { userActions } from 'entities/User';
 import AppLink, { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { routeConfig, RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { HFlex } from 'shared/ui/Stack/HFlex/HFlex';
+import { Flex } from 'shared/ui/Stack/Flex/Flex';
+import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
+import { Avatar } from 'shared/ui/Avatar/Avatar';
+import { LoginModal } from 'features/AuthByUsername/ui/LoginModal/LoginModal';
 import cls from './Navbar.module.scss';
 
 type NavBarProps = {
-	className?: string;
+    className?: string;
 };
 export const Navbar = memo(({ className }: NavBarProps) => {
     const [isAuthModal, setIsAuthModal] = useState(false);
     const { t } = useTranslation();
-    const isLogin = useSelector(getUserAuthData);
+    const authData = useSelector(getUserAuthData);
     const dispatch = useDispatch();
     const onCloseModal = useCallback(() => {
         setIsAuthModal(false);
@@ -29,26 +33,37 @@ export const Navbar = memo(({ className }: NavBarProps) => {
     }, [dispatch]);
 
     return (
-        <header className={classNames(cls.navbar, {}, [className])}>
-            {isLogin ? (
-                <div className={cls.logined}>
+        <aside className={classNames(cls.navbar, {}, [className])}>
+            {authData ? (
+                <>
                     <AppLink to={RoutePath.article_create} theme={AppLinkTheme.SECONDARY}>
                         {t('Создать статью')}
                     </AppLink>
-                    <Button onClick={onLogout} className={cls.logoutBtn} theme={ThemeButton.CLEAR_INVERTED}>
-                        {t('Выйти')}
-                    </Button>
-                </div>
+                    <Dropdown
+                        direction="bottom left"
+                        className={cls.dropdown}
+                        items={
+                            [
+                                { content: t('Профиль'), href: RoutePath.profile + authData.id },
+                                { content: t('Выйти'), onClick: onLogout },
+                            ]
+                        }
+                        trigger={<Avatar round width={30} height={30} src={authData.avatar} />}
+                    />
+
+                </>
 
             )
                 : (
-                    <Button onClick={onShowModal} className={cls.links} theme={ThemeButton.CLEAR_INVERTED}>
-                        {t('Войти')}
-                    </Button>
+                    <div className={cls.links}>
+                        <Button onClick={onShowModal} theme={ThemeButton.CLEAR_INVERTED}>
+                            {t('Войти')}
+                        </Button>
+                    </div>
                 )}
 
-            { isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />}
+            {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />}
 
-        </header>
+        </aside>
     );
 });

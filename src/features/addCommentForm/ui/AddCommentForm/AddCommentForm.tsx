@@ -3,18 +3,22 @@ import { useTranslation } from 'react-i18next';
 import { Input } from 'shared/ui/Input/Input';
 import Button, { ThemeButton } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
-import { getAddCommentFormError, getAddCommentFormText } from 'features/addCommentForm/model/selectors/addCommentFormSelectors';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useCallback } from 'react';
-import { AddCommentFormActions, AddCommentFormReducer } from 'features/addCommentForm/model/slice/addCommentFormSlice';
 import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { AddCommentFormActions, AddCommentFormReducer } from '../../model/slice/addCommentFormSlice';
+import { getAddCommentFormText } from '../../model/selectors/addCommentFormSelectors';
 import cls from './AddCommentForm.module.scss';
 
 interface AddCommentFormProps {
     className?: string;
     onSendComment: (text: string) => void
 }
-const AddCommentForm = ({ onSendComment }: AddCommentFormProps) => {
+const AddCommentForm = (props: AddCommentFormProps) => {
+    const {
+        className,
+        onSendComment,
+    } = props;
     const reducerList: ReducerList = {
         addCommentForm: AddCommentFormReducer,
     };
@@ -33,7 +37,7 @@ const AddCommentForm = ({ onSendComment }: AddCommentFormProps) => {
     }, [text, onCommentTextChange, onSendComment]);
     return (
         <DynamicModuleLoader removeAfterUnmount reducers={reducerList}>
-            <div className={classNames(cls.AddCommentForm, {}, [])}>
+            <div className={classNames(cls.AddCommentForm, {}, [className])}>
                 <Input placeholder={t('Введите текст комментария')} autofocus={false} value={text} onChange={onCommentTextChange} className={cls.input} />
                 <Button theme={ThemeButton.OUTLINE} className={cls.addCommentBtn} onClick={onSendHandler}>{t('Оставить комментарий')}</Button>
             </div>

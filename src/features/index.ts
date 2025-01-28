@@ -1,9 +1,7 @@
-import { LoginModal } from './AuthByUsername/ui/LoginModal/LoginModal';
-import { LoginSchema } from './AuthByUsername/model/types/loginSchema';
-import { loginReducer } from './AuthByUsername/model/slice/loginSlice';
+import { ProfileSchema } from './EditableProfileCard/model/types/editableProfileSchema';
+import { EditableProfileCard } from './EditableProfileCard/ui/EditableProfileCard';
 
 export {
-    LoginModal,
-    LoginSchema,
-    loginReducer,
+    ProfileSchema,
+    EditableProfileCard,
 };

@@ -17,6 +17,7 @@ import {
 import { fetchArticleNextPage } from '../../model/services/fetchArticleNextPage/fetchArticleNextPage';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import { ArticlesPageFilters } from '../ArticlesPageFilters/ui/ArticlesPageFilters';
+import { ArticleIntfiniteList } from '../ArticleIntfiniteList/ArticleIntfiniteList';
 
 interface ArticlePageProps {
     className?: string;
@@ -25,35 +26,23 @@ interface ArticlePageProps {
 const reducers: ReducerList = {
     articlesPage: articlesPageSliceReducer,
 };
-
 const ArticlesPage = memo(({ className }: ArticlePageProps) => {
-    const articles = useSelector(getArticle.selectAll);
-    const isLoading = useSelector(getArticlePageIsLoading);
-    const view = useSelector(getArticlePageView);
+    const dispatch = useAppDispatch();
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const dispatch = useAppDispatch();
-
+    const onLoadNextPage = useCallback(() => {
+        dispatch(fetchArticleNextPage());
+    }, [dispatch]);
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
             dispatch(initArticlesPage(searchParams));
         }
     }, [dispatch, searchParams]);
-
-    const onLoadNextPage = useCallback(() => {
-        dispatch(fetchArticleNextPage());
-    }, [dispatch]);
-
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
             <Page className={classNames(cls.ArticlePage, {}, [className])} onScroll={onLoadNextPage}>
                 <ArticlesPageFilters />
-                <ArticleList
-                    isLoading={isLoading}
-                    view={view}
-                    article={articles}
-                    className={cls.list}
-                />
+                <ArticleIntfiniteList className={cls.list} />
             </Page>
         </DynamicModuleLoader>
     );

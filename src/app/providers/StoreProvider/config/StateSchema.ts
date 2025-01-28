@@ -4,19 +4,21 @@ import {
 import { AxiosInstance } from 'axios';
 import { ArticleDetailsSchema } from 'entities/Article';
 import { CounterSchema } from 'entities/Counter';
-import { ProfileSchema } from 'entities/Profile';
 import { UserSchema } from 'entities/User';
-import { LoginSchema } from 'features';
+import { ProfileSchema } from 'features';
 import { AddCommentSchema } from 'features/addCommentForm';
+import { LoginSchema } from 'features/AuthByUsername/model/types/loginSchema';
 import { ArticleDetailsRecomentationSchema } from 'pages/ArticleDetailsPage';
 import { ArticleDetailsCommentSchema } from 'pages/ArticleDetailsPage/model/types/ArticleDetailsCommentSchema';
 import { ArticlesPageSchema } from 'pages/ArticlePage';
+import { rtkApi } from 'shared/api/rtkApi';
 import { ScrollPositionSchema } from 'widgets/Page/features/ScrollPosition';
 
 export interface StateSchema {
     counter: CounterSchema;
     user: UserSchema;
     scrollPosition: ScrollPositionSchema;
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
 
     loginForm: LoginSchema | undefined
     profile: ProfileSchema | undefined

@@ -27,7 +27,5 @@ export default (env: BuildEnv) => {
         apiUrl,
         project: 'frontend',
     });
-    console.log(env.apiUrl);
-
     return config;
 };
