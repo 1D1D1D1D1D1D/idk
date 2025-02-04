@@ -13,9 +13,9 @@ import { getProfileError } from '../model/selectors/getProfileError/getProfileEr
 import { getProfileIsloading } from '../model/selectors/getProfileIsloading/getProfileIsloading';
 import { getProfileValidateError } from '../model/selectors/getProfileValidateError/getProfileValidateError';
 import { getProfileReadonly } from '../model/selectors/getProfileReadonly/getProfileReadonly';
-import { ValidateProfileErrors } from '../model/types/editableProfileSchema';
 import { fetchProfileData } from '../model/services/fetchProfileData/fetchProfileData';
 import { profileActions, profileReducer } from '../model/slice/profileSlice';
+import { ValidateProfileErrors } from '../model/consts/consts';
 
 interface EditableProfileCardProps {
     className?: string;
@@ -46,6 +46,7 @@ export const EditableProfileCard = ({ className, id }: EditableProfileCardProps)
         [ValidateProfileErrors.INCORRECT_DATA]: t('Поля имени и фамилии должны быть заполнены'),
         [ValidateProfileErrors.NO_DATA]: t('Введите данные'),
         [ValidateProfileErrors.SERVER_ERROR]: t('Серверная ошибка'),
+        [ValidateProfileErrors.INCORRECT_USER_DATA]: t('Неверные данные пользователя'),
     };
 
     const onChangeFirstname = useCallback((value?: string) => {

@@ -8,8 +8,7 @@ import { UserSchema } from 'entities/User';
 import { ProfileSchema } from 'features';
 import { AddCommentSchema } from 'features/addCommentForm';
 import { LoginSchema } from 'features/AuthByUsername/model/types/loginSchema';
-import { ArticleDetailsRecomentationSchema } from 'pages/ArticleDetailsPage';
-import { ArticleDetailsCommentSchema } from 'pages/ArticleDetailsPage/model/types/ArticleDetailsCommentSchema';
+import { ArticleDetailsCommentSchema, ArticleDetailsPageSchema, ArticleDetailsRecomentationSchema } from 'pages/ArticleDetailsPage';
 import { ArticlesPageSchema } from 'pages/ArticlePage';
 import { rtkApi } from 'shared/api/rtkApi';
 import { ScrollPositionSchema } from 'widgets/Page/features/ScrollPosition';
@@ -23,8 +22,9 @@ export interface StateSchema {
     loginForm: LoginSchema | undefined
     profile: ProfileSchema | undefined
     articleDetails: ArticleDetailsSchema | undefined
-    articleDetailsComments: ArticleDetailsCommentSchema | undefined
-    articleDetailsRecomendation: ArticleDetailsRecomentationSchema | undefined
+    // articleDetailsComments: ArticleDetailsCommentSchema | undefined
+    // articleDetailsRecomendation: ArticleDetailsRecomentationSchema | undefined
+    articleDetailsPage: ArticleDetailsPageSchema | undefined
     addCommentForm: AddCommentSchema | undefined
     articlesPage: ArticlesPageSchema | undefined
 

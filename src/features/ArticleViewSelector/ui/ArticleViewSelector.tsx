@@ -1,10 +1,10 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { ArticleView } from 'entities/Article';
 import ListIcon from 'shared/assets/icons/list-24-24.svg';
 import GridIcon from 'shared/assets/icons/tiled-24-24.svg';
 import Button, { ThemeButton } from 'shared/ui/Button/Button';
 import { Icon } from 'shared/ui/Icon/Icon';
+import { ArticleView } from 'entities/Article';
 import cls from './ArticleViewSelector.module.scss';
 
 interface ArticleViewSelectorProps {
@@ -13,18 +13,18 @@ interface ArticleViewSelectorProps {
     onViewClick?: (view: ArticleView) => void
 }
 
-const viewTypes = [
-    {
-        view: ArticleView.GRID,
-        icon: GridIcon,
-    },
-    {
-        view: ArticleView.LIST,
-        icon: ListIcon,
-    },
-];
-
 export const ArticleViewSelector = ({ className, view, onViewClick }: ArticleViewSelectorProps) => {
+    const viewTypes = [
+        {
+            view: ArticleView.GRID,
+            icon: GridIcon,
+        },
+        {
+            view: ArticleView.LIST,
+            icon: ListIcon,
+        },
+    ];
+
     const { t } = useTranslation();
     const onClick = (newView: ArticleView) => () => {
         onViewClick?.(newView);

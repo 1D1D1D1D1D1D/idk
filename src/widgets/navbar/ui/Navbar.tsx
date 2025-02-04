@@ -4,14 +4,13 @@ import { useTranslation } from 'react-i18next';
 import Button, { ThemeButton } from 'shared/ui/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserAuthData } from 'entities/User/model/selectors/getUserAuthData/getUserAuthData';
-import { userActions } from 'entities/User';
+import { isUserAdmin, isUserManager, userActions } from 'entities/User';
 import AppLink, { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { routeConfig, RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { HFlex } from 'shared/ui/Stack/HFlex/HFlex';
-import { Flex } from 'shared/ui/Stack/Flex/Flex';
 import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { LoginModal } from 'features/AuthByUsername/ui/LoginModal/LoginModal';
+import { getUserRoles } from 'entities/User/model/selectors/roleSelectors';
 import cls from './Navbar.module.scss';
 
 type NavBarProps = {
@@ -21,6 +20,9 @@ export const Navbar = memo(({ className }: NavBarProps) => {
     const [isAuthModal, setIsAuthModal] = useState(false);
     const { t } = useTranslation();
     const authData = useSelector(getUserAuthData);
+    const isAdmin = useSelector(isUserAdmin);
+    const isManager = useSelector(isUserManager);
+    const roles = useSelector(getUserRoles);
     const dispatch = useDispatch();
     const onCloseModal = useCallback(() => {
         setIsAuthModal(false);
@@ -31,6 +33,8 @@ export const Navbar = memo(({ className }: NavBarProps) => {
     const onLogout = useCallback(() => {
         dispatch(userActions.logOut());
     }, [dispatch]);
+
+    const isAdminPanelAvailable = isAdmin || isManager;
 
     return (
         <aside className={classNames(cls.navbar, {}, [className])}>
@@ -44,6 +48,7 @@ export const Navbar = memo(({ className }: NavBarProps) => {
                         className={cls.dropdown}
                         items={
                             [
+                                ...(isAdminPanelAvailable ? [{ content: t('Панель администатора'), href: RoutePath.admin_panel }] : []),
                                 { content: t('Профиль'), href: RoutePath.profile + authData.id },
                                 { content: t('Выйти'), onClick: onLogout },
                             ]

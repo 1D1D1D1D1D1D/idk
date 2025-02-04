@@ -35,6 +35,12 @@ export default {
         // eslint-disable-next-line no-undef
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
     },
+    reporters: [
+        'default',
+        ['./node_modules/jest-html-reporter', {
+            pageTitle: 'Test Report',
+        }],
+    ],
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,
     // An array of glob patterns indicating a set of files for which coverage information should be collected

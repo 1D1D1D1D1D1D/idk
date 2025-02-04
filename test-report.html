@@ -1,0 +1,260 @@
+<html><head><meta charset="utf-8"/><title>Test Report</title><style type="text/css">html,
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+body {
+  padding: 2rem 1rem;
+  font-size: 0.85rem;
+}
+.jesthtml-content {
+  margin: 0 auto;
+  max-width: 70rem;
+}
+header {
+  display: flex;
+  align-items: center;
+}
+#title {
+  margin: 0;
+  flex-grow: 1;
+}
+#logo {
+  height: 4rem;
+}
+#timestamp {
+  color: #777;
+  margin-top: 0.5rem;
+}
+
+/** SUMMARY */
+#summary {
+  color: #333;
+  margin: 2rem 0;
+  display: flex;
+  font-family: monospace;
+  font-size: 1rem;
+}
+#summary > div {
+  margin-right: 2rem;
+  background: #eee;
+  padding: 1rem;
+  min-width: 15rem;
+}
+#summary > div:last-child {
+  margin-right: 0;
+}
+@media only screen and (max-width: 720px) {
+  #summary {
+    flex-direction: column;
+  }
+  #summary > div {
+    margin-right: 0;
+    margin-top: 2rem;
+  }
+  #summary > div:first-child {
+    margin-top: 0;
+  }
+}
+
+.summary-total {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.summary-passed {
+  color: #4f8a10;
+  border-left: 0.4rem solid #4f8a10;
+  padding-left: 0.5rem;
+}
+.summary-failed,
+.summary-obsolete-snapshots {
+  color: #d8000c;
+  border-left: 0.4rem solid #d8000c;
+  padding-left: 0.5rem;
+}
+.summary-pending {
+  color: #9f6000;
+  border-left: 0.4rem solid #9f6000;
+  padding-left: 0.5rem;
+}
+.summary-empty {
+  color: #999;
+  border-left: 0.4rem solid #999;
+}
+
+.test-result {
+  padding: 1rem;
+  margin-bottom: 0.25rem;
+}
+.test-result:last-child {
+  border: 0;
+}
+.test-result.passed {
+  background-color: #dff2bf;
+  color: #4f8a10;
+}
+.test-result.failed {
+  background-color: #ffbaba;
+  color: #d8000c;
+}
+.test-result.pending {
+  background-color: #ffdf61;
+  color: #9f6000;
+}
+
+.test-info {
+  display: flex;
+  justify-content: space-between;
+}
+.test-suitename {
+  width: 20%;
+  text-align: left;
+  font-weight: bold;
+  word-break: break-word;
+}
+.test-title {
+  width: 40%;
+  text-align: left;
+  font-style: italic;
+}
+.test-status {
+  width: 20%;
+  text-align: right;
+}
+.test-duration {
+  width: 10%;
+  text-align: right;
+  font-size: 0.75rem;
+}
+
+.failureMessages {
+  padding: 0 1rem;
+  margin-top: 1rem;
+  border-top: 1px dashed #d8000c;
+}
+.failureMessages.suiteFailure {
+  border-top: none;
+}
+.failureMsg {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+.suite-container {
+  margin-bottom: 2rem;
+}
+.suite-container > input[type="checkbox"] {
+  position: absolute;
+  left: -100vw;
+}
+.suite-container label {
+  display: block;
+}
+.suite-container .suite-tests {
+  overflow-y: hidden;
+  height: 0;
+}
+.suite-container > input[type="checkbox"]:checked ~ .suite-tests {
+  height: auto;
+  overflow: visible;
+}
+.suite-info {
+  padding: 1rem;
+  background-color: #eee;
+  color: #777;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+.suite-info:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+.suite-info .suite-path {
+  word-break: break-all;
+  flex-grow: 1;
+  font-family: monospace;
+  font-size: 1rem;
+}
+.suite-info .suite-time {
+  margin-left: 0.5rem;
+  padding: 0.2rem 0.3rem;
+  font-size: 0.75rem;
+}
+.suite-info .suite-time.warn {
+  background-color: #d8000c;
+  color: #fff;
+}
+.suite-info:before {
+  content: "\2303";
+  display: inline-block;
+  margin-right: 0.5rem;
+  transform: rotate(0deg);
+}
+.suite-container > input[type="checkbox"]:checked ~ label .suite-info:before {
+  transform: rotate(180deg);
+}
+
+/* CONSOLE LOGS */
+.suite-consolelog {
+  margin-bottom: 0.25rem;
+  padding: 1rem;
+  background-color: #efefef;
+}
+.suite-consolelog-header {
+  font-weight: bold;
+}
+.suite-consolelog-item {
+  padding: 0.5rem;
+}
+.suite-consolelog-item pre {
+  margin: 0.5rem 0;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.suite-consolelog-item-origin {
+  color: #777;
+  font-weight: bold;
+}
+.suite-consolelog-item-message {
+  color: #000;
+  font-size: 1rem;
+  padding: 0 0.5rem;
+}
+
+/* OBSOLETE SNAPSHOTS */
+.suite-obsolete-snapshots {
+  margin-bottom: 0.25rem;
+  padding: 1rem;
+  background-color: #ffbaba;
+  color: #d8000c;
+}
+.suite-obsolete-snapshots-header {
+  font-weight: bold;
+}
+.suite-obsolete-snapshots-item {
+  padding: 0.5rem;
+}
+.suite-obsolete-snapshots-item pre {
+  margin: 0.5rem 0;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.suite-obsolete-snapshots-item-message {
+  color: #000;
+  font-size: 1rem;
+  padding: 0 0.5rem;
+}
+</style></head><body><div class="jesthtml-content"><header><h1 id="title">Test Report</h1></header><div id="metadata-container"><div id="timestamp">Started: 2025-01-30 20:18:30</div><div id="summary"><div id="suite-summary"><div class="summary-total">Suites (28)</div><div class="summary-passed ">28 passed</div><div class="summary-failed  summary-empty">0 failed</div><div class="summary-pending  summary-empty">0 pending</div></div><div id="test-summary"><div class="summary-total">Tests (70)</div><div class="summary-passed ">70 passed</div><div class="summary-failed  summary-empty">0 failed</div><div class="summary-pending  summary-empty">0 pending</div></div></div></div><div id="suite-1" class="suite-container"><input id="collapsible-0" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-0"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\shared\lib\classNames\classNames.test.ts</div><div class="suite-time warn">5.038s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">classNames</div><div class="test-title">with only first param</div><div class="test-status">passed</div><div class="test-duration">0.013s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">classNames</div><div class="test-title">with additional class</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">classNames</div><div class="test-title">with mods</div><div class="test-status">passed</div><div class="test-duration">0.007s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">classNames</div><div class="test-title">with mods false</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">classNames</div><div class="test-title">with mods undefined</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div></div></div><div id="suite-2" class="suite-container"><input id="collapsible-1" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-1"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\features\EditableProfileCard\model\selectors\getProfileValidateError\getProfileValidateError.test.ts</div><div class="suite-time">4.982s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">getProfileForm</div><div class="test-title">should return form</div><div class="test-status">passed</div><div class="test-duration">0.013s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">getProfileForm</div><div class="test-title">should return undef</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div></div></div><div id="suite-3" class="suite-container"><input id="collapsible-2" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-2"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\entities\Article\model\selectors\articleDetails.test.ts</div><div class="suite-time warn">5.007s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">getArticleDetailsData</div><div class="test-title">should return data</div><div class="test-status">passed</div><div class="test-duration">0.013s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">getArticleDetailsData</div><div class="test-title">should return undef</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">getArticleDetailsIsLoading</div><div class="test-title">should return isLoading</div><div class="test-status">passed</div><div class="test-duration">0.031s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">getArticleDetailsIsLoading</div><div class="test-title">should return undef</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">getArticleDetailsError</div><div class="test-title">should return error</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">getArticleDetailsError</div><div class="test-title">should return undef</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div></div></div><div id="suite-4" class="suite-container"><input id="collapsible-3" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-3"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\entities\Article\model\slice\articleDetailsSlice.test.ts</div><div class="suite-time warn">5.106s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">test profile slice</div><div class="test-title">updateProfileData pending </div><div class="test-status">passed</div><div class="test-duration">0.016s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">test profile slice</div><div class="test-title">updateProfileData fulfilled </div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">test profile slice</div><div class="test-title">updateProfileData rejected </div><div class="test-status">passed</div><div class="test-duration">0.015s</div></div></div></div></div><div id="suite-5" class="suite-container"><input id="collapsible-4" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-4"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\features\AuthByUsername\services\loginByUsername\loginByUsername.test.ts</div><div class="suite-time warn">5.295s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">getCounter</div><div class="test-title">loginByUsername</div><div class="test-status">passed</div><div class="test-duration">0.039s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">getCounter</div><div class="test-title">error login</div><div class="test-status">passed</div><div class="test-duration">0.011s</div></div></div></div></div><div id="suite-6" class="suite-container"><input id="collapsible-5" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-5"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\features\EditableProfileCard\model\services\validateForm\validateForm.test.ts</div><div class="suite-time warn">5.625s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">validate profile form</div><div class="test-title">success</div><div class="test-status">passed</div><div class="test-duration">0.018s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">validate profile form</div><div class="test-title">no first or lastname</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">validate profile form</div><div class="test-title">no age</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">validate profile form</div><div class="test-title">no country</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">validate profile form</div><div class="test-title">no data</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div></div></div><div id="suite-7" class="suite-container"><input id="collapsible-6" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-6"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\features\AuthByUsername\model\selectors\getLoginIsloading\getLoginIsloading.test.ts</div><div class="suite-time">0.395s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">getLoginIsLoading</div><div class="test-title">should return login isLoading</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">getLoginIsLoading</div><div class="test-title">should return login isLoading</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div></div></div><div id="suite-8" class="suite-container"><input id="collapsible-7" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-7"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\features\EditableProfileCard\model\services\fetchProfileData\fetchProfileData.test.ts</div><div class="suite-time warn">5.644s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">fetchProfileData</div><div class="test-title">success </div><div class="test-status">passed</div><div class="test-duration">0.041s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">fetchProfileData</div><div class="test-title">error login</div><div class="test-status">passed</div><div class="test-duration">0.115s</div></div></div></div></div><div id="suite-9" class="suite-container"><input id="collapsible-8" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-8"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\features\EditableProfileCard\model\slice\profileSlice.test.ts</div><div class="suite-time warn">5.769s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">test profile slice</div><div class="test-title">set readonly</div><div class="test-status">passed</div><div class="test-duration">0.019s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">test profile slice</div><div class="test-title">set cancel edit </div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">test profile slice</div><div class="test-title">set update data </div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">test profile slice</div><div class="test-title">updateProfileData pending </div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">test profile slice</div><div class="test-title">updateProfileData fulfilled </div><div class="test-status">passed</div><div class="test-duration">0.011s</div></div></div></div></div><div id="suite-10" class="suite-container"><input id="collapsible-9" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-9"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\features\EditableProfileCard\model\selectors\getProfileIsloading\getProfileIsloading.test.ts</div><div class="suite-time">0.389s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">getProfileIsloading</div><div class="test-title">should return is loading true</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">getProfileIsloading</div><div class="test-title">should return undef</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div></div></div><div id="suite-11" class="suite-container"><input id="collapsible-10" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-10"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\features\EditableProfileCard\model\services\updateProfileData\updateProfileData.test.ts</div><div class="suite-time warn">5.828s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">updateProfileData</div><div class="test-title">success </div><div class="test-status">passed</div><div class="test-duration">0.065s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">updateProfileData</div><div class="test-title">error login</div><div class="test-status">passed</div><div class="test-duration">0.158s</div></div></div></div></div><div id="suite-12" class="suite-container"><input id="collapsible-11" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-11"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\features\EditableProfileCard\model\selectors\getProfileData\getProfiledata.test.ts</div><div class="suite-time">0.875s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">getProfileData</div><div class="test-title">should return data</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">getProfileData</div><div class="test-title">should return undef</div><div class="test-status">passed</div><div class="test-duration">0.003s</div></div></div></div></div><div id="suite-13" class="suite-container"><input id="collapsible-12" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-12"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\features\EditableProfileCard\model\selectors\getProfileForm\getProfileForm.test.ts</div><div class="suite-time">1.059s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">getProfileForm</div><div class="test-title">should return form</div><div class="test-status">passed</div><div class="test-duration">0.004s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">getProfileForm</div><div class="test-title">should return undef</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div></div></div><div id="suite-14" class="suite-container"><input id="collapsible-13" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-13"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\features\AuthByUsername\model\slice\loginSlice.test.ts</div><div class="suite-time">0.532s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">test set username</div><div class="test-title">increment value</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">test set username</div><div class="test-title">test set password</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div></div></div><div id="suite-15" class="suite-container"><input id="collapsible-14" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-14"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\shared\ui\Button\Button.test.tsx</div><div class="suite-time">0.753s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">classNames</div><div class="test-title">with only first param</div><div class="test-status">passed</div><div class="test-duration">0.113s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">classNames</div><div class="test-title">with only first param</div><div class="test-status">passed</div><div class="test-duration">0.015s</div></div></div></div></div><div id="suite-16" class="suite-container"><input id="collapsible-15" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-15"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\pages\ArticlePage\model\services\fetchArticleNextPage\fetchArticleNextPage.test.ts</div><div class="suite-time warn">6.479s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">fetchArticleNextPage</div><div class="test-title">success</div><div class="test-status">passed</div><div class="test-duration">0.018s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">fetchArticleNextPage</div><div class="test-title">fetchArticleNextPage not called</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">fetchArticleNextPage</div><div class="test-title">fetchArticleNextPage id loading</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div></div></div><div id="suite-17" class="suite-container"><input id="collapsible-16" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-16"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\entities\Counter\model\slice\counterSlice.test.ts</div><div class="suite-time">0.4s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">getCounter</div><div class="test-title">increment value</div><div class="test-status">passed</div><div class="test-duration">0.01s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">getCounter</div><div class="test-title">decrement value</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">getCounter</div><div class="test-title">should work with empty state</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div></div></div><div id="suite-18" class="suite-container"><input id="collapsible-17" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-17"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\features\EditableProfileCard\model\selectors\getProfileReadonly\getProfileReadonly.test.ts</div><div class="suite-time">0.412s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">getProfileIsloading</div><div class="test-title">should return is readonly true</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">getProfileIsloading</div><div class="test-title">should return undef</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div></div></div><div id="suite-19" class="suite-container"><input id="collapsible-18" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-18"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\shared\lib\url\addQueryParams.test.ts</div><div class="suite-time">0.443s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">getCounterValue</div><div class="test-title">with one param </div><div class="test-status">passed</div><div class="test-duration">0.009s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">getCounterValue</div><div class="test-title">with multiple params </div><div class="test-status">passed</div><div class="test-duration">0.003s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">getCounterValue</div><div class="test-title">witch undef </div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div></div></div><div id="suite-20" class="suite-container"><input id="collapsible-19" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-19"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\features\AuthByUsername\model\selectors\getLoginState\getLoginState.test.ts</div><div class="suite-time">0.508s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">getLoginUsername</div><div class="test-title">should return login state</div><div class="test-status">passed</div><div class="test-duration">0.003s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">getLoginUsername</div><div class="test-title"/><div class="test-status">passed</div><div class="test-duration">0s</div></div></div></div></div><div id="suite-21" class="suite-container"><input id="collapsible-20" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-20"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\features\EditableProfileCard\model\selectors\getProfileError\getProfileError.test.ts</div><div class="suite-time">0.382s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">getProfileForm</div><div class="test-title">should return form</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">getProfileForm</div><div class="test-title">should return undef</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div></div></div><div id="suite-22" class="suite-container"><input id="collapsible-21" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-21"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\entities\Counter\model\selectors\getCounterValue\getCounterValue.test.ts</div><div class="suite-time">0.502s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">getCounterValue</div><div class="test-title">should return counter value </div><div class="test-status">passed</div><div class="test-duration">0.009s</div></div></div></div></div><div id="suite-23" class="suite-container"><input id="collapsible-22" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-22"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\features\AuthByUsername\model\selectors\getLoginPassword\getLoginPassword.test.ts</div><div class="suite-time">0.455s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">getLoginPassword</div><div class="test-title">should return login password</div><div class="test-status">passed</div><div class="test-duration">0.004s</div></div></div></div></div><div id="suite-24" class="suite-container"><input id="collapsible-23" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-23"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\features\AuthByUsername\model\selectors\getLoginUsername\getLoginUsername.test.ts</div><div class="suite-time">0.337s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">getLoginState</div><div class="test-title">should return login username</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div></div></div><div id="suite-25" class="suite-container"><input id="collapsible-24" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-24"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\features\AuthByUsername\model\selectors\getLoginError\getLoginError.test.ts</div><div class="suite-time">0.331s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">getLoginError</div><div class="test-title">should return login error</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div></div></div><div id="suite-26" class="suite-container"><input id="collapsible-25" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-25"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\entities\Counter\model\selectors\getCounter\getCounter.test.ts</div><div class="suite-time">0.325s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">getCounter</div><div class="test-title">should return counter value</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div></div></div><div id="suite-27" class="suite-container"><input id="collapsible-26" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-26"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\entities\Counter\ui\Counter.test.tsx</div><div class="suite-time warn">7.149s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">Counter</div><div class="test-title">test slice initial state</div><div class="test-status">passed</div><div class="test-duration">0.137s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Counter</div><div class="test-title">test render</div><div class="test-status">passed</div><div class="test-duration">0.023s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Counter</div><div class="test-title">test increment</div><div class="test-status">passed</div><div class="test-duration">0.107s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Counter</div><div class="test-title">test decrement</div><div class="test-status">passed</div><div class="test-duration">0.047s</div></div></div></div></div><div id="suite-28" class="suite-container"><input id="collapsible-27" type="checkbox" class="toggle" checked="checked"/><label for="collapsible-27"><div class="suite-info"><div class="suite-path">C:\Users\tryha\OneDrive\Рабочий стол\project\production-project\src\widgets\Sidebar\ui\Sidebar\Sidebar.test.tsx</div><div class="suite-time">2.132s</div></div></label><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">Sidebar</div><div class="test-title">with only first param</div><div class="test-status">passed</div><div class="test-duration">0.065s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Sidebar</div><div class="test-title">test toggle</div><div class="test-status">passed</div><div class="test-duration">0.033s</div></div></div></div></div></div></body></html>

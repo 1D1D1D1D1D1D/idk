@@ -24,7 +24,6 @@ export function createReduxStore(
         [rtkApi.reducerPath]: rtkApi.reducer,
 
     };
-    console.log(rootReducers);
 
     const reducerManager = createReducerManager(rootReducers);
 

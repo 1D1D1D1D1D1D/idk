@@ -3,6 +3,6 @@ import { Comment } from './model/types/comment';
 
 export {
     CommentList,
-    Comment,
+    type Comment,
 
 };

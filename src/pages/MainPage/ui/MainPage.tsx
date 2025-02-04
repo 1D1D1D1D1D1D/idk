@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+
 import { Page } from 'widgets/Page/ui/Page';
 
 const MainPage = () => {
@@ -7,6 +8,7 @@ const MainPage = () => {
     return (
         <Page>
             {t('Главная страница')}
+
             {/* <ListBox
                 onChange={(value: string) => {}}
                 value=""

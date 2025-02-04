@@ -1,7 +1,7 @@
 import { DeepPartial } from 'shared/lib/DeepPartialObject/DeepPartialObject';
 import { StateSchema } from 'app/providers/StoreProvider';
-import { ValidateProfileErrors } from '../../types/editableProfileSchema';
 import { getProfileValidateError } from './getProfileValidateError';
+import { ValidateProfileErrors } from '../../consts/consts';
 
 describe('getProfileForm', () => {
     test('should return form', () => {
@@ -12,6 +12,7 @@ describe('getProfileForm', () => {
                     ValidateProfileErrors.INCORRECT_DATA,
                     ValidateProfileErrors.NO_DATA,
                     ValidateProfileErrors.SERVER_ERROR,
+                    ValidateProfileErrors.INCORRECT_USER_DATA,
                 ],
 
             },
@@ -21,6 +22,7 @@ describe('getProfileForm', () => {
             ValidateProfileErrors.INCORRECT_DATA,
             ValidateProfileErrors.NO_DATA,
             ValidateProfileErrors.SERVER_ERROR,
+            ValidateProfileErrors.INCORRECT_USER_DATA,
         ]);
     });
     test('should return undef', () => {

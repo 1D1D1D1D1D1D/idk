@@ -1,9 +1,8 @@
 import { StateSchema } from 'app/providers/StoreProvider';
 import { DeepPartial } from 'shared/lib/DeepPartialObject/DeepPartialObject';
-import { Country } from 'entities/Country';
-import { Currency } from 'entities/Currency';
-import { ArticleBlockType, ArticleType } from '../types/article';
-import { getArticleDetailsData, getArticleDetailsError, getArticleDetailsIsLoading } from './articleDetails';
+import { getArticleDetailsData } from '../../../Article';
+import { ArticleBlockType, ArticleType } from '../consts/articleConsts';
+import { getArticleDetailsError, getArticleDetailsIsLoading } from './articleDetails';
 
 const data = {
     id: '1',

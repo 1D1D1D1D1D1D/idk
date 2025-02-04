@@ -6,7 +6,7 @@ import { Profile } from 'entities/Profile';
 import { profileActions, profileReducer } from './profileSlice';
 
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
-import { ValidateProfileErrors } from '../types/editableProfileSchema';
+import { ValidateProfileErrors } from '../consts/consts';
 
 describe('test profile slice', () => {
     const data = {

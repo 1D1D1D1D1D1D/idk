@@ -6,17 +6,16 @@ import { ArticleDetails } from 'entities/Article/ui/ArticleDetails/ArticleDetail
 import { Page } from 'widgets/Page/ui/Page';
 import { ArticleRecommendationList } from 'features/articleRecommendationList';
 import cls from './ArticleDetailsPage.module.scss';
-import { ArticleDetailsCommentReducer } from '../../model/slice/ArticleDetailsCommentSlice';
-import { ArticleDetailsRecomendationtReducer } from '../../model/slice/ArticleDetailsRecomendationSlice';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
+import { articleDetailsPageReducer } from '../../model/slice/index';
 
 interface ArticleDetailsPageProps {
     className?: string;
 }
 const reducersList : ReducerList = {
-    articleDetailsComments: ArticleDetailsCommentReducer,
-    articleDetailsRecomendation: ArticleDetailsRecomendationtReducer,
+    articleDetailsPage: articleDetailsPageReducer,
+
 };
 const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     const { t } = useTranslation();

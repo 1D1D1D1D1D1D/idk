@@ -3,6 +3,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Fragment } from 'react/jsx-runtime';
 import { ReactNode } from 'react';
 import { DropdownDirection } from 'shared/types/ui';
+import { randomUUID } from 'node:crypto';
 import cls from './Dropdown.module.scss';
 import AppLink from '../AppLink/AppLink';
 
@@ -40,7 +41,7 @@ export function Dropdown(props: DropdownProps) {
                 {trigger}
             </Menu.Button>
             <Menu.Items className={classNames(cls.menu, {}, menuClasses)}>
-                {items.map((item) => {
+                {items.map((item, index) => {
                     const content = ({ active, disabled }: {active: boolean, disabled: boolean}) => (
                         <button
                             type="button"
@@ -54,14 +55,14 @@ export function Dropdown(props: DropdownProps) {
 
                     if (item.href) {
                         return (
-                            <Menu.Item as={AppLink} to={item.href} disabled={item.disabled}>
+                            <Menu.Item as={AppLink} to={item.href} disabled={item.disabled} key={crypto.randomUUID()}>
                                 {content}
                             </Menu.Item>
                         );
                     }
 
                     return (
-                        <Menu.Item as={Fragment} disabled={item.disabled}>
+                        <Menu.Item as={Fragment} disabled={item.disabled} key={crypto.randomUUID()}>
                             {content}
                         </Menu.Item>
                     );

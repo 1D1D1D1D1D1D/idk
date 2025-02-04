@@ -1,7 +1,8 @@
 import { DeepPartial } from 'shared/lib/DeepPartialObject/DeepPartialObject';
 import { ArticleDetailsSchema } from '../types/ArticleDetailsSchema';
 import { articleDetailsReducer } from './articleDetailsSlice';
-import { Article, ArticleBlockType, ArticleType } from '../types/article';
+import { Article } from '../types/article';
+import { ArticleBlockType, ArticleType } from '../consts/articleConsts';
 import { fetchArticleById } from '../services/fetchArticleById/fetchArticleById';
 
 describe('test profile slice', () => {

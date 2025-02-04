@@ -3,5 +3,5 @@ import { scrollPositionActions, scrollPositionReducer } from './slice/ScrollPosi
 import { ScrollPositionSchema } from './types/ScrollSchema';
 
 export {
-    scrollPositionReducer, scrollPositionActions, ScrollPositionSchema, getScrollPositionByPath, getScrollPosition,
+    scrollPositionReducer, scrollPositionActions, type ScrollPositionSchema, getScrollPositionByPath, getScrollPosition,
 };

@@ -1,7 +1,7 @@
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
 import { validateForm } from './validateForm';
-import { ValidateProfileErrors } from '../../types/editableProfileSchema';
+import { ValidateProfileErrors } from '../../consts/consts';
 
 const data = {
     first: 'Макс',

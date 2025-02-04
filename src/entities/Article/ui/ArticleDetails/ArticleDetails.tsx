@@ -11,7 +11,8 @@ import ViewsIcon from 'shared/assets/icons/eye-20-20.svg';
 import CreatedAtIcon from 'shared/assets/icons/date-range-svgrepo-com.svg';
 
 import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { ArticleBlock, ArticleBlockType } from '../../../Article/model/types/article';
+import { ArticleBlockType } from '../../model/consts/articleConsts';
+import { ArticleBlock } from '../../../Article/model/types/article';
 import { getArticleDetailsData, getArticleDetailsError, getArticleDetailsIsLoading } from '../../../Article/model/selectors/articleDetails';
 import { fetchArticleById } from '../../../Article/model/services/fetchArticleById/fetchArticleById';
 import { articleDetailsReducer } from '../../../Article/model/slice/articleDetailsSlice';

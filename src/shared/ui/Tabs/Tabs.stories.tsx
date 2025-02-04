@@ -4,7 +4,7 @@ import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDeco
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { StyleDecorator } from 'shared/config/storybook/StyleDecorator/StyleDecorator';
-import { ArticleType } from 'entities/Article/model/types/article';
+import { ArticleType } from 'entities/Article/model/consts/articleConsts';
 import { Tabs } from './Tabs';
 
 const meta: Meta<typeof Tabs> = {

@@ -1,8 +1,9 @@
 // Replace your-renderer with the renderer you are using (e.g., react, vue3, etc.)
 import type { Meta, StoryObj } from '@storybook/react';
-import { Article, ArticleView } from 'entities/Article/model/types/article';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
+import { Article } from '../../model/types/article';
+import { ArticleView } from '../../../Article';
 import { ArticleList } from './ArticleList';
 
 const meta: Meta<typeof ArticleList

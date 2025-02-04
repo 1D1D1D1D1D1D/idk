@@ -5,5 +5,5 @@ import Counter from './ui/Counter';
 export {
     counterReducer,
     Counter,
-    CounterSchema,
+    type CounterSchema,
 };

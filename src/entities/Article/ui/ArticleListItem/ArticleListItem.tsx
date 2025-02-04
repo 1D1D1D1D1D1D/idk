@@ -8,9 +8,9 @@ import { Avatar } from 'shared/ui/Avatar/Avatar';
 import Button, { ThemeButton } from 'shared/ui/Button/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import AppLink from 'shared/ui/AppLink/AppLink';
+import { ArticleBlockType, ArticleView } from '../../../Article';
 import cls from './ArticleListItem.module.scss';
-import { Article, ArticleBlockType, ArticleTextBlock } from '../../model/types/article';
-import { ArticleView } from '../../index';
+import { Article, ArticleTextBlock } from '../../model/types/article';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 
 interface ArticleListItemProps {
