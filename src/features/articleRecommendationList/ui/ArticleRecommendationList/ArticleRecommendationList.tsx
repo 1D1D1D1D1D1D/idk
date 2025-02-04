@@ -1,8 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import { ArticleList, ArticleView } from 'entities/Article';
+import { ArticleView } from 'entities/Article';
 import { Text } from 'shared/ui/Text/Text';
 import { VFlex } from 'shared/ui/Stack/VFlex/VFlex';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { ArticleList } from 'entities/Article/ui/ArticleList/ArticleList';
 import { useArticleRecomendationsList } from '../../api/articleRecommendationsApi';
 
 interface articleRecommendationListProps {

@@ -3,6 +3,7 @@ import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import CopyPlugin from 'copy-webpack-plugin';
+import CircularDependencyPlugin from 'circular-dependency-plugin';
 import { type BuildOptions } from './types/config';
 
 export function buildPlugins({
@@ -30,6 +31,10 @@ export function buildPlugins({
             __PROJECT__: JSON.stringify(project),
             __API__: JSON.stringify(apiUrl),
 
+        }),
+        new CircularDependencyPlugin({
+            exclude: /node_modules/,
+            failOnError: true,
         }),
 
     ];

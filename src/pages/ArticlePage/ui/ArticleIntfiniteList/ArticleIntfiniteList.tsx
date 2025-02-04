@@ -1,13 +1,8 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { ArticleList } from 'entities/Article';
 import { useSelector } from 'react-redux';
-import { useCallback, useEffect } from 'react';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { useSearchParams } from 'react-router-dom';
-import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
+
+import { ArticleList } from 'entities/Article/ui/ArticleList/ArticleList';
 import { getArticle } from '../../model/slice/articlesPageSlice';
-import { fetchArticleNextPage } from '../../model/services/fetchArticleNextPage/fetchArticleNextPage';
 import { getArticlePageIsLoading, getArticlePageView } from '../../model/selectors/articlePageSelectors';
 
 interface ArticleIntfiniteListProps {
