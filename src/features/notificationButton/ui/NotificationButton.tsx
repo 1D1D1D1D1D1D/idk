@@ -6,7 +6,7 @@ import { useCallback, useState } from 'react';
 import { NotificationList } from 'entities/Notification';
 import { Drawer } from 'shared/ui/Drawer/Drawer';
 import {
-    BrowserView, isBrowser, isMobile, MobileView,
+    BrowserView, isBrowser, MobileView,
 } from 'react-device-detect';
 import { Popover } from 'shared/ui/Popover/Popover';
 import cls from './NotificationButton.module.scss';
@@ -32,18 +32,21 @@ export const NotificationButton = ({ className }: NotificationButtonProps) => {
 
     return (
         <div>
-            <BrowserView className={cls.dropdown}>
-                <Popover trigger={trigger}>
-                    <NotificationList className={cls.notifications} />
-                </Popover>
-            </BrowserView>
-
-            <MobileView>
-                {trigger}
-                <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
-                    <NotificationList />
-                </Drawer>
-            </MobileView>
+            {isBrowser ? (
+                <BrowserView className={cls.dropdown}>
+                    <Popover trigger={trigger}>
+                        <NotificationList className={cls.notifications} />
+                    </Popover>
+                </BrowserView>
+            )
+                : (
+                    <MobileView>
+                        {trigger}
+                        <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
+                            <NotificationList />
+                        </Drawer>
+                    </MobileView>
+                )}
 
         </div>
 
