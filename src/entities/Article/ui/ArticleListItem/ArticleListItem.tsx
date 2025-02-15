@@ -47,6 +47,7 @@ export const ArticleListItem = ({
                         <AppLink to={RoutePath.article_details + article.id}>
                             <Button theme={ThemeButton.OUTLINE}>
                                 {t('Читать')}
+
                             </Button>
                             <div className={cls.viewsBlock}>
                                 <Icon Svg={ViewsIcon} />

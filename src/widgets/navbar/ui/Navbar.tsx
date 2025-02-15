@@ -6,11 +6,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserAuthData } from 'entities/User/model/selectors/getUserAuthData/getUserAuthData';
 import { isUserAdmin, isUserManager, userActions } from 'entities/User';
 import AppLink, { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
-import { routeConfig, RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
+import { Popover } from 'shared/ui/Popover/Popover';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { LoginModal } from 'features/AuthByUsername/ui/LoginModal/LoginModal';
 import { getUserRoles } from 'entities/User/model/selectors/roleSelectors';
+import { HFlex } from 'shared/ui/Stack/HFlex/HFlex';
+import { Icon } from 'shared/ui/Icon/Icon';
+
+import { NotificationList } from 'entities/Notification';
+import { Drawer } from 'shared/ui/Drawer/Drawer';
+import { NotificationButton } from 'features/notificationButton';
 import cls from './Navbar.module.scss';
 
 type NavBarProps = {
@@ -38,23 +45,29 @@ export const Navbar = memo(({ className }: NavBarProps) => {
 
     return (
         <aside className={classNames(cls.navbar, {}, [className])}>
+
+            {/* <Drawer isOpen={isOpen} onClose={onCloseDrawer}>sdasd</Drawer> */}
             {authData ? (
                 <>
                     <AppLink to={RoutePath.article_create} theme={AppLinkTheme.SECONDARY}>
                         {t('Создать статью')}
                     </AppLink>
-                    <Dropdown
-                        direction="bottom left"
-                        className={cls.dropdown}
-                        items={
-                            [
-                                ...(isAdminPanelAvailable ? [{ content: t('Панель администатора'), href: RoutePath.admin_panel }] : []),
-                                { content: t('Профиль'), href: RoutePath.profile + authData.id },
-                                { content: t('Выйти'), onClick: onLogout },
-                            ]
-                        }
-                        trigger={<Avatar round width={30} height={30} src={authData.avatar} />}
-                    />
+                    <HFlex gap="16" className={cls.actions}>
+                        <NotificationButton />
+                        <Dropdown
+                            direction="bottom left"
+                            className={cls.dropdown}
+                            items={
+                                [
+                                    ...(isAdminPanelAvailable ? [{ content: t('Панель администатора'), href: RoutePath.admin_panel }] : []),
+                                    { content: t('Профиль'), href: RoutePath.profile + authData.id },
+                                    { content: t('Выйти'), onClick: onLogout },
+                                ]
+                            }
+                            trigger={<Avatar round width={30} height={30} src={authData.avatar} />}
+                        />
+
+                    </HFlex>
 
                 </>
 

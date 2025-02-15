@@ -1,0 +1,65 @@
+.Popup {
+    position: relative;
+}
+
+.btn {
+    background: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+
+}
+
+.menu {
+    background: var(--card-bg);
+    position: absolute;
+    z-index: 10000;
+    border-radius: 8px;
+    border: 1px solid var(--primary-color);
+    flex-direction: column;
+    display: flex;
+    padding: 5px;
+}
+
+.item {
+    padding: 10px 25px;
+    width: 100%;
+    border: none;
+    background: none;
+    outline: none;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+// .active {
+//     animation: background: var(--inverted-bg-color);
+//     border-radius: 8px;
+
+
+// }
+
+.disabled {
+    cursor: default;
+}
+
+.popoverBottomLeft {
+    top: 100%;
+    right: 0;
+}
+
+.popoverBottomRight {
+    top: 100%;
+    left: 0;
+}
+
+.popoverTopRight {
+    bottom: 100%;
+    left: 0;
+}
+
+.popoverTopLeft {
+    right: 0;
+    bottom: 100%;
+}

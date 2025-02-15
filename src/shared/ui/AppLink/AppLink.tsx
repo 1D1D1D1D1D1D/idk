@@ -22,9 +22,10 @@ const AppLink = (props: AppLinkProps) => {
         className,
         theme = AppLinkTheme.PRIMARY,
         target = '_self',
+        ...linkProps
     } = props;
     return (
-        <Link className={classNames(cls.AppLink, {}, [className, cls[theme]])} to={to} target={target}>
+        <Link className={classNames(cls.AppLink, {}, [className, cls[theme]])} to={to} target={target} {...linkProps}>
             {children}
         </Link>
     );
