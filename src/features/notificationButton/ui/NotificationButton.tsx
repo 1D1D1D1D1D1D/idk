@@ -9,6 +9,7 @@ import {
     BrowserView, isBrowser, MobileView,
 } from 'react-device-detect';
 import { Popover } from 'shared/ui/Popover/Popover';
+import { AnimationProvider } from 'shared/lib/components/AnimationProvider';
 import cls from './NotificationButton.module.scss';
 
 interface NotificationButtonProps {
@@ -42,9 +43,12 @@ export const NotificationButton = ({ className }: NotificationButtonProps) => {
                 : (
                     <MobileView>
                         {trigger}
-                        <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
-                            <NotificationList />
-                        </Drawer>
+                        <AnimationProvider>
+                            <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
+                                <NotificationList />
+                            </Drawer>
+                        </AnimationProvider>
+
                     </MobileView>
                 )}
 

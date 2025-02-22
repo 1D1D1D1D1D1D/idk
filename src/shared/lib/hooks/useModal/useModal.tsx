@@ -17,9 +17,6 @@ export function useModal(props: useModalProps) {
     const [isMounted, setIsMounted] = useState(false);
     const timerRef = useRef() as MutableRefObject <ReturnType<typeof setTimeout>>;
 
-    const onContentClick = (e: React.MouseEvent) => {
-        e.stopPropagation();
-    };
     const closeHandler = useCallback(() => {
         if (onClose) {
             setIsClosing(true);
@@ -61,6 +58,5 @@ export function useModal(props: useModalProps) {
         isClosing,
         isMounted,
         closeHandler,
-        onContentClick,
     };
 }

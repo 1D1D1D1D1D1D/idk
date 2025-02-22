@@ -29,11 +29,14 @@ export const Modal = (props: ModalProps) => {
 
     const { theme } = useTheme();
     const {
-        isClosing, isMounted, closeHandler, onContentClick,
+        isClosing, isMounted, closeHandler,
     } = useModal({ animationDelay: ANIMATION_DELAY, isOpen, onClose });
     const mods: Record<string, boolean | undefined> = {
         [cls.opened]: isOpen,
         [cls.isClosing]: isClosing,
+    };
+    const onContentClick = (e: React.MouseEvent) => {
+        e.stopPropagation();
     };
     if (lazy && !isMounted) {
         return null;
