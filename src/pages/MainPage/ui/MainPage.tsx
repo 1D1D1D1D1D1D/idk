@@ -1,4 +1,6 @@
+import { RatingCard } from 'entities/Rating';
 import { useTranslation } from 'react-i18next';
+import { StarRating } from 'shared/ui/StarRating/StarRating';
 
 import { Page } from 'widgets/Page/ui/Page';
 
@@ -8,18 +10,7 @@ const MainPage = () => {
     return (
         <Page>
             {t('Главная страница')}
-
-            {/* <ListBox
-                onChange={(value: string) => {}}
-                value=""
-                items={
-                    [
-                        { value: '1', content: '123', disabled: false },
-                        { value: '2', content: '123', disabled: true },
-                        { value: '3', content: '123', disabled: false },
-                    ]
-                }
-            /> */}
+            <RatingCard title="asdas" feedbackTitile="rate article" />
         </Page>
     );
 };

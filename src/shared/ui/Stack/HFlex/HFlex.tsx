@@ -9,10 +9,11 @@ export const HFlex = (props: HorizontalFlex) => {
         justify,
         children,
         className,
+        gap,
     } = props;
     const { t } = useTranslation();
     return (
-        <Flex className={className} direction="row" align={align} justify={justify}>
+        <Flex className={className} gap={gap} direction="row" align={align} justify={justify}>
             {children}
         </Flex>
     );
