@@ -33,7 +33,6 @@ export const EditableProfileCard = ({ className, id }: EditableProfileCardProps)
     const readonly = useSelector(getProfileReadonly);
     const validateErrors = useSelector(getProfileValidateError);
     const { t } = useTranslation();
-    console.log(formData);
 
     useEffect(() => {
         if (__PROJECT__ !== 'storybook' && id) {

@@ -741,8 +741,8 @@
       "first": "Ганичев",
       "lastname": "Вафлентин",
       "age": 38,
-      "currency": "RUB",
-      "country": "Russia",
+      "currency": "EUR",
+      "country": "Thailand",
       "city": "Saint Petersburg",
       "username": "admin",
       "avatar": "https://cdn.viqeo.tv/storage/5a/86/1a832576e0316f3bc04ca418bfc6f0b7.webp"
@@ -757,6 +757,22 @@
       "city": "Oryol",
       "username": "admin2",
       "avatar": "https://i.ytimg.com/vi/5lV1F0b0iJ4/maxresdefault.jp"
+    }
+  ],
+  "article-ratings": [
+    {
+      "userId": "1",
+      "articleId": "1",
+      "rate": 5,
+      "id": 1
+    }
+  ],
+  "profile-ratings": [
+    {
+      "userId": "1",
+      "profileId": "2",
+      "rate": 1,
+      "id": 1
     }
   ]
 }

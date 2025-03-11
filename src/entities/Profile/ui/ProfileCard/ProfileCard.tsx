@@ -65,8 +65,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
         );
     }
 
-    console.log(readonly);
-
     return (
         <Flex className={classNames(cls.ProfileCard, {}, [className])} direction="row" align="center" justify="center">
             <VFlex className={cls.data} align="start" justify="center" gap="16">

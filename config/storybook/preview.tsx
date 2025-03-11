@@ -12,6 +12,16 @@ const preview: Preview = {
                 date: /Date$/i,
             },
         },
+        themes: {
+            default: Theme.GRAY,
+            list: [
+                { name: 'light', class: Theme.LIGHT, color: '#00aced' },
+                { name: 'dark', class: Theme.DARK, color: '#3b5998' },
+                { name: 'gray', class: Theme.GRAY, color: '#3b5998' },
+
+            ],
+        },
+
     },
     decorators: [
         (Story) => (
@@ -31,7 +41,6 @@ const preview: Preview = {
         ),
 
     ],
-
 };
 
 export default preview;

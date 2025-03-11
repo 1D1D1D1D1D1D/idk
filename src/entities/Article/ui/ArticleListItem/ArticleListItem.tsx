@@ -8,6 +8,8 @@ import { Avatar } from 'shared/ui/Avatar/Avatar';
 import Button, { ThemeButton } from 'shared/ui/Button/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import AppLink from 'shared/ui/AppLink/AppLink';
+import { AppImage } from 'shared/ui/AppImage/AppImage';
+import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { ArticleBlockType, ArticleView } from '../../../Article';
 import cls from './ArticleListItem.module.scss';
 import { Article, ArticleTextBlock } from '../../model/types/article';
@@ -37,7 +39,7 @@ export const ArticleListItem = ({
                     </div>
                     <Text title={article.title} className={cls.title} />
                     <Text text={article.type.join(',')} className={cls.types} />
-                    <img src={article.img} alt={article.title} className={cls.image} />
+                    <AppImage src={article.img} alt={article.title} className={cls.image} fallback={<Skeleton width="100%" height={250} />} />
                     <div className={cls.textBlock}>
                         {textBlock && <ArticleTextBlockComponent block={textBlock} />}
 
@@ -67,7 +69,7 @@ export const ArticleListItem = ({
             >
                 <Card className={classNames(cls.card, {}, [className, cls[view]])}>
                     <div className={cls.imageWrapper}>
-                        <img src={article.img} alt={article.title} className={cls.image} />
+                        <AppImage src={article.img} alt={article.title} className={cls.image} fallback={<Skeleton width={200} height={200} />} />
                         <Text text={article.createdAt} className={cls.date} />
                     </div>
                     <div className={cls.infoWrapper}>

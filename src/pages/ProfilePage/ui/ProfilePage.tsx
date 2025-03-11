@@ -3,6 +3,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Page } from 'widgets/Page/ui/Page';
 import { EditableProfileCard } from 'features/EditableProfileCard/ui/EditableProfileCard';
 import { useParams } from 'react-router-dom';
+import { ProfileRating } from 'features/profileRating';
 import cls from './ProfilePage.module.scss';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
@@ -15,8 +16,10 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     const { id } = useParams<{id: string}>();
     return (
         <Page className={classNames('', {}, [className])}>
+            <ProfileRating profileId={id ?? ''} />
             <ProfilePageHeader className={cls.header} />
             <EditableProfileCard className={cls.card} id={id} />
+
         </Page>
     );
 };

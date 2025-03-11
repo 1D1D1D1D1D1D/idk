@@ -64,7 +64,7 @@ export const Navbar = memo(({ className }: NavBarProps) => {
                                     { content: t('Выйти'), onClick: onLogout },
                                 ]
                             }
-                            trigger={<Avatar round width={30} height={30} src={authData.avatar} />}
+                            trigger={<Avatar round size={32} src={authData.avatar} />}
                         />
 
                     </HFlex>

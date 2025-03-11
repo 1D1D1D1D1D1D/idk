@@ -9,7 +9,6 @@ export const fetchProfileData = createAsyncThunk<Profile, string, ThunkConfig<st
         const { extra, rejectWithValue } = thunkAPI;
         try {
             const response = await thunkAPI.extra.api.get<Profile>(`/profile/${userId}`);
-            console.log(thunkAPI.extra.api);
             if (!response.data) {
                 throw new Error();
             }

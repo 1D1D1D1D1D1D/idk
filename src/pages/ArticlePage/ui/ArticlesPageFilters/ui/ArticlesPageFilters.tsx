@@ -2,14 +2,15 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { ArticleViewSelector } from 'features/ArticleViewSelector';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { ArticleSortField, ArticleTypeTabs, ArticleView } from 'entities/Article';
+import { ArticleSortField, ArticleView } from 'entities/Article';
 import { useCallback } from 'react';
 
 import { Card } from 'shared/ui/Card/Card';
 import { Input } from 'shared/ui/Input/Input';
-import { ArticleSortSelector } from 'entities/Article/ui/ArticleSortSelector/ui/ArticleSortSelector';
 import { ArticleType, SortOrder } from 'entities/Article/model/consts/articleConsts';
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
+import { ArticleSortSelector } from 'features/ArticleSortSelector/ui/ArticleSortSelector';
+import { ArticleTypeTabs } from 'features/ArticleTypeTabs/ui/ArticleTypeTabs';
 import {
     getArticlePageOrder, getArticlePageSearch, getArticlePageSort, getArticlePageType, getArticlePageView,
 } from '../../../model/selectors/articlePageSelectors';

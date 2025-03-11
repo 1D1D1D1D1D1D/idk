@@ -15,7 +15,11 @@ export default meta;
 
 type Story = StoryObj<typeof ArticleDetails>;
 
-export const Primary: Story = {};
+export const Primary: Story = {
+    args: {
+        className: ""
+    }
+};
 Primary.args = {
 
 };

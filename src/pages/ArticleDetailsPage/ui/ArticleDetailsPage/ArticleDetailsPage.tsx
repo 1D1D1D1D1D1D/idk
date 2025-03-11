@@ -5,6 +5,7 @@ import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicM
 import { ArticleDetails } from 'entities/Article/ui/ArticleDetails/ArticleDetails';
 import { Page } from 'widgets/Page/ui/Page';
 import { ArticleRecommendationList } from 'features/articleRecommendationList';
+import { ArticleRating } from 'features/articleRating';
 import cls from './ArticleDetailsPage.module.scss';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
@@ -20,15 +21,8 @@ const reducersList : ReducerList = {
 const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     const { t } = useTranslation();
     const { id } = useParams<{id: string}>();
-
     if (!id) {
-        console.log(id);
-
-        return (
-            <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-                {t('Статья не найдена')}
-            </div>
-        );
+        return null;
     }
 
     return (
@@ -36,6 +30,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
             <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
                 <ArticleDetailsPageHeader />
                 <ArticleDetails id={id} />
+                <ArticleRating articleId={id} />
                 <ArticleRecommendationList className={cls.recomendations} />
                 <ArticleDetailsComments className={cls.comments} id={id} />
 

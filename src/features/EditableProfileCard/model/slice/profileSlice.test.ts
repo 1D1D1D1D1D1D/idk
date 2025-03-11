@@ -1,8 +1,8 @@
 import { DeepPartial } from 'shared/lib/DeepPartialObject/DeepPartialObject';
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
-import { ProfileSchema } from 'features';
 import { Profile } from 'entities/Profile';
+import { ProfileSchema } from '../../../EditableProfileCard';
 import { profileActions, profileReducer } from './profileSlice';
 
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';

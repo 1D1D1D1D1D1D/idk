@@ -18,13 +18,10 @@ interface RatingCardProps {
     hasFeedback?: boolean
     onCancel?: (starsCount: number) => void
     onAccept?: (starsCount: number, feedbackTitile?: string) => void
+    rate?: number
 }
 
 export const RatingCard = (props: RatingCardProps) => {
-    const { t } = useTranslation();
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [starsCount, setStarsCount] = useState<number>(0);
-    const [feedback, setFeedback] = useState<string>('');
     const {
         className,
         title,
@@ -32,7 +29,13 @@ export const RatingCard = (props: RatingCardProps) => {
         hasFeedback,
         onCancel,
         onAccept,
+        rate = 0,
     } = props;
+    const { t } = useTranslation();
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [starsCount, setStarsCount] = useState(rate);
+    const [feedback, setFeedback] = useState<string>('');
+
     const onSelectStars = useCallback((selectedStarsCount: number) => {
         setStarsCount(selectedStarsCount);
         if (hasFeedback) {
@@ -40,7 +43,6 @@ export const RatingCard = (props: RatingCardProps) => {
         } else {
             onAccept?.(selectedStarsCount);
         }
-        setIsModalOpen(true);
     }, [hasFeedback, onAccept]);
 
     const acceptHandle = useCallback(() => {
@@ -52,16 +54,19 @@ export const RatingCard = (props: RatingCardProps) => {
         setIsModalOpen(false);
         onCancel?.(starsCount);
     }, [starsCount, onCancel]);
+    const ratingHeader = (
+        <Text text={starsCount ? 'Thanks for feedback' : title} />
+    );
     return (
         <Card className={classNames(cls.RatingCard, {}, [className])}>
-            <VFlex>
-                <Text title={title} />
-                <StarRating size={40} onSelect={onSelectStars} />
+            <VFlex justify="center" align="center">
+                {ratingHeader}
+                <StarRating selectedStars={starsCount} size={40} onSelect={onSelectStars} />
             </VFlex>
             <Modal isOpen={isModalOpen} lazy>
                 <VFlex gap="32" max>
                     <Text title={feedbackTitile} />
-                    <Input placeholder={t('Your comment')} />
+                    <Input placeholder={t('Your comment')} value={feedback} onChange={setFeedback} />
                 </VFlex>
                 <HFlex max gap="16" justify="end">
                     <Button theme={ThemeButton.OUTLINE_RED} onClick={cancelHandle}>

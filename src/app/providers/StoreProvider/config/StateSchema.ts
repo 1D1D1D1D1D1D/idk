@@ -5,7 +5,7 @@ import { AxiosInstance } from 'axios';
 import { ArticleDetailsSchema } from 'entities/Article';
 import { CounterSchema } from 'entities/Counter';
 import { UserSchema } from 'entities/User';
-import { ProfileSchema } from 'features';
+import { ProfileSchema } from 'features/EditableProfileCard';
 import { AddCommentSchema } from 'features/addCommentForm';
 import { LoginSchema } from 'features/AuthByUsername/model/types/loginSchema';
 import { ArticleDetailsCommentSchema, ArticleDetailsPageSchema, ArticleDetailsRecomentationSchema } from 'pages/ArticleDetailsPage';
