@@ -1,11 +1,11 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Comment } from 'entities/Comment/model/types/comment';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Text } from 'shared/ui/Text/Text';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import AppLink from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { Comment } from '../../model/types/comment';
 import cls from './CommentCard.module.scss';
 
 interface CommentCardProps {
@@ -36,7 +36,7 @@ export const CommentCard = (props: CommentCardProps) => {
 
             <AppLink to={`${RoutePath.profile}${comment?.user.id}`} className={cls.avatarWrapper}>
                 {comment?.user.avatar
-                && <Avatar src={comment?.user.avatar} width={40} height={40} round />}
+                && <Avatar src={comment?.user.avatar} size={40} round />}
             </AppLink>
             <div className={cls.textWrapper}>
                 <AppLink to={`${RoutePath.profile}${comment?.user.id}`}>

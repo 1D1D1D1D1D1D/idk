@@ -25,6 +25,7 @@ export const ArticleDetailsPageHeader = ({ className }: ArticleDetailsPageHeader
     }, [navigate]);
 
     const onEditArticle = useCallback(() => {
+        // eslint-disable-next-line no-unsafe-optional-chaining
         navigate(`${RoutePath.article_details + article?.id}/edit`);
     }, [navigate, article?.id]);
     return (

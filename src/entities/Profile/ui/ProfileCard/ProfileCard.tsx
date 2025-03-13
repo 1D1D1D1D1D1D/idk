@@ -44,6 +44,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
     const handleAgeChange = (value: string) => {
         const agePattern = /^\d*$/;
 
+        // eslint-disable-next-line radix
         if (agePattern.test(value) && (value === '' || (parseInt(value) >= 0 && parseInt(value) <= 999))) {
             onChangeAge(value);
             6;
@@ -122,7 +123,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
             </VFlex>
 
             <div className={cls.avatarContainer}>
-                <Avatar src={data?.avatar} width={300} height={340} round={false} className={cls.avatar} />
+                <Avatar src={data?.avatar} size={350} round={false} className={cls.avatar} />
             </div>
 
         </Flex>

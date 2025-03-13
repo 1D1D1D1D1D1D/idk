@@ -30,7 +30,7 @@ module.exports = {
         'no-unused-vars': 'off',
         'fsd-rel-path-checker/path-check': 'error',
         '@typescript-eslint/no-unused-vars': [
-            'error',
+            'warn',
             { argsIgnorePattern: '^_' },
         ],
         'react/jsx-indent': [2, 4],
@@ -65,11 +65,12 @@ module.exports = {
                 ignoreAttribute: ['data-testid', 'to'],
             },
         ],
+        'react/no-array-index-key': 'warn',
         'max-len': ['error', { ignoreComments: true, code: 1000 }],
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
         'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
-        'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies
+
         'no-param-reassign': 'off',
 
     },

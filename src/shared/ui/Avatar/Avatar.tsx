@@ -9,8 +9,6 @@ import { Skeleton } from '../Skeleton/Skeleton';
 interface AvatarProps {
     className?: string;
     src?: string
-    width?: number
-    height?: number
     size?: number
     round?: boolean
     alt?: string
@@ -19,8 +17,6 @@ export const Avatar = (props: AvatarProps) => {
     const {
         className,
         src,
-        width,
-        height,
         size = 100,
         alt,
         round = false,

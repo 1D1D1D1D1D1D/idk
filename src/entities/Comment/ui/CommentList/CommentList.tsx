@@ -1,8 +1,8 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Comment } from 'entities/Comment/model/types/comment';
 import { Text } from 'shared/ui/Text/Text';
 import { VFlex } from 'shared/ui/Stack/VFlex/VFlex';
+import { Comment } from '../../../Comment/model/types/comment';
 import cls from './CommentList.module.scss';
 import { CommentCard } from '../CommentCard/CommentCard';
 

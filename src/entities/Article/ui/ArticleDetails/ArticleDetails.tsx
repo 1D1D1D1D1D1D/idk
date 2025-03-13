@@ -39,6 +39,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     const reducers: ReducerList = {
         articleDetails: articleDetailsReducer,
     };
+    // eslint-disable-next-line consistent-return
     const renderBlock = useCallback((block: ArticleBlock) => {
         switch (block.type) {
         case ArticleBlockType.CODE:
@@ -78,7 +79,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
         content = (
             <div className={cls.ArticleDetails}>
                 <div className={cls.avatarWrapper}>
-                    <Avatar height={200} width={200} round src={article?.img} className={cls.avatar} />
+                    <Avatar size={200} round src={article?.img} className={cls.avatar} />
                 </div>
                 <Text className={cls.title} title={article?.title} text={article?.subtitle} align={TextAlign.CENTER} size={TextSize.L} />
                 <div className={cls.articleInfo}>

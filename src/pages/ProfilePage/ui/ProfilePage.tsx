@@ -15,7 +15,7 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     const { t } = useTranslation();
     const { id } = useParams<{id: string}>();
     return (
-        <Page className={classNames('', {}, [className])}>
+        <Page className={classNames('', {}, [className])} data-testid="ProfilePage">
             <ProfileRating profileId={id ?? ''} />
             <ProfilePageHeader className={cls.header} />
             <EditableProfileCard className={cls.card} id={id} />

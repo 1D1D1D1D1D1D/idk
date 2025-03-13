@@ -113,7 +113,7 @@ ListView.args = {
     })),
     view: ArticleView.LIST,
 
-},
+};
 
 ListView.decorators = [ThemeDecorator(Theme.GRAY)];
 GridView.decorators = [ThemeDecorator(Theme.GRAY)];

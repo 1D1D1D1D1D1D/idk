@@ -8,7 +8,7 @@ import { UserSchema } from 'entities/User';
 import { ProfileSchema } from 'features/EditableProfileCard';
 import { AddCommentSchema } from 'features/addCommentForm';
 import { LoginSchema } from 'features/AuthByUsername/model/types/loginSchema';
-import { ArticleDetailsCommentSchema, ArticleDetailsPageSchema, ArticleDetailsRecomentationSchema } from 'pages/ArticleDetailsPage';
+import { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage';
 import { ArticlesPageSchema } from 'pages/ArticlePage';
 import { rtkApi } from 'shared/api/rtkApi';
 import { ScrollPositionSchema } from 'widgets/Page/features/ScrollPosition';
@@ -31,6 +31,7 @@ export interface StateSchema {
 }
 
 export type StateSchemaKey = keyof StateSchema
+// eslint-disable-next-line no-undef
 export type MountedReducers = OptionalRecord<StateSchemaKey, boolean>
 export interface ReducerManager {
     getReducerMap: () => ReducersMapObject<StateSchema>

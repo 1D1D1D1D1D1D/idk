@@ -10,6 +10,7 @@
     border-color: transparent;
     outline: none;
     width: 100%;
+
     // How to remove the caret from an input element [duplicate]
     // caret-color: transparent;
     color: var(--primary-color);
@@ -23,8 +24,6 @@
     }
 
 }
-
-.placeholder {}
 
 .readonly {
     opacity: 0.7;

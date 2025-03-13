@@ -8,15 +8,10 @@ import { isUserAdmin, isUserManager, userActions } from 'entities/User';
 import AppLink, { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
-import { Popover } from 'shared/ui/Popover/Popover';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { LoginModal } from 'features/AuthByUsername/ui/LoginModal/LoginModal';
 import { getUserRoles } from 'entities/User/model/selectors/roleSelectors';
 import { HFlex } from 'shared/ui/Stack/HFlex/HFlex';
-import { Icon } from 'shared/ui/Icon/Icon';
-
-import { NotificationList } from 'entities/Notification';
-import { Drawer } from 'shared/ui/Drawer/Drawer';
 import { NotificationButton } from 'features/notificationButton';
 import cls from './Navbar.module.scss';
 

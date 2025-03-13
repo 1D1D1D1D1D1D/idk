@@ -9,10 +9,11 @@ import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { StateSchema } from 'app/providers/StoreProvider';
 import { useThrottle } from 'shared/lib/hooks/useThrottle/useThrottle';
+import { TestProps } from 'shared/types/tests';
 import cls from './Page.module.scss';
 import { getScrollPositionByPath, scrollPositionActions } from '../features/ScrollPosition';
 
-interface PageProps {
+interface PageProps extends TestProps {
     className?: string;
     children: ReactNode
     onScroll?: () => void
@@ -34,7 +35,7 @@ export const Page = memo((props : PageProps) => {
     });
     useEffect(() => {
         pageRef.current.scrollTop = scrollPosition;
-    }, []);
+    }, [scrollPosition]);
     const onScrollEvent = useThrottle((e: UIEvent) => {
         dispatch(scrollPositionActions.setScrollPosition({
             path: pathname,
@@ -43,7 +44,7 @@ export const Page = memo((props : PageProps) => {
     }, 500);
 
     return (
-        <section ref={pageRef} className={classNames(cls.Page, {}, [])} onScroll={onScrollEvent}>
+        <section ref={pageRef} className={classNames(cls.Page, {}, [])} onScroll={onScrollEvent} data-testid={props['data-testid'] ?? 'Page'}>
             {children}
             <div ref={elementRef} />
         </section>
