@@ -3,6 +3,7 @@ import { screen } from '@testing-library/react';
 import AppRouter from './AppRouter';
 
 const getAboutRoute = () => '/about';
+const getRouteProfile = (id: string) => `/profile/${id}`;
 describe('AppRouter', () => {
     test('Page is rendered', async () => {
         componentRender(<AppRouter />, {
@@ -22,7 +23,7 @@ describe('AppRouter', () => {
     });
     test('Redirect if user is not logined', async () => {
         componentRender(<AppRouter />, {
-            route: '/profile/1',
+            route: getRouteProfile('1'),
         });
 
         const page = await screen.findByTestId('MainPage');
