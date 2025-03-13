@@ -36,7 +36,7 @@ describe('AppRouter', () => {
             initialState: {
                 user: {
                     authData: {
-                        avatar: 'dfsdfdfs', id: '1', roles: UserRole.ADMIN, username: 'sdajkosdjsda',
+
                     },
                     isMounted: true,
                 },
