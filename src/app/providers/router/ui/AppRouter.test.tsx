@@ -30,19 +30,13 @@ describe('AppRouter', () => {
         const page = await screen.findByTestId('MainPage');
         expect(page).toBeInTheDocument();
     });
-    test('Redirect if user is logined', async () => {
+    test('Доступ к закрытой страницы для авторизованного пользователя', async () => {
         componentRender(<AppRouter />, {
-            route: '/profile/1',
+            route: getRouteProfile('1'),
             initialState: {
-                user: {
-                    authData: {
-
-                    },
-                    isMounted: true,
-                },
+                user: { isMounted: true, authData: {} },
             },
         });
-
         const page = await screen.findByTestId('ProfilePage');
         expect(page).toBeInTheDocument();
     });
