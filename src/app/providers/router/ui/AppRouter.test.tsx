@@ -1,5 +1,6 @@
 import { componentRender } from 'shared/lib/tests/componentRender/componentRender';
 import { screen } from '@testing-library/react';
+import { UserRole } from 'entities/User';
 import AppRouter from './AppRouter';
 
 const getAboutRoute = () => '/about';
@@ -32,7 +33,14 @@ describe('AppRouter', () => {
     test('Redirect if user is logined', async () => {
         componentRender(<AppRouter />, {
             route: '/profile/1',
-            initialState: { user: { authData: {}, isMounted: true } },
+            initialState: {
+                user: {
+                    authData: {
+                        avatar: 'dfsdfdfs', id: '1', roles: UserRole.ADMIN, username: 'sdajkosdjsda',
+                    },
+                    isMounted: true,
+                },
+            },
         });
 
         const page = await screen.findByTestId('ProfilePage');
