@@ -37,7 +37,7 @@ describe('AppRouter', () => {
                 user: { isMounted: true, authData: {} },
             },
         });
-        const page = await screen.findByTestId('ProfilePage');
+        const page = await screen.findByTestId('Profile-Page');
         expect(page).toBeInTheDocument();
     });
 });
