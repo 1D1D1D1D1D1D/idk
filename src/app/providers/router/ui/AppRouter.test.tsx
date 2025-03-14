@@ -31,22 +31,13 @@ describe('AppRouter', () => {
 
         expect(page).toBeInTheDocument();
     });
-    test('Redirect if user is logined', async () => {
+    test('Redirect if user is  logined', async () => {
         componentRender(<AppRouter />, {
             route: getRouteProfile('1'),
-            initialState: {
-                user: {
-                    authData: {
-                        username: 'asdsdaasd',
-                    },
-                    isMounted: true,
-                },
-            },
+            initialState: { user: { authData: {}, isMounted: true } },
         });
 
-        const page = await waitFor(() => screen.getByTestId('ProfilePage'));
-        console.log(page, 'logloglog');
-
+        const page = await screen.findByTestId('ProfilePage');
         expect(page).toBeInTheDocument();
     });
 });

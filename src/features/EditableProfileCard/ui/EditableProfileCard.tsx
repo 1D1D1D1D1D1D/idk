@@ -35,7 +35,7 @@ export const EditableProfileCard = ({ className, id }: EditableProfileCardProps)
     const { t } = useTranslation();
 
     useEffect(() => {
-        if (__PROJECT__ !== 'storybook' && id) {
+        if (__PROJECT__ !== 'storybook' && __PROJECT__ !== 'jest' && id) {
             dispatch(fetchProfileData(id));
         }
     }, [dispatch, id]);
