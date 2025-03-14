@@ -28,6 +28,7 @@ describe('AppRouter', () => {
         });
 
         const page = await screen.findByTestId('MainPage');
+
         expect(page).toBeInTheDocument();
     });
     test('Redirect if user is logined', async () => {
@@ -44,7 +45,7 @@ describe('AppRouter', () => {
         });
 
         const page = await waitFor(() => screen.getByTestId('ProfilePage'));
-        console.log(page);
+        console.log(page, 'logloglog');
 
         expect(page).toBeInTheDocument();
     });
