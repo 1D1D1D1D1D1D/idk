@@ -9,10 +9,19 @@ import { RequireAuth } from './RequireAuth';
 const AppRouter = () => {
     const renderWithWrapper = useCallback((route: AppRouteProps) => {
         const element = (
-            <Suspense fallback={<PageLoader />}>
-                {route.element}
-            </Suspense>
+            // eslint-disable-next-line react/jsx-no-useless-fragment
+            <>
+                {__PROJECT__ === 'jest'
+                    ? route.element
+                    : (
+                        <Suspense fallback={<PageLoader />}>
+                            {route.element}
+                        </Suspense>
+                    )}
+            </>
+
         );
+
         return (
             <Route
                 key={route.path}
