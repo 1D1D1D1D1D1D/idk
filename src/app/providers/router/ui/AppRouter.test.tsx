@@ -1,5 +1,5 @@
 import { componentRender } from 'shared/lib/tests/componentRender/componentRender';
-import { screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import { UserRole } from 'entities/User';
 import AppRouter from './AppRouter';
 
@@ -32,7 +32,7 @@ describe('AppRouter', () => {
     });
     test('Redirect if user is logined', async () => {
         componentRender(<AppRouter />, {
-            route: '/articles/1',
+            route: getRouteProfile('1'),
             initialState: {
                 user: {
                     authData: {
@@ -43,7 +43,9 @@ describe('AppRouter', () => {
             },
         });
 
-        const page = await screen.findByTestId('ArticleDetails');
+        const page = await waitFor(() => screen.getByTestId('ProfilePage'));
+        console.log(page);
+
         expect(page).toBeInTheDocument();
     });
 });
