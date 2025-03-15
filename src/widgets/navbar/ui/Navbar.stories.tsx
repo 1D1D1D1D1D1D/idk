@@ -4,6 +4,7 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 import { Theme } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { Navbar } from '..';
+import AvatarPng from '../../../shared/assets/icons/user-32-32.png';
 
 const meta: Meta<typeof Navbar> = {
     title: 'widget/Navbar',
@@ -24,5 +25,5 @@ Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({})];
 export const AuthNavbar: Story = {};
 AuthNavbar.args = {};
 AuthNavbar.decorators = [StoreDecorator({
-    user: { authData: { avatar: 'dasasdsd' } },
+    user: { authData: { avatar: AvatarPng } },
 })];

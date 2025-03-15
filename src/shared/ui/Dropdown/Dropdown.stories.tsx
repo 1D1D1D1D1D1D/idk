@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { StyleDecorator } from 'shared/config/storybook/StyleDecorator/StyleDecorator';
 import { Dropdown } from './Dropdown';
+import AvatarIcon from '../../assets/icons/user-32-32.png';
+import { Avatar } from '../Avatar/Avatar';
 
 const meta: Meta<typeof Dropdown> = {
     title: 'shared/Dropdown',
@@ -18,7 +20,7 @@ Primary.args = {
         { content: (<div>asdsdd</div>) },
         { content: (<div>asdsdd</div>) },
     ],
-    trigger: <div>Click</div>,
+    trigger: <div><Avatar src={AvatarIcon} /></div>,
 };
 export const DisabledValues: Story = {};
 
@@ -28,6 +30,6 @@ DisabledValues.args = {
         { content: (<div>2</div>), disabled: true },
         { content: (<div>3</div>), disabled: true },
     ],
-    trigger: <div>Click</div>,
+    trigger: <div><Avatar src={AvatarIcon} /></div>,
 };
 Primary.decorators = [StyleDecorator];
