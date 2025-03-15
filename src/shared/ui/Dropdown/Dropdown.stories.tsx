@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { StyleDecorator } from 'shared/config/storybook/StyleDecorator/StyleDecorator';
 import { Dropdown } from './Dropdown';
 
 const meta: Meta<typeof Dropdown> = {
@@ -29,3 +30,4 @@ DisabledValues.args = {
     ],
     trigger: <div>Click</div>,
 };
+Primary.decorators = [StyleDecorator];

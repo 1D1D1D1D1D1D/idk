@@ -32,7 +32,14 @@ export default ({ config }: { config: webpack.Configuration }) => {
 
         return rule;
     });
-
+    config.module?.rules.push({
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+            {
+                loader: 'file-loader',
+            },
+        ],
+    });
     config!.module!.rules.push({
         test: /\.svg$/,
         use: ['@svgr/webpack'],
