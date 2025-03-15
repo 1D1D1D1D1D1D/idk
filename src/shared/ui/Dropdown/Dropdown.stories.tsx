@@ -20,10 +20,9 @@ Primary.args = {
         { content: (<div>asdsdd</div>) },
         { content: (<div>asdsdd</div>) },
     ],
-    trigger: <div>
-        {/* <Avatar src={AvatarIcon} /> */}
-        123
-    </div>,
+    trigger: <div> 123 </div>,
+    // <Avatar src={AvatarIcon} /> *
+
 };
 export const DisabledValues: Story = {};
 
@@ -33,9 +32,7 @@ DisabledValues.args = {
         { content: (<div>2</div>), disabled: true },
         { content: (<div>3</div>), disabled: true },
     ],
-    trigger: <div>
-        {/* <Avatar src={AvatarIcon} /> */}
-        123
-             </div>,
+    trigger: <div>123</div>,
+    // <Avatar src={AvatarIcon} /> *
 };
 Primary.decorators = [StyleDecorator];
