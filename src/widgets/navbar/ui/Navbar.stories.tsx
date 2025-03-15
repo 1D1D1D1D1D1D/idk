@@ -24,6 +24,10 @@ Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({})];
 
 export const AuthNavbar: Story = {};
 AuthNavbar.args = {};
-AuthNavbar.decorators = [StoreDecorator({
-    user: { authData: { avatar: AvatarPng } },
-})];
+
+AuthNavbar.decorators = [StoreDecorator({})];
+//     {
+//     user: { authData:  {}
+//        // { avatar: AvatarPng }
+//     },
+// }
