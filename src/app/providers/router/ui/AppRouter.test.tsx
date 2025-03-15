@@ -37,7 +37,7 @@ describe('AppRouter', () => {
             initialState: { user: { authData: {}, isMounted: true } },
         });
 
-        const page = await screen.findByTestId('ProfilePage');
+        const page = await waitFor(() => screen.findByTestId('ProfilePage'));
         expect(page).toBeInTheDocument();
     });
 });
