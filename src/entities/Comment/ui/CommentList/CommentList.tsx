@@ -21,8 +21,8 @@ export const CommentList = (props: CommentListProps) => {
     return (
         <VFlex gap="4" className={classNames(cls.CommentList, {}, [className])}>
             {comments?.length
-                ? comments.map((comment) => (
-                    <CommentCard className={cls.comment} comment={comment} isLoading={isLoading} />
+                ? comments.map((comment, index) => (
+                    <CommentCard className={cls.comment} key={index} comment={comment} isLoading={isLoading} />
                 ))
                 : <Text title={t('Нет комментариев')} />}
         </VFlex>

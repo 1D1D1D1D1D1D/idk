@@ -14,17 +14,18 @@ interface RateProfileArg {
 const profileRatingApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
         getArticleRating: build.query<Rating[], GetProfileRatingArg>({
-            query: ({
-                userId,
-                profileId,
-
-            }) => ({
-                url: '/profile-ratings',
-                params: {
-                    userId,
-                    profileId,
-                },
-            }),
+            query: ({ userId, profileId }) => {
+                if (__PROJECT__ === 'storybook') {
+                    return '';
+                }
+                return {
+                    url: '/profile-ratings',
+                    params: {
+                        userId,
+                        profileId,
+                    },
+                };
+            },
         }),
         rateProfile: build.mutation<void, RateProfileArg>({
             query: (args) => ({

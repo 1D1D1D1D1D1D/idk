@@ -27,7 +27,9 @@ const ArticlesPage = memo(({ className }: ArticlePageProps) => {
     const [searchParams, setSearchParams] = useSearchParams();
 
     const onLoadNextPage = useCallback(() => {
-        dispatch(fetchArticleNextPage());
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchArticleNextPage());
+        }
     }, [dispatch]);
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {

@@ -3,7 +3,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Fragment } from 'react/jsx-runtime';
 import { ReactNode } from 'react';
 import { DropdownDirection } from 'shared/types/ui';
-import { randomUUID } from 'node:crypto';
+
 import cls from './Dropdown.module.scss';
 import AppLink from '../AppLink/AppLink';
 
@@ -55,14 +55,14 @@ export function Dropdown(props: DropdownProps) {
 
                     if (item.href) {
                         return (
-                            <Menu.Item as={AppLink} to={item.href} disabled={item.disabled} key={crypto.randomUUID()}>
+                            <Menu.Item as={AppLink} to={item.href} disabled={item.disabled} key={index}>
                                 {content}
                             </Menu.Item>
                         );
                     }
 
                     return (
-                        <Menu.Item as={Fragment} disabled={item.disabled} key={crypto.randomUUID()}>
+                        <Menu.Item as={Fragment} disabled={item.disabled} key={index}>
                             {content}
                         </Menu.Item>
                     );

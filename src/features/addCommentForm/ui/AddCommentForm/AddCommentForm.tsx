@@ -28,7 +28,9 @@ const AddCommentForm = (props: AddCommentFormProps) => {
     const dispatch = useAppDispatch();
 
     const onCommentTextChange = useCallback((value: string) => {
-        dispatch(AddCommentFormActions.setText(value));
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(AddCommentFormActions.setText(value));
+        }
     }, [dispatch]);
 
     const onSendHandler = useCallback(() => {
@@ -36,12 +38,11 @@ const AddCommentForm = (props: AddCommentFormProps) => {
         onCommentTextChange('');
     }, [text, onCommentTextChange, onSendComment]);
     return (
-        <DynamicModuleLoader removeAfterUnmount reducers={reducerList}>
+        <DynamicModuleLoader removeAfterUnmount={false} reducers={reducerList}>
             <div className={classNames(cls.AddCommentForm, {}, [className])}>
                 <Input placeholder={t('Введите текст комментария')} autofocus={false} value={text} onChange={onCommentTextChange} className={cls.input} />
                 <Button theme={ThemeButton.OUTLINE} className={cls.addCommentBtn} onClick={onSendHandler}>{t('Оставить комментарий')}</Button>
             </div>
-
         </DynamicModuleLoader>
     );
 };
