@@ -11,13 +11,13 @@ const AppRouter = () => {
         const element = (
             // eslint-disable-next-line react/jsx-no-useless-fragment
             <>
-                {__PROJECT__ === 'jest'
+                {/* {__PROJECT__ === 'jest'
                     ? route.element
-                    : (
-                        <Suspense fallback={<PageLoader />}>
-                            {route.element}
-                        </Suspense>
-                    )}
+                    : ( */}
+                <Suspense fallback={<PageLoader />}>
+                    {route.element}
+                </Suspense>
+                {/* )} */}
             </>
 
         );
