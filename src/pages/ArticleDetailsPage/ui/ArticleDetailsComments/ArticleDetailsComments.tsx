@@ -35,7 +35,7 @@ export const ArticleDetailsComments = (props: ArticleDetailsCommentsProps) => {
     return (
         <VFlex gap="4" className={className}>
             <Text align={TextAlign.LEFT} title={t('Комментарии')} />
-            <AddCommentForm onSendComment={onSendComment} />
+            <AddCommentForm onSendComment={onSendComment} data-testid="AddCommentForm" />
             <CommentList isLoading={commentsIsLoading} comments={comments} />
         </VFlex>
     );

@@ -32,11 +32,11 @@ export const CommentCard = (props: CommentCardProps) => {
         );
     }
     return (
-        <div className={classNames(cls.CommentCard, {}, [className])}>
+        <div className={classNames(cls.CommentCard, {}, [className])} data-testid="CommentCardContent"  >
 
             <AppLink to={`${RoutePath.profile}${comment?.user.id}`} className={cls.avatarWrapper}>
                 {comment?.user.avatar
-                && <Avatar src={comment?.user.avatar} size={40} round />}
+                    && <Avatar src={comment?.user.avatar} size={40} round />}
             </AppLink>
             <div className={cls.textWrapper}>
                 <AppLink to={`${RoutePath.profile}${comment?.user.id}`}>

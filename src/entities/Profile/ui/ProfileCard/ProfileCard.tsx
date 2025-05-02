@@ -50,6 +50,8 @@ export const ProfileCard = (props: ProfileCardProps) => {
             6;
         }
     };
+
+
     if (isLoading) {
         return (
             <div className={classNames(cls.ProfileCard, { [cls.loading]: true }, [className])}>
@@ -67,7 +69,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
     }
 
     return (
-        <Flex className={classNames(cls.ProfileCard, {}, [className])} direction="row" align="center" justify="center">
+        <Flex className={classNames(cls.ProfileCard, {}, [className])} direction="row" align="center" justify="center" >
             <VFlex className={cls.data} align="start" justify="center" gap="16">
                 <Input
                     value={data?.first}
@@ -75,6 +77,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
                     onChange={onChangeFirstname}
                     readonly={readonly}
                     autofocus={!readonly}
+                    data-testid="ProfileCard-firstName"
 
                 />
                 <Input

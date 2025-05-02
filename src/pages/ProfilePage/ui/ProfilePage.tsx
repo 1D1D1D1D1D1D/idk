@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { ProfileRating } from 'features/profileRating';
 import cls from './ProfilePage.module.scss';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
+import { getFeatureFlag } from 'shared/lib/features';
 
 interface ProfilePageProps {
     className?: string;
@@ -13,13 +14,14 @@ interface ProfilePageProps {
 
 const ProfilePage = ({ className }: ProfilePageProps) => {
     const { t } = useTranslation();
-    const { id } = useParams<{id: string}>();
+    const { id } = useParams<{ id: string }>();
+    const isProfileRatingEnabled = getFeatureFlag('isPforileRatingEnabled')
+    console.log(isProfileRatingEnabled);
+
     return (
         <Page className={classNames('', {}, [className])} data-testid="ProfilePage">
-            <ProfileRating profileId={id ?? ''} />
-            <ProfilePageHeader className={cls.header} />
+            {isProfileRatingEnabled && <ProfileRating profileId={id ?? ''} />}
             <EditableProfileCard className={cls.card} id={id} />
-
         </Page>
     );
 };

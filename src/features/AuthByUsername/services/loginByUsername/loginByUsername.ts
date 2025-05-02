@@ -12,7 +12,6 @@ interface LoginByUsernameProps {
 export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, ThunkConfig<string>>(
     'login/loginByUsername',
     async (authData, thunkAPI) => {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { extra, dispatch, rejectWithValue } = thunkAPI;
 
         try {

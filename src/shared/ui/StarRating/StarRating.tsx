@@ -9,7 +9,7 @@ interface StarRatingProps {
     className?: string;
     onSelect?: (starsCount: number) => void
     size?: number
-    selectedStars?:number
+    selectedStars?: number
 }
 
 export const StarRating = (props: StarRatingProps) => {
@@ -45,7 +45,6 @@ export const StarRating = (props: StarRatingProps) => {
     return (
         <div>
             {stars.map((star) => (
-
                 <Icon
                     Svg={StarIcon}
                     key={star}
@@ -53,8 +52,9 @@ export const StarRating = (props: StarRatingProps) => {
                     onMouseLeave={onLeave}
                     onMouseEnter={onHover(star)}
                     onClick={onClick(star)}
+                    data-testid={`StarRating` + star}
+                    data-selected={currentStarsCount >= star}
                 />
-
             ))}
         </div>
 

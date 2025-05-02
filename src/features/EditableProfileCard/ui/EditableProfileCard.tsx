@@ -16,7 +16,7 @@ import { getProfileReadonly } from '../model/selectors/getProfileReadonly/getPro
 import { fetchProfileData } from '../model/services/fetchProfileData/fetchProfileData';
 import { profileActions, profileReducer } from '../model/slice/profileSlice';
 import { ValidateProfileErrors } from '../model/consts/consts';
-
+import { ProfilePageHeader } from 'pages/ProfilePage/ui/ProfilePageHeader/ProfilePageHeader';
 interface EditableProfileCardProps {
     className?: string;
     id?: string
@@ -35,7 +35,7 @@ export const EditableProfileCard = ({ className, id }: EditableProfileCardProps)
     const { t } = useTranslation();
 
     useEffect(() => {
-        if (__PROJECT__ !== 'storybook' && __PROJECT__ !== 'jest' && id) {
+        if (__PROJECT__ !== 'storybook' && id) {
             dispatch(fetchProfileData(id));
         }
     }, [dispatch, id]);
@@ -76,9 +76,11 @@ export const EditableProfileCard = ({ className, id }: EditableProfileCardProps)
     const onChangeCountry = useCallback((country: Country) => {
         dispatch(profileActions.updateProfile({ country }));
     }, [dispatch]);
+
     return (
-        <DynamicModuleLoader reducers={reducers}>
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
             <div className={classNames('', {}, [className])}>
+                <ProfilePageHeader />
                 {validateErrors?.length && validateErrors.map((err) => (
                     <Text
                         key={err}

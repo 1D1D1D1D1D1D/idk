@@ -58,7 +58,7 @@ export const RatingCard = (props: RatingCardProps) => {
         <Text text={starsCount ? 'Thanks for feedback' : title} />
     );
     return (
-        <Card className={classNames(cls.RatingCard, {}, [className])}>
+        <Card className={classNames(cls.RatingCard, {}, [className])} data-testid="RatingCard">
             <VFlex justify="center" align="center">
                 {ratingHeader}
                 <StarRating selectedStars={starsCount} size={40} onSelect={onSelectStars} />
@@ -66,13 +66,13 @@ export const RatingCard = (props: RatingCardProps) => {
             <Modal isOpen={isModalOpen} lazy>
                 <VFlex gap="32" max>
                     <Text title={feedbackTitile} />
-                    <Input placeholder={t('Your comment')} value={feedback} onChange={setFeedback} />
+                    <Input placeholder={t('Your comment')} value={feedback} onChange={setFeedback} data-testid="RatingCardInput" />
                 </VFlex>
                 <HFlex max gap="16" justify="end">
-                    <Button theme={ThemeButton.OUTLINE_RED} onClick={cancelHandle}>
+                    <Button theme={ThemeButton.OUTLINE_RED} onClick={cancelHandle} data-testid="RatingCardClose">
                         {t('close')}
                     </Button>
-                    <Button onClick={acceptHandle}>
+                    <Button onClick={acceptHandle} data-testid="RatingCardSend">
                         {t('send')}
                     </Button>
                 </HFlex>

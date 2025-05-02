@@ -38,10 +38,16 @@
   },
   "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS"
+      "module": "CommonJS",
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "allowSyntheticDefaultImports": true
     }
   },
   // "include": [
-  //   "./config/jest/jest-setup.ts"
-  // ]
+  //   "cypress/support/commands/commands.ts"
+  // ],
+  "exclude": [
+    "./cypress.config.ts",
+  ]
 }

@@ -39,9 +39,9 @@ const AddCommentForm = (props: AddCommentFormProps) => {
     }, [text, onCommentTextChange, onSendComment]);
     return (
         <DynamicModuleLoader removeAfterUnmount={false} reducers={reducerList}>
-            <div className={classNames(cls.AddCommentForm, {}, [className])}>
-                <Input placeholder={t('Введите текст комментария')} autofocus={false} value={text} onChange={onCommentTextChange} className={cls.input} />
-                <Button theme={ThemeButton.OUTLINE} className={cls.addCommentBtn} onClick={onSendHandler}>{t('Оставить комментарий')}</Button>
+            <div className={classNames(cls.AddCommentForm, {}, [className])} data-testid="AddCommentForm">
+                <Input data-testid="AddCommentFormInput" placeholder={t('Введите текст комментария')} autofocus={false} value={text} onChange={onCommentTextChange} className={cls.input} />
+                <Button data-testid="AddCommentFormButton" theme={ThemeButton.OUTLINE} className={cls.addCommentBtn} onClick={onSendHandler}>{t('Оставить комментарий')}</Button>
             </div>
         </DynamicModuleLoader>
     );

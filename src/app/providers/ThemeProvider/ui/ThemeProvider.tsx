@@ -1,22 +1,33 @@
-import React, {
-    type FC, type ReactNode, useMemo, useState,
-} from 'react';
+import React, { ReactNode, useEffect, useMemo, useState } from 'react';
 import { Theme, ThemeContext, LOCAL_STORAGE_THEME_KEY } from '../lib/ThemeContext';
+import { useSelector } from 'react-redux';
+import { getJsonSettings, getJsonSettingsTheme } from 'entities/User';
+import { JsonSettings } from 'entities/User/model/types/jsonSetting';
 
-const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme || Theme.LIGHT;
 type ThemeProviderProps = {
-	children: ReactNode;
+    children: ReactNode;
     initialTheme?: Theme
 
 };
 
-const ThemeProvider: FC<ThemeProviderProps> = (props) => {
+const ThemeProvider = (props: ThemeProviderProps) => {
     const {
         children,
         initialTheme,
     } = props;
-    const [theme, setTheme] = useState<Theme>(initialTheme || defaultTheme);
 
+    const { theme: jsonTheme = Theme.GRAY } = useSelector(getJsonSettings)
+
+    console.log(jsonTheme);
+
+
+    const [theme, setTheme] = useState<Theme>(Theme.GRAY);
+
+    useEffect(() => {
+        if (jsonTheme) {
+            setTheme(jsonTheme)
+        }
+    }, [jsonTheme])
     const defaultProps = useMemo(() => ({
         theme,
         setTheme,

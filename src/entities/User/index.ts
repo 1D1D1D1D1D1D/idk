@@ -4,9 +4,11 @@ import { getUserRoles, isUserAdmin, isUserManager } from './model/selectors/role
 import { userActions, userReducer } from './model/slice/userSlice';
 import { User, UserSchema } from './model/types/User';
 import { UserRole } from './model/consts/userConsts';
+import { getJsonSettings, getJsonSettingsTheme } from './model/selectors/jsonSettingsSelector';
+import { saveJsonSettings } from './services/saveJsonSettings';
 
 export {
-    getUserAuthData, getIsMountedData,
+    getUserAuthData, getIsMountedData, getJsonSettings, saveJsonSettings, getJsonSettingsTheme
 };
 
 export {

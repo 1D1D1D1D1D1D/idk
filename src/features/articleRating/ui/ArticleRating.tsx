@@ -45,7 +45,6 @@ export const ArticleRating = ({ className, articleId }: ArticleRatingProps) => {
     }
 
     const rating = data?.[0];
-    console.log(rating);
 
     return (
         <RatingCard

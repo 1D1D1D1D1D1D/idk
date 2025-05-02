@@ -17,11 +17,9 @@ export const ArticleRecommendationList = (props: articleRecommendationListProps)
     if (isLoading || error) {
         return null;
     }
-    console.log(data);
-    console.log(className);
 
     return (
-        <VFlex gap="8" align="normal">
+        <VFlex gap="8" align="normal" data-testid="ArticleRecommendationList">
             <Text title={t('Рекомендации')} />
             <ArticleList view={ArticleView.GRID} article={data} className={classNames('', {}, [className])} />
         </VFlex>

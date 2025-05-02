@@ -5,6 +5,7 @@ import AppRouter from './AppRouter';
 
 const getAboutRoute = () => '/about';
 const getRouteProfile = (id: string) => `/profile/${id}`;
+const getRouteArticle = (id: string) => `/articles/${id}`;
 describe('AppRouter', () => {
     test('Page is rendered', async () => {
         componentRender(<AppRouter />, {
@@ -32,12 +33,15 @@ describe('AppRouter', () => {
         expect(page).toBeInTheDocument();
     });
     test('Redirect if user is  logined', async () => {
+
         componentRender(<AppRouter />, {
-            route: getRouteProfile('1'),
+            route: getRouteArticle('1'),
             initialState: { user: { authData: {}, isMounted: true } },
         });
-
-        const page = await screen.findByTestId('ProfilePage');
+        // const page = await waitFor(() => screen.findByTestId('ArticleDetails');{
+        //     timeout: 5000
+        //   })
+        const page = await screen.findByTestId('ArticleDetails');
         expect(page).toBeInTheDocument();
     });
 });

@@ -17,7 +17,7 @@ import cls from './ProfilePageHeader.module.scss';
 interface ProfilePageHeaderProps {
     className?: string
 }
-export const ProfilePageHeader = ({ className }:ProfilePageHeaderProps) => {
+export const ProfilePageHeader = ({ className }: ProfilePageHeaderProps) => {
     const { t } = useTranslation();
     const readonly = useSelector(getProfileReadonly);
     const dispatch = useAppDispatch();
@@ -41,16 +41,16 @@ export const ProfilePageHeader = ({ className }:ProfilePageHeaderProps) => {
                 <div className={cls.btnWrapper}>
                     {readonly
                         ? (
-                            <Button theme={ThemeButton.OUTLINE} className={cls.editBtn} onClick={onEdit}>
+                            <Button theme={ThemeButton.OUTLINE} className={cls.editBtn} onClick={onEdit} data-testid="EditableProfileCardHeader-EditButton">
                                 <Text text={t('Редактировать')} className={cls.text} />
                             </Button>
                         )
                         : (
                             <>
-                                <Button theme={ThemeButton.OUTLINE_RED} className={cls.editBtn} onClick={onCancelEdit}>
+                                <Button theme={ThemeButton.OUTLINE_RED} className={cls.editBtn} onClick={onCancelEdit} data-testid="EditableProfileCardHeader-CancelButton" >
                                     <Text text={t('Отменить')} className={cls.text} />
                                 </Button>
-                                <Button theme={ThemeButton.OUTLINE} onClick={onSave}>
+                                <Button theme={ThemeButton.OUTLINE} onClick={onSave} data-testid="EditableProfileCardHeader-SaveButton">
                                     <Text text={t('Сохранить')} className={cls.text} />
                                 </Button>
                             </>

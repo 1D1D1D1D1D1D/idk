@@ -42,22 +42,22 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     // eslint-disable-next-line consistent-return
     const renderBlock = useCallback((block: ArticleBlock) => {
         switch (block.type) {
-        case ArticleBlockType.CODE:
-            return <ArticleCodeBlockComponent key={block.id} className={cls.block} block={block} />;
-        case ArticleBlockType.IMAGE:
-            return <ArticleImageBlockComponent key={block.id} className={classNames(cls.block, {}, [])} block={block} />;
-        case ArticleBlockType.TEXT:
-            return <ArticleTextBlockComponent key={block.id} block={block} className={cls.block} />;
-        default:
-            break;
+            case ArticleBlockType.CODE:
+                return <ArticleCodeBlockComponent key={block.id} className={cls.block} block={block} />;
+            case ArticleBlockType.IMAGE:
+                return <ArticleImageBlockComponent key={block.id} className={classNames(cls.block, {}, [])} block={block} />;
+            case ArticleBlockType.TEXT:
+                return <ArticleTextBlockComponent key={block.id} block={block} className={cls.block} />;
+            default:
+                break;
         }
     }, []);
     useEffect(() => {
-        console.log('useEffect triggered', id);
         if (__PROJECT__ !== 'storybook') {
             dispatch(fetchArticleById(id));
         }
     }, [dispatch, id]);
+    console.log(article);
 
     let content;
     if (isLoading) {
@@ -77,12 +77,12 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
         );
     } else {
         content = (
-            <div className={cls.ArticleDetails}>
+            <div className={cls.ArticleDetails} data-testid="ArticleDetails">
                 <div className={cls.avatarWrapper}>
                     <Avatar size={200} round src={article?.img} className={cls.avatar} />
                 </div>
                 <Text className={cls.title} title={article?.title} text={article?.subtitle} align={TextAlign.CENTER} size={TextSize.L} />
-                <div className={cls.articleInfo}>
+                <div className={cls.articleInfo} data-testid="ArticleDetailsInfo">
                     <ViewsIcon className={cls.icon} />
                     <Text text={String(article?.views)} />
 
@@ -98,7 +98,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     }
 
     return (
-        <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
             {content}
         </DynamicModuleLoader>
     );
