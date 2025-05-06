@@ -3,6 +3,7 @@ import { Theme } from 'app/providers/ThemeProvider';
 import { RouteDecorator } from '../../src/shared/config/storybook/RouteDecorator/RouteDecorator';
 import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator/StyleDecorator';
 import { ThemeDecorator } from '../../src/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 
 const preview: Preview = {
     parameters: {
@@ -37,6 +38,11 @@ const preview: Preview = {
         (Story) => (
             <div>
                 {RouteDecorator(Story)}
+            </div>
+        ),
+        (Story) => (
+            <div>
+                {StoreDecorator({})(Story)}
             </div>
         ),
 

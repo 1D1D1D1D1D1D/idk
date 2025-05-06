@@ -32,7 +32,6 @@ export const saveJsonSettings = createAsyncThunk<
         }
         return response.jsonSettings
     } catch (err: any) {
-        // network / server error: reject with the message
         return rejectWithValue(err.message ?? 'Unknown error');
     }
 }) 

@@ -16,7 +16,7 @@ if (container) {
         <BrowserRouter>
             <StoreProvider>
                 <ErrorBoundary>
-                    <ThemeProvider initialTheme=''>
+                    <ThemeProvider >
                         <App />
                     </ThemeProvider>
                 </ErrorBoundary>
