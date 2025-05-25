@@ -9,9 +9,10 @@ import { ArticleSortField, ArticleType, SortOrder } from 'entities/Article/model
 import { Article, ArticleView } from 'entities/Article';
 import { ArticlesPageSchema } from '../types/articlesPageSchema';
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList';
+import { TabItem } from 'shared/ui/Tabs/Tabs';
 
 const articlesAdapter = createEntityAdapter<Article, string>({
-    selectId: (article: Article) => article.id,
+    selectId: (article: Article) => article.id || '',
 });
 export const getArticle = articlesAdapter.getSelectors<StateSchema>(
     (state: StateSchema) => state.articlesPage || articlesAdapter.getInitialState(),
@@ -32,7 +33,8 @@ const articlesPageSlice = createSlice({
         search: '',
         order: SortOrder.ASC,
         limit: 15,
-        type: ArticleType.ALL,
+        type: [ArticleType.ALL]
+        // type: ArticleType.ALL,
 
     }),
     reducers: {
@@ -58,9 +60,35 @@ const articlesPageSlice = createSlice({
         setSort: (state, action: PayloadAction<ArticleSortField>) => {
             state.sort = action.payload;
         },
-        setType: (state, action: PayloadAction<ArticleType>) => {
-            state.type = action.payload;
-        },
+        // setType: (state, action: PayloadAction<ArticleType>) => {
+        //     // state.type = action.payload;
+        // },
+        setSelected: (state, action: PayloadAction<ArticleType>) => {
+            const type = action.payload;
+
+            if (state.type.includes(type)) {
+                state.type = state.type.filter(t => t !== type);
+                return;
+            }
+            if (type === ArticleType.ALL) {
+                if (state.type.length > 0) {
+                    return;
+                }
+
+                state.type = [ArticleType.ALL];
+                return;
+            }
+
+            if (state.type.includes(ArticleType.ALL)) {
+                return;
+            }
+
+            if (state.type.length >= 3) {
+                return;
+            }
+
+            state.type = [...state.type, action.payload]
+        }
 
     },
     extraReducers: (builder) => {

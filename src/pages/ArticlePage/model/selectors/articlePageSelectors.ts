@@ -14,4 +14,4 @@ export const getArticlePageOrder = (state: StateSchema) => state.articlesPage?.o
 export const getArticlePageSort = (state: StateSchema) => state.articlesPage?.sort || ArticleSortField.CREATED;
 export const getArticlePageSearch = (state: StateSchema) => state.articlesPage?.search ?? '';
 
-export const getArticlePageType = (state: StateSchema) => state.articlesPage?.type || ArticleType.ALL;
+export const getArticlePageSelectedTypes = (state: StateSchema) => state.articlesPage?.type || [ArticleType.ALL];

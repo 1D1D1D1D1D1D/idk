@@ -9,9 +9,10 @@ export interface ArticlesPageSchema extends EntityState<Article, string> {
     page: number
     limit: number
     hasMore: boolean
-inited?: boolean
-order: SortOrder
-sort: ArticleSortField
-search: string
-type: ArticleType
+    inited?: boolean
+    order: SortOrder
+    sort: ArticleSortField
+    search: string
+    type: ArticleType[]
+    // type: ArticleType
 }

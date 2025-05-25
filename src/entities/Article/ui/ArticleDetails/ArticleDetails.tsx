@@ -92,7 +92,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
                     <Text text={article?.createdAt} />
 
                 </div>
-                {article?.blocks.map(renderBlock)}
+                {article?.blocks?.map(renderBlock)}
             </div>
         );
     }

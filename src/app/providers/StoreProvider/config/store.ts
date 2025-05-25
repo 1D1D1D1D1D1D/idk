@@ -12,7 +12,6 @@ export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch']
 export function createReduxStore(
     asyncReducers: ReducersMapObject<StateSchema>,
     initialState?: StateSchema,
-
     // navigate?: ReturnType<typeof useNavigate>,
 
 ) {

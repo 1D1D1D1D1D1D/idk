@@ -9,7 +9,7 @@ import { ArticleDetailsRecomentationSchema } from '../types/ArticleDetailsRecome
 import { fetchArticleRecomendations } from '../services/fetchArticleRecomendations/fetchArticleRecomendations';
 
 const recomendationAdapter = createEntityAdapter<Article, string>({
-    selectId: (article: Article) => article.id,
+    selectId: (article: Article) => article.id || '',
 });
 export const getArticleRecomendation = recomendationAdapter.getSelectors<StateSchema>(
     (state: StateSchema) => state.articleDetailsPage?.recommendations || recomendationAdapter.getInitialState(),

@@ -28,7 +28,7 @@ export const ArticleListItem = ({
     const { t } = useTranslation();
 
     if (view === ArticleView.LIST) {
-        const textBlock = article.blocks.find((block) => block.type === ArticleBlockType.TEXT) as ArticleTextBlock;
+        const textBlock = article?.blocks?.find((block) => block.type === ArticleBlockType.TEXT) as ArticleTextBlock;
         return (
             <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])} data-testid="ArticleListItem">
                 <Card>
@@ -38,7 +38,7 @@ export const ArticleListItem = ({
                         <Text text={article.createdAt} className={cls.date} />
                     </div>
                     <Text title={article.title} className={cls.title} />
-                    <Text text={article.type.join(',')} className={cls.types} />
+                    {/* <Text text={article?.type?.join(',')} className={cls.types} /> */}
                     <AppImage src={article.img} alt={article.title} className={cls.image} fallback={<Skeleton width="100%" height={250} />} />
                     <div className={cls.textBlock}>
                         {textBlock && <ArticleTextBlockComponent block={textBlock} />}
@@ -73,7 +73,7 @@ export const ArticleListItem = ({
                         <Text text={article.createdAt} className={cls.date} />
                     </div>
                     <div className={cls.infoWrapper}>
-                        <Text text={article.type.join(',')} className={cls.types} />
+                        {/* <Text text={article?.type?.join(',')} className={cls.types} /> */}
                         <Text text={String(article.views)} className={cls.views} />
                         <Icon Svg={ViewsIcon} />
                     </div>

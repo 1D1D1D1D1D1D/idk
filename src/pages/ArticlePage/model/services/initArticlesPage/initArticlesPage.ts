@@ -9,40 +9,41 @@ import { articlesPageSliceActions } from '../../slice/articlesPageSlice';
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
 
 export const initArticlesPage = createAsyncThunk<
-   void,
+    void,
     URLSearchParams,
     ThunkConfig<string>
-    >(
-        'articlesPage/initArticlesPage',
-        async (searchParams, thunkApi) => {
-            const {
-                getState, dispatch,
-            } = thunkApi;
-            const inited = getArticlePageInited(getState());
-            if (!inited) {
-                const orderFromUrl = searchParams.get('order');
-                const sortFromUrl = searchParams.get('sort') as ArticleSortField;
-                const searchFromUrl = searchParams.get('search');
-                const typeFromUrl = searchParams.get('type') as ArticleType;
+>(
+    'articlesPage/initArticlesPage',
+    async (searchParams, thunkApi) => {
+        const {
+            getState, dispatch,
+        } = thunkApi;
 
-                if (orderFromUrl) {
-                    dispatch(articlesPageSliceActions.setOrder(orderFromUrl));
-                }
+        const inited = getArticlePageInited(getState());
+        if (!inited) {
+            const orderFromUrl = searchParams.get('order');
+            const sortFromUrl = searchParams.get('sort') as ArticleSortField;
+            const searchFromUrl = searchParams.get('search');
+            const typeFromUrl = searchParams.get('type') as ArticleType;
 
-                if (sortFromUrl) {
-                    dispatch(articlesPageSliceActions.setSort(sortFromUrl));
-                }
-
-                if (searchFromUrl) {
-                    dispatch(articlesPageSliceActions.setSearch(searchFromUrl));
-                }
-                if (typeFromUrl) {
-                    dispatch(articlesPageSliceActions.setType(typeFromUrl));
-                }
-                dispatch(articlesPageSliceActions.initState());
-                dispatch(fetchArticlesList({
-                    page: 1,
-                }));
+            if (orderFromUrl) {
+                dispatch(articlesPageSliceActions.setOrder(orderFromUrl));
             }
-        },
-    );
+
+            if (sortFromUrl) {
+                dispatch(articlesPageSliceActions.setSort(sortFromUrl));
+            }
+
+            if (searchFromUrl) {
+                dispatch(articlesPageSliceActions.setSearch(searchFromUrl));
+            }
+            if (typeFromUrl) {
+                dispatch(articlesPageSliceActions.setSelected(typeFromUrl));
+            }
+            dispatch(articlesPageSliceActions.initState());
+            dispatch(fetchArticlesList({
+                page: 1,
+            }));
+        }
+    },
+);

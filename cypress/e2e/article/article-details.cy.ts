@@ -6,7 +6,7 @@ describe('article details', () => {
         cy.login()
         cy.createArticle().then((article) => {
             cy.log(JSON.stringify(article))
-            artcileId = article.id
+            artcileId = article.id || ''
             cy.visit('articles/' + article.id)
         })
     })

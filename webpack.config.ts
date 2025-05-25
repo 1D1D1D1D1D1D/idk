@@ -17,6 +17,7 @@ export default (env: BuildEnv) => {
     const mode = env?.mode || 'development';
     const PORT = env?.port || 3000;
     const apiUrl = env?.apiUrl || 'http://localhost:8000';
+    const deepSeekApiUrl = env.apiUrl || 'https://api.deepseek.com'
     const isDev = mode === 'development';
 
     const config: webpack.Configuration = buildWebpackConfig({
@@ -25,6 +26,7 @@ export default (env: BuildEnv) => {
         isDev,
         port: PORT,
         apiUrl,
+        deepSeekApiUrl,
         project: 'frontend',
     });
     return config;

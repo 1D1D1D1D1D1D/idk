@@ -5,6 +5,7 @@ import { ReactNode, useCallback } from 'react';
 import cls from './Tabs.module.scss';
 import { Card, CardTheme } from '../Card/Card';
 
+
 export interface TabItem {
     value: string
     content: ReactNode
@@ -12,26 +13,34 @@ export interface TabItem {
 interface TabProps {
     className?: string
     tabs: TabItem[]
-    value: string
-    onTabClick:(tab: TabItem) => void
+    value: string[]
+    readonly?: boolean;
+    onTabClick: (tab: TabItem) => void
 }
+
+
 
 export const Tabs = (props: TabProps) => {
     const { t } = useTranslation();
     const {
-        className, tabs, value, onTabClick,
+        className, tabs, value, onTabClick, readonly
     } = props;
-
     const clickHandle = useCallback((tab: TabItem) => {
-        return () => {
-            onTabClick(tab);
-        };
-    }, [onTabClick]);
+        if (!readonly) {
+            return () => {
+                onTabClick(tab);
+            }
+        }
+
+
+    }, [onTabClick, readonly]);
 
     return (
-        <div className={classNames(cls.Tabs, {}, [className])}>
+        <div className={classNames(cls.Tabs, {}, [className])} >
             {tabs.map((tab) => (
-                <Card className={cls.tab} key={tab.value} theme={tab.value === value ? CardTheme.NORMAL : CardTheme.OUTLINE} onClick={clickHandle(tab)}>
+                <Card className={cls.tab} key={tab.value} readonly={readonly}
+                    theme={value.includes(tab.value) ? CardTheme.OUTLINE : CardTheme.NORMAL}
+                    onClick={clickHandle(tab)}>
                     {tab.content}
                 </Card>
             ))}

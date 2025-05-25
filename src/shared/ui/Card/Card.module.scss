@@ -4,6 +4,11 @@
     background: var(--card-bg);
 }
 
+.readonly {
+    cursor: auto;
+    opacity: 0.7;
+}
+
 .normal {
     background: var(--card-bg);
 }

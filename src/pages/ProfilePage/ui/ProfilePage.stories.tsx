@@ -29,6 +29,7 @@ Primary.decorators = [StoreDecorator({
             username: 'admin',
             currency: Currency.RUB,
             avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTonMt3t0fOLVhvo_2RYRKsD9hgts80cJWSIQ&s',
+
         },
 
     },

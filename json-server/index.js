@@ -1,7 +1,8 @@
 const fs = require('fs');
+require('dotenv').config();
 const jsonServer = require('json-server');
 const path = require('path');
-
+const OpenAI = require("openai");
 const server = jsonServer.create();
 
 const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
@@ -15,7 +16,27 @@ server.use(async (req, res, next) => {
     });
     next();
 });
+const axios = require('axios');
 
+
+const openai = new OpenAI({
+    baseURL: 'https://openrouter.ai/api/v1',
+    apiKey: process.env.DEEPSEEK_API_KEY
+});
+
+
+server.post('/chat', async (req, res) => {
+    try {
+        const completion = await openai.chat.completions.create({
+            model: 'deepseek/deepseek-r1:free',
+            messages: req.body.messages
+        })
+        res.json(completion.choices[0].message)
+
+    } catch (error) {
+        res.status(500).json({ error: 'OpenAi error' })
+    }
+})
 // Эндпоинт для логина
 server.post('/login', (req, res) => {
     try {

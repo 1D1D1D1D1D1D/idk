@@ -25,6 +25,7 @@ const reducers: ReducerList = {
 const ArticlesPage = memo(({ className }: ArticlePageProps) => {
     const dispatch = useAppDispatch();
     const [searchParams, setSearchParams] = useSearchParams();
+    console.log(searchParams);
 
     const onLoadNextPage = useCallback(() => {
         if (__PROJECT__ !== 'storybook') {

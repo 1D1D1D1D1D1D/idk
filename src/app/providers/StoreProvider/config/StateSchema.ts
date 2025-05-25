@@ -12,26 +12,23 @@ import { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage';
 import { ArticlesPageSchema } from 'pages/ArticlePage';
 import { rtkApi } from 'shared/api/rtkApi';
 import { ScrollPositionSchema } from 'widgets/Page/features/ScrollPosition';
+import { EditArticleSchema } from 'features/EditArticleForm';
 
 export interface StateSchema {
     counter: CounterSchema;
     user: UserSchema;
     scrollPosition: ScrollPositionSchema;
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
-
     loginForm: LoginSchema | undefined
     profile: ProfileSchema | undefined
     articleDetails: ArticleDetailsSchema | undefined
-    // articleDetailsComments: ArticleDetailsCommentSchema | undefined
-    // articleDetailsRecomendation: ArticleDetailsRecomentationSchema | undefined
     articleDetailsPage: ArticleDetailsPageSchema | undefined
     addCommentForm: AddCommentSchema | undefined
     articlesPage: ArticlesPageSchema | undefined
-
+    editArticleForm: EditArticleSchema | undefined
 }
 
 export type StateSchemaKey = keyof StateSchema
-// eslint-disable-next-line no-undef
 export type MountedReducers = OptionalRecord<StateSchemaKey, boolean>
 export interface ReducerManager {
     getReducerMap: () => ReducersMapObject<StateSchema>

@@ -20,5 +20,6 @@ export type BuildOptions = {
 	isDev: boolean;
 	port: number;
 	apiUrl: string;
+	deepSeekApiUrl: string
 	project: 'storybook' | 'frontend' | 'jest'
 }

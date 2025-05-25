@@ -12,7 +12,9 @@ import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
 import { ArticleSortSelector } from 'features/ArticleSortSelector/ui/ArticleSortSelector';
 import { ArticleTypeTabs } from 'features/ArticleTypeTabs/ui/ArticleTypeTabs';
 import {
-    getArticlePageOrder, getArticlePageSearch, getArticlePageSort, getArticlePageType, getArticlePageView,
+    getArticlePageOrder, getArticlePageSearch, getArticlePageSelectedTypes, getArticlePageSort,
+    // getArticlePageType,
+    getArticlePageView,
 } from '../../../model/selectors/articlePageSelectors';
 import { fetchArticlesList } from '../../../model/services/fetchArticlesList/fetchArticlesList';
 import { articlesPageSliceActions } from '../../../model/slice/articlesPageSlice';
@@ -29,7 +31,7 @@ export const ArticlesPageFilters = ({ className }: ArticlesPageFiltersProps) => 
     const order = useSelector(getArticlePageOrder);
     const search = useSelector(getArticlePageSearch);
     const sort = useSelector(getArticlePageSort);
-    const type = useSelector(getArticlePageType);
+    const type = useSelector(getArticlePageSelectedTypes);
 
     const fetchData = useCallback(() => {
         dispatch(fetchArticlesList({ replace: true }));
@@ -51,20 +53,19 @@ export const ArticlesPageFilters = ({ className }: ArticlesPageFiltersProps) => 
         fetchData();
     }, [dispatch, fetchData]);
 
-    const debounceFetch = useDebounce(fetchData, 500);
-
+    const debounceSearch = useDebounce(fetchData, 500);
+    const debounceChangeType = useDebounce(fetchData, 1000);
     const onChangeSearch = useCallback((search: string) => {
         dispatch(articlesPageSliceActions.setSearch(search));
         dispatch(articlesPageSliceActions.setPage(1));
-        debounceFetch();
-    }, [dispatch, debounceFetch]);
+        debounceSearch();
+    }, [dispatch, debounceSearch]);
 
     const onChangeType = useCallback((value: ArticleType) => {
-        dispatch(articlesPageSliceActions.setType(value));
+        dispatch(articlesPageSliceActions.setSelected(value));
         dispatch(articlesPageSliceActions.setPage(1));
-        fetchData();
-    }, [dispatch, fetchData]);
-
+        debounceChangeType()
+    }, [dispatch, debounceChangeType]);
     return (
         <div className={classNames(cls.ArticlesPageFilters, {}, [className])}>
             <div className={cls.sortWrapper}>
@@ -77,7 +78,6 @@ export const ArticlesPageFilters = ({ className }: ArticlesPageFiltersProps) => 
             <ArticleTypeTabs
                 onChangeType={onChangeType}
                 value={type}
-
             />
         </div>
     );
