@@ -1,0 +1,45 @@
+.TextArea {
+    background-color: transparent;
+    border: var(--primary-color) 1px solid;
+    border-color: transparent;
+    outline: none;
+    width: 100%;
+    color: var(--primary-color);
+    resize: none;
+    display: flex;
+    margin-left: 4px;
+    margin-right: 4px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: start;
+    min-height: 40px; // было 60px
+
+}
+
+.background {
+    background-color: var(--inverted-bg-color);
+    border-radius: 16px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 800px;
+}
+
+.readonly {
+    opacity: 0.7;
+    cursor: default;
+}
+
+.outline {
+    border: 1px solid var(--primary-color);
+    background-color: transparent;
+    color: var(--primary-color);
+}
+
+.backgroundInverted {
+    border: none;
+    color: var(--primary-color);
+    background-color: var(--inverted-bg-color);
+}

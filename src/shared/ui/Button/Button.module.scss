@@ -78,10 +78,12 @@
 
 .disabled {
     opacity: 0.5;
+    cursor: default;
 
-    &.Button {
+    &:hover {
         cursor: default;
 
+        opacity: 0.5;
+        fill-opacity: 1;
     }
-
 }

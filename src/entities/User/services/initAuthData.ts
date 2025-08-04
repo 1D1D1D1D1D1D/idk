@@ -15,6 +15,7 @@ export const initAuthData = createAsyncThunk<
     const { rejectWithValue, dispatch } = thunkApi;
 
     const userId = localStorage.getItem(USER_LOCALSTORAGE_KEY)
+
     if (!userId) {
         return rejectWithValue('User is not authenticated');
 

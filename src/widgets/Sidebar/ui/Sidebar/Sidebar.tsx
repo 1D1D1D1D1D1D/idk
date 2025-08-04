@@ -1,5 +1,5 @@
 import {
-    type FC, memo, useMemo, useState,
+    type FC, memo, useEffect, useMemo, useState,
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 import cls from './Sidebar.module.scss';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
+import { useMediaQuery } from 'shared/lib/hooks/useMediaQuery/useMediaQuery';
 
 type SidebarProps = {
     className?: string;
@@ -19,7 +20,13 @@ export const Sidebar: FC<SidebarProps> = memo(({ className }: SidebarProps) => {
     const onToggle = () => {
         setCollapsed((prev) => !prev);
     };
+    const isSmallScreen = useMediaQuery('(max-width: 768px)');
 
+    useEffect(() => {
+        if (isSmallScreen) {
+            setCollapsed(true);
+        }
+    }, [isSmallScreen]);
     const itemsList = useMemo(() => sidebarItemsList.map((item) => (
         <SidebarItem
             item={item}

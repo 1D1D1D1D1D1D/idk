@@ -73,7 +73,7 @@ export const ArticleListItem = ({
                         <Text text={article.createdAt} className={cls.date} />
                     </div>
                     <div className={cls.infoWrapper}>
-                        {/* <Text text={article?.type?.join(',')} className={cls.types} /> */}
+                        <Text text={article?.type?.join(',')} className={cls.types} />
                         <Text text={String(article.views)} className={cls.views} />
                         <Icon Svg={ViewsIcon} />
                     </div>

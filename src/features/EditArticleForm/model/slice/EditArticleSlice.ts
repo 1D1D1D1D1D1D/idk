@@ -13,7 +13,7 @@ const initialState: EditArticleSchema = {
         type: [],
     },
     error: undefined,
-    readonly: true
+    readonly: true,
 
 };
 const EditArticleSlice = createSlice({

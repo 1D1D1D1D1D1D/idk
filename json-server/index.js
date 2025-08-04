@@ -2,42 +2,65 @@ const fs = require('fs');
 require('dotenv').config();
 const jsonServer = require('json-server');
 const path = require('path');
-const OpenAI = require("openai");
 const server = jsonServer.create();
 
 const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
 
+const axios = require('axios');
 server.use(jsonServer.defaults({}));
 server.use(jsonServer.bodyParser);
 
+
+
+// server.post('/chat/completions', async (req, res) => {
+//     let rawBody = '';
+//     req.on('data', chunk => (rawBody += chunk));
+//     req.on('end', async () => {
+//         try {
+//             const parsed = JSON.parse(rawBody);
+//             const response = await fetch('https://models.github.ai/inference', {
+//                 method: 'POST',
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                     'Authorization': `Bearer ${process.env.CHATGPT_API_KEY}`
+//                 },
+//                 body: JSON.stringify({
+//                     model: parsed.model || 'openai/gpt-4.1',
+//                     messages: parsed.messages,
+//                     stream: true
+//                 })
+//             });
+
+//             if (!response.ok || !response.body) {
+//                 return res.status(500).end('Streaming failed');
+//             }
+
+//             res.setHeader('Content-Type', 'text/event-stream');
+//             res.setHeader('Cache-Control', 'no-cache');
+//             res.setHeader('Connection', 'keep-alive');
+
+//             const reader = response.body.getReader();
+//             const decoder = new TextDecoder();
+
+//             while (true) {
+//                 const { done, value } = await reader.read();
+//                 if (done) break;
+//                 res.write(decoder.decode(value));
+//             }
+
+//             res.end();
+//         } catch (error) {
+//             console.error(error);
+//             res.status(500).json({ error: 'Stream error' });
+//         }
+//     });
+// });
 server.use(async (req, res, next) => {
     await new Promise((res) => {
         setTimeout(res, 800);
     });
     next();
 });
-const axios = require('axios');
-
-
-const openai = new OpenAI({
-    baseURL: 'https://openrouter.ai/api/v1',
-    apiKey: process.env.DEEPSEEK_API_KEY
-});
-
-
-server.post('/chat', async (req, res) => {
-    try {
-        const completion = await openai.chat.completions.create({
-            model: 'deepseek/deepseek-r1:free',
-            messages: req.body.messages
-        })
-        res.json(completion.choices[0].message)
-
-    } catch (error) {
-        res.status(500).json({ error: 'OpenAi error' })
-    }
-})
-// Эндпоинт для логина
 server.post('/login', (req, res) => {
     try {
         const { username, password } = req.body;
@@ -69,7 +92,7 @@ server.use((req, res, next) => {
 });
 
 server.use(router);
-
-server.listen(8000, () => {
-    console.log('server is running on 8000 port');
+server.listen(8001, () => {
+    console.log('server is running on 8001 port');
 });
+

@@ -19,7 +19,7 @@ interface PageProps extends TestProps {
     onScroll?: () => void
 }
 
-export const Page = memo((props : PageProps) => {
+export const Page = memo((props: PageProps) => {
     const pageRef = useRef() as MutableRefObject<HTMLDivElement>;
     const elementRef = useRef() as MutableRefObject<HTMLDivElement>;
     const dispatch = useAppDispatch();

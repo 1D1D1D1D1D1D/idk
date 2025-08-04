@@ -2,6 +2,7 @@ import { UserRole } from 'entities/User';
 import { AboutPage } from 'pages/AboutPage';
 import { AdminPanelPage } from 'pages/AdminPanelPage';
 import { ArticleDetailsPage } from 'pages/ArticleDetailsPage';
+import { ArticleDetailsPreviewPage } from 'pages/ArticleDetailsPreviewPage/index';
 import { ArticleEditPage } from 'pages/ArticleEditPage';
 import { ArticlesPage } from 'pages/ArticlePage';
 import { ForbiddenPage } from 'pages/ForbiddenPage';
@@ -25,6 +26,7 @@ export enum AppRoutes {
     ADMIN_PANEL = 'admin_panel',
     FORBIDDEN = 'forbidden',
     NOT_FOUND = 'not_found',
+    EDITED_PREVIEW = 'preview',
 }
 
 export const RoutePath: Record<AppRoutes, string> = {
@@ -37,6 +39,7 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.ARTICLE_EDIT]: '/articles/:id/edit',
     [AppRoutes.ADMIN_PANEL]: '/admin',
     [AppRoutes.FORBIDDEN]: '/frobidden',
+    [AppRoutes.EDITED_PREVIEW]: '/preview',
     // последний
     [AppRoutes.NOT_FOUND]: '*',
 };
@@ -84,6 +87,12 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
     [AppRoutes.FORBIDDEN]: {
         path: RoutePath.forbidden,
         element: <ForbiddenPage />,
+    },
+    [AppRoutes.EDITED_PREVIEW]: {
+        path: RoutePath.preview,
+        element: <ArticleDetailsPreviewPage />,
+        authOnly: true,
+        // roles: [UserRole.ADMIN],
     },
     [AppRoutes.NOT_FOUND]: {
         path: RoutePath.not_found,

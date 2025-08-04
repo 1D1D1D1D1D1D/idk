@@ -8,15 +8,13 @@ import { AppRouter } from './providers/router';
 import { useTheme } from './providers/ThemeProvider/lib/useTheme';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { PageLoader } from 'widgets/PageLoader/ui/PageLoader';
+import { getUserDataByIdQuery } from 'entities/User/api/userApi';
 
 
 const App = () => {
     const { theme } = useTheme();
     const dispatch = useAppDispatch();
     const isMounted = useSelector(getIsMountedData);
-    console.log(isMounted);
-
-
     useEffect(() => {
         dispatch(initAuthData());
     }, [dispatch]);

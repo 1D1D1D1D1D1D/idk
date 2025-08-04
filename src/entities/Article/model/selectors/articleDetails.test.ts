@@ -81,6 +81,7 @@ describe('getArticleDetailsData', () => {
             articleDetails: {
                 data,
 
+
             },
         };
         expect(getArticleDetailsData(state as StateSchema)).toEqual(data);
@@ -101,7 +102,7 @@ describe('getArticleDetailsIsLoading', () => {
         expect(getArticleDetailsIsLoading(state as StateSchema)).toEqual(true);
     });
     test('should return undef', () => {
-        const state: DeepPartial<StateSchema> = { articleDetails: { } };
+        const state: DeepPartial<StateSchema> = { articleDetails: {} };
         expect(getArticleDetailsIsLoading(state as StateSchema)).toEqual(undefined);
     });
 });

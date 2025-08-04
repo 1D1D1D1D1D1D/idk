@@ -13,6 +13,7 @@ import { ArticlesPageSchema } from 'pages/ArticlePage';
 import { rtkApi } from 'shared/api/rtkApi';
 import { ScrollPositionSchema } from 'widgets/Page/features/ScrollPosition';
 import { EditArticleSchema } from 'features/EditArticleForm';
+import { ArticleAiInputSchema } from 'entities/DeepSeek';
 
 export interface StateSchema {
     counter: CounterSchema;
@@ -26,6 +27,7 @@ export interface StateSchema {
     addCommentForm: AddCommentSchema | undefined
     articlesPage: ArticlesPageSchema | undefined
     editArticleForm: EditArticleSchema | undefined
+    articleAiInput: ArticleAiInputSchema | undefined
 }
 
 export type StateSchemaKey = keyof StateSchema

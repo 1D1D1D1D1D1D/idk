@@ -7,7 +7,7 @@ import CircularDependencyPlugin from 'circular-dependency-plugin';
 import { type BuildOptions } from './types/config';
 
 export function buildPlugins({
-    paths, isDev, apiUrl, project, deepSeekApiUrl
+    paths, isDev, apiUrl, project
 }: BuildOptions): webpack.WebpackPluginInstance[] {
     const plugins = [
         new HTMLWebpackPlugin({
@@ -30,9 +30,6 @@ export function buildPlugins({
             __IS_DEV__: JSON.stringify(isDev),
             __PROJECT__: JSON.stringify(project),
             __API__: JSON.stringify(apiUrl),
-            __DEEPSEEK_API__: JSON.stringify(deepSeekApiUrl),
-
-
         }),
         new CircularDependencyPlugin({
             exclude: /node_modules/,

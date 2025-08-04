@@ -1,26 +1,25 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
 import { Page } from 'widgets/Page/ui/Page';
 import { useParams } from 'react-router-dom';
 import { EditArticleForm } from 'features/EditArticleForm/ui/EditArticleForm/EditArticleForm';
 import { EditArticleHeader } from 'features/EditArticleForm/ui/EditArticleHeader/EditArticleHeader';
+import { VFlex } from 'shared/ui/Stack/VFlex/VFlex';
+import { memo } from 'react';
 
 interface ArticleEditPageProps {
     className?: string;
 }
 
-const ArticleEditPage = ({ className }: ArticleEditPageProps) => {
-    const { t } = useTranslation();
+const ArticleEditPage = memo(({ className }: ArticleEditPageProps) => {
     const { id } = useParams<{ id: string }>();
-    const isEditable = Boolean(id);
     return (
         <Page className={classNames('', {}, [className])}>
-            <div>
-                {isEditable ? `Редактирование${id}` : 'Создание'}
+            <VFlex gap='8' align='end'>
                 <EditArticleHeader />
-                <EditArticleForm id={id} />
-            </div>
+            </VFlex>
+            <EditArticleForm id={id} />
+
         </Page>
     );
-};
+});
 export default ArticleEditPage;

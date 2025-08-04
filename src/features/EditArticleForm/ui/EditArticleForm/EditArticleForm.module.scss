@@ -1,0 +1,43 @@
+.EditForm {
+    width: 100%;
+
+}
+
+.promptForm {
+    padding: 16px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-radius: 28px;
+    // margin-left: auto;
+    // margin-right: auto;
+    max-width: 800px;
+    width: 100%;
+    background: var(--inverted-bg-color);
+}
+
+.sendButton {
+    background-color: #ffffff;
+    border: none;
+    color: #000;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: #e0e0e0;
+    }
+}
+
+.icon {
+    width: 100%;
+    height: 100%;
+    transform: scale(1.4);
+}
+
+.previewLink {}
