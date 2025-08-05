@@ -16,12 +16,15 @@ export const Code = (props: CodeProps) => {
         text,
     } = props;
 
-    const onCopy = useCallback(() => {
-        navigator.clipboard.writeText(text);
-    }, [text]);
+  
     return (
+
         <pre className={classNames(cls.Code, {}, [className])}>
-            <Button theme={ThemeButton.CLEAR} onClick={onCopy} className={cls.copyBtn}><Icon Svg={CopyIcon} /></Button>
+            {/* <div className={cls.copyBtn}>
+                <Button theme={ThemeButton.CLEAR} onClick={onCopy} ><Icon Svg={CopyIcon} /></Button>
+
+            </div> */}
+
             <code>
                 {text}
             </code>

@@ -58,7 +58,7 @@ const articleAiSlice = createSlice({
                 try {
                     let parsedJson = JSON.parse(parsed);
                     state.result = parsedJson
-                    // console.log(parsedJson);
+                    console.log(parsedJson);
                 } catch (error) {
                     // console.error("Ошибка парсинга JSON:", error);
                 }

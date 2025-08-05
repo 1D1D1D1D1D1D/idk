@@ -1,3 +1,10 @@
+@import '../../../app/styles/index.scss';
+@import '../../../app/styles/reset.scss';
+@import '../../../app/styles/themes/dark.scss';
+@import '../../../app/styles/themes/gray.scss';
+@import '../../../app/styles/themes/normal.scss';
+@import '../../../app/styles//variables/global.scss';
+
 .PageError {
     height: 100vh;
     width: 100%;
@@ -5,5 +12,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background-color: var(--bg-color);
+    color: var(--primary-color);
 
 }
