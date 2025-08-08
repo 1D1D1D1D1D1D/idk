@@ -46,6 +46,9 @@ export const EditArticleForm = memo((props: EditArticleFormProps) => {
   const types = useSelector(getArticleTypesForm);
   const response = useSelector(getAiInputResponse)
   const result = useSelector(getAiInputResult)
+
+  console.log(result);
+
   if (!id) {
     return null
   }
@@ -81,8 +84,8 @@ export const EditArticleForm = memo((props: EditArticleFormProps) => {
     dispatch(articleAiActions.clear())
     dispatch(articleAiActions.setLoading(true))
     dispatch(articleAiActions.setReaonly(true))
-    sendPrompt(promptTemplate, prompt, dispatch)
-  }, [dispatch, prompt]);
+    sendPrompt(promptTemplate, prompt, dispatch, result)
+  }, [dispatch, prompt, result]);
   console.log(isLoading)
 
   const disabled = useMemo(() => {

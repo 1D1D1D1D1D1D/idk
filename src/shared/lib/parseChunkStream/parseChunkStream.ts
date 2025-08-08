@@ -23,6 +23,7 @@ interface ParseHandlers {
     onTextBlock?: (block: ArticleBlock[]) => void
     onCodeBlock?: (block: ArticleBlock[]) => void
     onResultReady?: (result: string) => void
+    onLoading?: (isLoading: boolean) => void
 }
 export async function parseChunkStream(reader: ReadableStreamDefaultReader, handlers: ParseHandlers = {}) {
     const decoder = new TextDecoder();
@@ -48,7 +49,9 @@ export async function parseChunkStream(reader: ReadableStreamDefaultReader, hand
                 if (!trimmed || !trimmed.startsWith('data:')) continue; // если пришел чанк не относящийся к данным которые ожидались
                 const jsonStr = trimmed.replace(/^data:\s*/, ''); //убрать data чтобы распарсить в json   {delta: {content: ...}}
                 if (jsonStr === '[DONE]') continue;
+
                 const parsed: FullChunk = JSON.parse(jsonStr);
+
                 const testContent = parsed.choices?.[0]?.delta?.content;
                 if (testContent) {
                     result += testContent // OK
@@ -81,7 +84,6 @@ export async function parseChunkStream(reader: ReadableStreamDefaultReader, hand
                                             if (!seenBlockIds.has(block.id)) {
                                                 //если нет то добавляем в сет и парсим
                                                 seenBlockIds.add(block.id);
-                                                console.log(seenBlockIds);
 
                                                 if (block.type === 'CODE') {
                                                     handlers.onCodeBlock?.(block);
@@ -115,7 +117,7 @@ export async function parseChunkStream(reader: ReadableStreamDefaultReader, hand
             }
         }
         handlers.onResultReady?.(result);
-        // dispatch(articleAiActions.setLoading(false))
+        handlers.onLoading?.(false)
         console.log(result);
 
         const parse = result
