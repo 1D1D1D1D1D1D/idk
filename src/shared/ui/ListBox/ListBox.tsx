@@ -8,9 +8,9 @@ import cls from './ListBox.module.scss';
 import Button from '../Button/Button';
 
 export interface ListBoxItem {
-value: string
-content: ReactNode
-disabled?: boolean
+    value: string
+    content: ReactNode
+    disabled?: boolean
 }
 interface ListBoxProps {
     items?: ListBoxItem[]
@@ -49,14 +49,14 @@ export function ListBox(props: ListBoxProps) {
             value={value}
             onChange={onChange}
         >
-            <HListBox.Button className={cls.trigger}>
-                <Button disabled={readonly}>
+            <HListBox.Button className={readonly ? cls.triggerDisabled : cls.trigger}>
+                <div className={classNames(cls.btn, { [cls.disabled]: readonly })} aria-disabled={readonly}>
                     {value ?? defaultValue}
-                </Button>
+                </div>
             </HListBox.Button>
             <HListBox.Options className={classNames(cls.options, {}, optionsClasses)}>
                 {items?.map((item) => (
-                    <HListBox.Option value={item.value} disabled={item.disabled} as={Fragment}>
+                    <HListBox.Option value={item.value} disabled={item.disabled} as={Fragment} key={item.value}>
                         {({ active, selected }) => (
                             <li className={classNames(cls.option, {
                                 [cls.active]: active,

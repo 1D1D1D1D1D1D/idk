@@ -10,6 +10,25 @@
     margin: 0;
 }
 
+.triggerDisabled {
+    background: none;
+    padding: 0;
+    outline: none;
+    border: none;
+    margin: 0;
+    opacity: 0.5;
+    fill-opacity: 0.5;
+
+    /* Disable hover effects */
+    &:hover {
+        cursor: auto;
+        opacity: 0.5;
+        /* Ensure opacity stays the same as non-hover */
+        fill-opacity: 0.5;
+        /* Same here for fill-opacity */
+    }
+}
+
 .options {
     background: var(--listbox-bg);
     position: absolute;
@@ -45,4 +64,19 @@
 .optionsTopLeft {
     right: 0;
     bottom: 100%;
+}
+
+.btn {
+    cursor: pointer;
+    color: var(--primary-color);
+    padding: 6px 15px;
+    background: var(--inverted-bg-color);
+    color: var(--inverted-primary-color);
+    border: none;
+
+    &:hover {
+        opacity: 0.7;
+        fill-opacity: 0.7;
+        cursor: auto;
+    }
 }

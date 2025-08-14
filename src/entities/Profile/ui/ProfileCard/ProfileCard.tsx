@@ -41,7 +41,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
     const { t } = useTranslation();
     const validateErrors = useSelector(getProfileValidateError);
     const formData = useSelector(getProfileForm);
-    console.log(formData);
 
     const {
         data,
@@ -53,7 +52,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
         onChangeCity, onChangeUsername, onChangeAvatar,
         onChangeCurrency, onChangeCountry,
     } = props;
-    console.log(validateErrors);
 
     const ProfileValidationSchema = z.object({
         first: z.string()
