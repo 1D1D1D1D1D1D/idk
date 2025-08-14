@@ -31,7 +31,6 @@ export const EditableProfileCard = ({ className, id }: EditableProfileCardProps)
     const error = useSelector(getProfileError);
     const isLoading = useSelector(getProfileIsloading);
     const readonly = useSelector(getProfileReadonly);
-    const validateErrors = useSelector(getProfileValidateError);
     const { t } = useTranslation();
 
     useEffect(() => {
@@ -39,14 +38,6 @@ export const EditableProfileCard = ({ className, id }: EditableProfileCardProps)
             dispatch(fetchProfileData(id));
         }
     }, [dispatch, id]);
-    const validateProfileTranslations = {
-        [ValidateProfileErrors.INCORRECT_AGE]: t('Некорректный возраст'),
-        [ValidateProfileErrors.INCORRECT_COUNTRY]: t('Некорректная страна'),
-        [ValidateProfileErrors.INCORRECT_DATA]: t('Поля имени и фамилии должны быть заполнены'),
-        [ValidateProfileErrors.NO_DATA]: t('Введите данные'),
-        [ValidateProfileErrors.SERVER_ERROR]: t('Серверная ошибка'),
-        [ValidateProfileErrors.INCORRECT_USER_DATA]: t('Неверные данные пользователя'),
-    };
 
     const onChangeFirstname = useCallback((value?: string) => {
         dispatch(profileActions.updateProfile({ first: value || '' }));
@@ -81,13 +72,7 @@ export const EditableProfileCard = ({ className, id }: EditableProfileCardProps)
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
             <div className={classNames('', {}, [className])}>
                 <ProfilePageHeader />
-                {validateErrors?.length && validateErrors.map((err) => (
-                    <Text
-                        key={err}
-                        theme={TextTheme.ERROR}
-                        text={validateProfileTranslations[err]}
-                    />
-                ))}
+
                 <ProfileCard
                     data={formData}
                     isLoading={isLoading}

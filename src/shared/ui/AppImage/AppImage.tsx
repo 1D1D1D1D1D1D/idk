@@ -1,8 +1,10 @@
 import {
     ImgHTMLAttributes, memo, ReactElement, useLayoutEffect, useState,
 } from 'react';
-
-interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement>{
+import DefaultImage from '../../assets/icons/defaultArticle.svg'
+import { Icon } from '../Icon/Icon';
+import cls from './AppImage.module.scss'
+interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement> {
     className?: string;
     fallback?: ReactElement;
     errorFallback?: ReactElement;
@@ -13,7 +15,7 @@ export const AppImage = memo((props: AppImageProps) => {
         className,
         src,
         alt = 'image',
-        errorFallback,
+        errorFallback = <DefaultImage />,
         fallback,
         ...otherProps
     } = props;
@@ -37,7 +39,8 @@ export const AppImage = memo((props: AppImageProps) => {
     }
 
     if (hasError && errorFallback) {
-        return errorFallback;
+
+        return <div className={cls.container}>{errorFallback}</div>
     }
 
     return (

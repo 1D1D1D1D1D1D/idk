@@ -21,7 +21,7 @@ describe('test profile slice', () => {
         avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTonMt3t0fOLVhvo_2RYRKsD9hgts80cJWSIQ&s',
     };
     test('set readonly', () => {
-        const state: DeepPartial<ProfileSchema> = { };
+        const state: DeepPartial<ProfileSchema> = {};
         expect(profileReducer(state as ProfileSchema, profileActions.setReadonly(true))).toEqual({ readonly: true });
     });
     test('set cancel edit ', () => {
@@ -35,12 +35,12 @@ describe('test profile slice', () => {
         expect(profileReducer(state as ProfileSchema, profileActions.updateProfile({ username: '123456' }))).toEqual({ form: { username: '123456' } });
     });
     test('updateProfileData pending ', () => {
-        const state: DeepPartial<ProfileSchema> = { isLoading: false, validateError: [ValidateProfileErrors.INCORRECT_DATA] };
+        const state: DeepPartial<ProfileSchema> = { isLoading: false, validateError: [ValidateProfileErrors.FIRST_NAME_REQUIRED] };
         const action = updateProfileData.pending({} as any);
         expect(profileReducer(state as ProfileSchema, action)).toEqual({ isLoading: true, valudateErrors: undefined });
     });
     test('updateProfileData fulfilled ', () => {
-        const state: DeepPartial<ProfileSchema> = { isLoading: false, validateError: [ValidateProfileErrors.INCORRECT_DATA] };
+        const state: DeepPartial<ProfileSchema> = { isLoading: false, validateError: [ValidateProfileErrors.FIRST_NAME_REQUIRED] };
 
         const testData = data as Profile; // Замените на реальные данные
 

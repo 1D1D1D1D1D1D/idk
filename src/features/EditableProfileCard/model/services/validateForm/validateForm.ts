@@ -2,26 +2,33 @@ import { Profile } from 'entities/Profile';
 import { ValidateProfileErrors } from '../../consts/consts';
 
 export const validateForm = (profile?: Profile) => {
-    if (!profile) {
-        return [ValidateProfileErrors.NO_DATA];
-    }
-
-    const {
-        first, lastname, age, country,
-    } = profile;
-
     const errors: ValidateProfileErrors[] = [];
 
-    if (!first || !lastname) {
-        errors.push(ValidateProfileErrors.INCORRECT_DATA);
+    if (!profile) {
+        errors.push(ValidateProfileErrors.NO_DATA);
+        return errors;
     }
 
-    if (!age || !Number.isInteger(age)) {
-        errors.push(ValidateProfileErrors.INCORRECT_AGE);
+    const { first, lastname, age, city, username } = profile;
+
+    if (!first || first.trim() === '') {
+        errors.push(ValidateProfileErrors.FIRST_NAME_REQUIRED);
     }
 
-    if (!country) {
-        errors.push(ValidateProfileErrors.INCORRECT_COUNTRY);
+    if (!lastname || lastname.trim() === '') {
+        errors.push(ValidateProfileErrors.LAST_NAME_REQUIRED);
+    }
+
+    if (!age || age === 0) {
+        errors.push(ValidateProfileErrors.AGE_REQUIRED);
+    }
+
+    if (!city || city.trim() === '') {
+        errors.push(ValidateProfileErrors.CITY_REQUIRED);
+    }
+
+    if (!username || username.trim() === '') {
+        errors.push(ValidateProfileErrors.USERNAME_REQUIRED);
     }
 
     return errors;

@@ -12,6 +12,7 @@ import { useThrottle } from 'shared/lib/hooks/useThrottle/useThrottle';
 import { TestProps } from 'shared/types/tests';
 import cls from './Page.module.scss';
 import { getScrollPositionByPath, scrollPositionActions } from '../features/ScrollPosition';
+import { getArticlePageNum } from 'pages/ArticlePage/model/selectors/articlePageSelectors';
 
 interface PageProps extends TestProps {
     className?: string;
@@ -26,6 +27,8 @@ export const Page = memo((props: PageProps) => {
     const { pathname } = useLocation();
     const scrollPosition = useSelector((state: StateSchema) => (getScrollPositionByPath(state, pathname)));
     const { className, children, onScroll } = props;
+    const page = useSelector(getArticlePageNum)
+    console.log(page);
 
     useScroll({
         elementRef,

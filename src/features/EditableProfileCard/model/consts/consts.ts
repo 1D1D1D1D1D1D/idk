@@ -1,8 +1,10 @@
 export enum ValidateProfileErrors {
-    INCORRECT_USER_DATA = 'INCORRECT_USER_DATA',
-    INCORRECT_AGE = 'INCORRECT_AGE',
-    INCORRECT_COUNTRY = 'INCORRECT_COUNTRY',
-    NO_DATA = 'NO_DATA',
+    FIRST_NAME_REQUIRED = 'The "first" field cannot be empty',
+    LAST_NAME_REQUIRED = 'The "lastname" field cannot be empty',
+    AGE_REQUIRED = 'The "age" field cannot be empty',
+    CITY_REQUIRED = 'The "city" field cannot be empty',
+    USERNAME_REQUIRED = 'The "username" field cannot be empty',
     SERVER_ERROR = 'SERVER_ERROR',
-    INCORRECT_DATA = 'INCORRECT_DATA',
+    NO_DATA = 'NO DATA',
 }
+

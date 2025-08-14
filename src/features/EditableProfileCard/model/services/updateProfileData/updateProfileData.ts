@@ -8,7 +8,6 @@ import { ValidateProfileErrors } from '../../consts/consts';
 export const updateProfileData = createAsyncThunk<Profile, void, ThunkConfig<ValidateProfileErrors[]>>(
     'profile/updateProfileData',
     async (_, thunkAPI) => {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { extra, rejectWithValue, getState } = thunkAPI;
         const formData = getProfileForm(getState());
         const errors = validateForm(formData);

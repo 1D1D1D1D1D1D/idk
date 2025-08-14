@@ -1,0 +1,12 @@
+svg {
+    max-height: 250px;
+    object-fit: cover;
+    fill: var(--primary-color);
+
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
