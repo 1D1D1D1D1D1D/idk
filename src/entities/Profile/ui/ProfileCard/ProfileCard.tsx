@@ -177,7 +177,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
     return (
         <Flex
             className={classNames(cls.ProfileCard, {}, [className])}
-            direction={smallScreen ? "column" : "row"}
+            direction="row"
             align={smallScreen ? "start" : "normal"}
             justify={smallScreen ? "center" : "between"}
         >
@@ -243,11 +243,14 @@ export const ProfileCard = (props: ProfileCardProps) => {
                 {renderError('avatar')}
                 <CurrencySelect value={data?.currency} onChange={onChangeCurrency} readonly={readonly} className={cls.select} />
                 <CountrySelect value={data?.country} onChange={onChangeCountry} readonly={readonly} className={cls.select} />
+
             </VFlex>
+
 
             <HFlex align={smallScreen ? "center" : 'start'} justify={smallScreen ? 'center' : 'end'} className={cls.avatarContainer}>
                 <Avatar src={data?.avatar} round={false} className={cls.avatar} />
             </HFlex>
+
         </Flex>
     );
 }

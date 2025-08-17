@@ -2,6 +2,7 @@
     padding: 20px;
     border: 2px solid var(--inverted-bg-color);
     width: 100%;
+
 }
 
 
@@ -9,22 +10,13 @@
 .avatar {
     min-height: 100px;
     height: 350px;
+    width: 100%;
     object-fit: contain;
 }
 
-.avatarContainer {
-    width: 100%;
-}
 
 
 
-.loading,
-.error {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 300px;
-}
 
 @media (max-width: 768px) {
     .ProfileCard {
@@ -41,4 +33,12 @@
         margin-bottom: 10px;
 
     }
+}
+
+.loading,
+.error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
 }
