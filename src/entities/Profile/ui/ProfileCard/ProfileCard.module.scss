@@ -1,22 +1,19 @@
 .ProfileCard {
     padding: 20px;
     border: 2px solid var(--inverted-bg-color);
-}
-
-.data {
-    margin-bottom: 30px;
+    width: 100%;
 }
 
 
 
 .avatar {
+    min-height: 100px;
     height: 350px;
-    width: 350px;
+    object-fit: contain;
 }
 
 .avatarContainer {
-    margin-left: auto;
-
+    width: 100%;
 }
 
 
@@ -27,4 +24,21 @@
     align-items: center;
     justify-content: center;
     height: 300px;
+}
+
+@media (max-width: 768px) {
+    .ProfileCard {
+        flex-direction: column;
+    }
+
+    .avatarContainer {
+        order: -1;
+    }
+
+    .avatarContainer {
+        margin-left: 0;
+        width: 100%;
+        margin-bottom: 10px;
+
+    }
 }

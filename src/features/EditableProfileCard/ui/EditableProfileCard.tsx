@@ -5,18 +5,16 @@ import { useCallback, useEffect } from 'react';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import { useSelector } from 'react-redux';
-import { TextTheme, Text } from 'shared/ui/Text/Text';
 import { ProfileCard } from 'entities/Profile';
 import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { getProfileForm } from '../model/selectors/getProfileForm/getProfileForm';
 import { getProfileError } from '../model/selectors/getProfileError/getProfileError';
 import { getProfileIsloading } from '../model/selectors/getProfileIsloading/getProfileIsloading';
-import { getProfileValidateError } from '../model/selectors/getProfileValidateError/getProfileValidateError';
 import { getProfileReadonly } from '../model/selectors/getProfileReadonly/getProfileReadonly';
 import { fetchProfileData } from '../model/services/fetchProfileData/fetchProfileData';
 import { profileActions, profileReducer } from '../model/slice/profileSlice';
-import { ValidateProfileErrors } from '../model/consts/consts';
 import { ProfilePageHeader } from 'pages/ProfilePage/ui/ProfilePageHeader/ProfilePageHeader';
+import cls from './EditableProfileCard.module.scss'
 interface EditableProfileCardProps {
     className?: string;
     id?: string
@@ -71,7 +69,7 @@ export const EditableProfileCard = ({ className, id }: EditableProfileCardProps)
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
             <div className={classNames('', {}, [className])}>
-                <ProfilePageHeader />
+                <ProfilePageHeader className={cls.header} />
 
                 <ProfileCard
                     data={formData}

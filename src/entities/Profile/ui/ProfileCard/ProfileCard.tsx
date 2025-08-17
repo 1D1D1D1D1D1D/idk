@@ -13,13 +13,14 @@ import { CurrencySelect } from 'entities/Currency/ui/CurrencySelect/CurrencySele
 import { Profile } from '../../model/types/profile';
 import { z } from 'zod';
 import cls from './ProfileCard.module.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { HFlex } from 'shared/ui/Stack/HFlex/HFlex';
 import { useSelector } from 'react-redux';
 import { getProfileValidateError } from 'features/EditableProfileCard/model/selectors/getProfileValidateError/getProfileValidateError';
 import { ValidateProfileErrors } from 'features/EditableProfileCard/model/consts/consts';
 import { validateForm } from 'features/EditableProfileCard/model/services/validateForm/validateForm';
 import { getProfileForm } from 'features/EditableProfileCard/model/selectors/getProfileForm/getProfileForm';
+import { useMediaQuery } from 'shared/lib/hooks/useMediaQuery/useMediaQuery';
 
 interface ProfileCardProps {
     className?: string;
@@ -41,7 +42,15 @@ export const ProfileCard = (props: ProfileCardProps) => {
     const { t } = useTranslation();
     const validateErrors = useSelector(getProfileValidateError);
     const formData = useSelector(getProfileForm);
+    const [smallScreen, setSmallScreen] = useState(false)
 
+    console.log(smallScreen);
+
+    const isSmallScreen = '(max-width: 768px)'
+    const media = useMediaQuery(isSmallScreen)
+    useEffect(() => {
+        setSmallScreen(media)
+    }, [media])
     const {
         data,
         error,
@@ -94,7 +103,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
         try {
             ProfileValidationSchema.pick({ [field]: true }).parse({ [field]: value });
             validateForm(formData)
-
             setErrors((prevErrors) => {
                 const newErrors = { ...prevErrors };
                 delete newErrors[field];
@@ -167,19 +175,19 @@ export const ProfileCard = (props: ProfileCardProps) => {
     };
 
     return (
-        <Flex className={classNames(cls.ProfileCard, {}, [className])} direction="row" align="center" justify="center" >
-
+        <Flex
+            className={classNames(cls.ProfileCard, {}, [className])}
+            direction={smallScreen ? "column" : "row"}
+            align={smallScreen ? "start" : "normal"}
+            justify={smallScreen ? "center" : "between"}
+        >
             <VFlex className={cls.data} align="start" justify="center" gap="16">
                 {validateErrors?.length && validateErrors.map((err) => (
-                    <HFlex>
-                        <Text
-                            key={err}
-                            theme={TextTheme.ERROR}
-                            text={validateProfile[err]}
-                        />
+                    <HFlex key={err}>
+                        <Text theme={TextTheme.ERROR} text={validateProfile[err]} />
                     </HFlex>
-
                 ))}
+
                 <Input
                     value={data?.first}
                     placeholder={t('Имя')}
@@ -187,7 +195,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
                     readonly={readonly}
                     autofocus={!readonly}
                     data-testid="ProfileCard-firstName"
-
                 />
                 {renderError('first')}
                 <Input
@@ -195,7 +202,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
                     placeholder={t('Фамилия')}
                     onChange={value => handleChange('lastName', value)}
                     readonly={readonly}
-
                 />
                 {renderError('lastName')}
                 <Input
@@ -239,10 +245,9 @@ export const ProfileCard = (props: ProfileCardProps) => {
                 <CountrySelect value={data?.country} onChange={onChangeCountry} readonly={readonly} className={cls.select} />
             </VFlex>
 
-            <div className={cls.avatarContainer}>
-                <Avatar src={data?.avatar} size={350} round={false} className={cls.avatar} />
-            </div>
-
+            <HFlex align={smallScreen ? "center" : 'start'} justify={smallScreen ? 'center' : 'end'} className={cls.avatarContainer}>
+                <Avatar src={data?.avatar} round={false} className={cls.avatar} />
+            </HFlex>
         </Flex>
     );
 }

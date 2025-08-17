@@ -17,7 +17,7 @@ export const Avatar = (props: AvatarProps) => {
     const {
         className,
         src,
-        size = 100,
+        size,
         alt,
         round = false,
     } = props;

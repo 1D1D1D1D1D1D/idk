@@ -28,7 +28,6 @@ export const Page = memo((props: PageProps) => {
     const scrollPosition = useSelector((state: StateSchema) => (getScrollPositionByPath(state, pathname)));
     const { className, children, onScroll } = props;
     const page = useSelector(getArticlePageNum)
-    console.log(page);
 
     useScroll({
         elementRef,
