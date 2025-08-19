@@ -4,6 +4,8 @@ import { Article, ArticleView } from '../../../Article';
 import cls from './ArticleList.module.scss';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
+import { HFlex } from 'shared/ui/Stack/HFlex/HFlex';
+import { Flex } from 'shared/ui/Stack/Flex/Flex';
 
 interface ArticleListProps {
     className?: string;
@@ -46,6 +48,7 @@ export const ArticleList = (props: ArticleListProps) => {
             {isLoading && getSkeletons(view)}
 
         </div>
+
 
     );
 };

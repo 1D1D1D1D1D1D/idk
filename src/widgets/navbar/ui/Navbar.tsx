@@ -44,9 +44,6 @@ export const Navbar = memo(({ className }: NavBarProps) => {
             {/* <Drawer isOpen={isOpen} onClose={onCloseDrawer}>sdasd</Drawer> */}
             {authData ? (
                 <>
-                    <AppLink to={RoutePath.article_create} theme={AppLinkTheme.SECONDARY}>
-                        {t('Создать статью')}
-                    </AppLink>
                     <HFlex gap="16" className={cls.actions}>
                         <NotificationButton />
                         <Dropdown
