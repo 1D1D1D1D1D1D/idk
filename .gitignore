@@ -7,4 +7,4 @@ node_modules
 .loki/report.json
 /reports
 .env
-.test-report.html
+test-report.html
