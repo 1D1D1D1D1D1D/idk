@@ -6,7 +6,7 @@ import Button, { ThemeButton } from 'shared/ui/Button/Button';
 import { memo, useCallback } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { saveJsonSettings } from 'entities/User';
-
+import cls from './ThemeSwitcher.module.scss'
 type ThemeSwitcherProps = {
     className?: string;
 };
@@ -28,7 +28,7 @@ export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
             onClick={onToggoleHandler}
         >
 
-            {theme === Theme.DARK ? <DarkIcon /> : <LightIcon />}
+            {theme === Theme.DARK ? <DarkIcon className={cls.darkSvg} /> : <LightIcon className={cls.lightSvg} />}
         </Button>
     );
 });

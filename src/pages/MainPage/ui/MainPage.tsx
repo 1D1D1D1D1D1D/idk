@@ -1,4 +1,8 @@
 import { useTranslation } from 'react-i18next';
+import { Carousel } from 'shared/ui/Carousel/ui/Carousel';
+import { Flex } from 'shared/ui/Stack/Flex/Flex';
+import { HFlex } from 'shared/ui/Stack/HFlex/HFlex';
+import { Text, TextSize } from 'shared/ui/Text/Text';
 import { Page } from 'widgets/Page/ui/Page';
 const MainPage = () => {
 
@@ -14,7 +18,10 @@ const MainPage = () => {
     console.log(newObj);
     return (
         <Page data-testid="MainPage">
-            {t('Главная страница')}
+            <HFlex align='center' justify='center'>
+                <Text text={t('Главная')} size={TextSize.L}></Text>
+            </HFlex>
+            <Carousel />
         </Page>
     );
 };
