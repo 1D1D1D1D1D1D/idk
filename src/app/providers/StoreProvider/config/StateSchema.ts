@@ -14,20 +14,22 @@ import { rtkApi } from 'shared/api/rtkApi';
 import { ScrollPositionSchema } from 'widgets/Page/features/ScrollPosition';
 import { EditArticleSchema } from 'features/EditArticleForm';
 import { ArticleAiInputSchema } from 'entities/DeepSeek';
+import { AllArticlesSchema } from 'pages/MainPage/types/AllArticlesSchema';
 
 export interface StateSchema {
     counter: CounterSchema;
     user: UserSchema;
     scrollPosition: ScrollPositionSchema;
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
-    loginForm: LoginSchema | undefined
-    profile: ProfileSchema | undefined
-    articleDetails: ArticleDetailsSchema | undefined
-    articleDetailsPage: ArticleDetailsPageSchema | undefined
-    addCommentForm: AddCommentSchema | undefined
-    articlesPage: ArticlesPageSchema | undefined
-    editArticleForm: EditArticleSchema | undefined
-    articleAiInput: ArticleAiInputSchema | undefined
+    loginForm: LoginSchema
+    profile: ProfileSchema
+    articleDetails: ArticleDetailsSchema
+    articleDetailsPage: ArticleDetailsPageSchema
+    addCommentForm: AddCommentSchema
+    articlesPage: ArticlesPageSchema
+    editArticleForm: EditArticleSchema
+    articleAiInput: ArticleAiInputSchema
+    mainPage: AllArticlesSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

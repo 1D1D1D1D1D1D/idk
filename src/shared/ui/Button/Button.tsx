@@ -1,4 +1,5 @@
 import React, {
+    ForwardedRef,
     memo, ReactNode, type ButtonHTMLAttributes,
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';

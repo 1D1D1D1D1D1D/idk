@@ -2,7 +2,6 @@ import {
     ImgHTMLAttributes, memo, ReactElement, useLayoutEffect, useState,
 } from 'react';
 import DefaultImage from '../../assets/icons/defaultArticle.svg'
-import { Icon } from '../Icon/Icon';
 import cls from './AppImage.module.scss'
 interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement> {
     className?: string;
