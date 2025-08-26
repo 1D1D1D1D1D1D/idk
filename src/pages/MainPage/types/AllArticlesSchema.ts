@@ -2,6 +2,7 @@ import { Article } from "entities/Article"
 
 
 interface CarouselData {
+    id?: string
     imgUrl?: string,
     title?: string
 }

@@ -8,7 +8,7 @@ import { initAllArticles } from 'pages/MainPage/services/initAllArticles/initAll
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { StateSchema } from 'app/providers/StoreProvider';
-import { getArticlesData } from 'pages/MainPage/services/selectors/selectors';
+import { getArticlesData, getArticlesIsloading } from 'pages/MainPage/services/selectors/selectors';
 import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { AllArticlesSliceReducer } from 'pages/MainPage/slice/AllArticlesSlice';
 
@@ -24,6 +24,7 @@ export const MostViewedArticles = ({ className }: MostViewedArticlesProps) => {
     }
 
     const articles = useSelector(getArticlesData)
+    const isLoading = useSelector(getArticlesIsloading)
 
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
@@ -36,7 +37,7 @@ export const MostViewedArticles = ({ className }: MostViewedArticlesProps) => {
         <DynamicModuleLoader removeAfterUnmount={false} reducers={reducers}>
 
             <VFlex align='center' justify='center' className={classNames(cls.MostViewedArticles, {}, [className])}>
-                <Carousel className={cls.carousel} articles={articles} />
+                <Carousel className={cls.carousel} articles={articles} isLoading={isLoading} />
             </VFlex>
         </DynamicModuleLoader>
 

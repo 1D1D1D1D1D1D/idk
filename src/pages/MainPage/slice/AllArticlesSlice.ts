@@ -4,6 +4,7 @@ import { AllArticlesSchema } from "../types/AllArticlesSchema";
 
 
 const initialState: AllArticlesSchema = {
+
     data: [],
     articles: [],
     error: '',
@@ -31,6 +32,7 @@ export const AllArticlesSlice = createSlice({
                     for (let article of articles) {
                         if (state.data) {
                             state.data.push({
+                                id: article.id,
                                 title: article.title,
                                 imgUrl: article.img
                             })

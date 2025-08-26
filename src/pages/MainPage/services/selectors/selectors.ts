@@ -1,6 +1,7 @@
 import { StateSchema } from "app/providers/StoreProvider";
 
 export const getArticlesData = (state: StateSchema) => state.mainPage?.data
+export const getArticlesIsloading = (state: StateSchema) => state.mainPage?.isLoading
 // export const getCounterValue = createSelector(
 //     getCounter,
 //     (counter: CounterSchema) => counter.value,

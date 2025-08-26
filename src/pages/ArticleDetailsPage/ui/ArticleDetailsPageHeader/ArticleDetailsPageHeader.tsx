@@ -21,7 +21,7 @@ export const ArticleDetailsPageHeader = ({ className }: ArticleDetailsPageHeader
     const article = useSelector(getArticleDetailsData);
     const canEdit = useSelector(getCanEditArticle);
     const onBack = useCallback(() => {
-        navigate(RoutePath.articles);
+        navigate(-1);
     }, [navigate]);
 
     const onEditArticle = useCallback(() => {
@@ -32,7 +32,7 @@ export const ArticleDetailsPageHeader = ({ className }: ArticleDetailsPageHeader
         <div className={classNames(cls.ArticleDetailsPageHeader, {}, [className])}>
             <Button onClick={onBack}>{t('Назад')}</Button>
 
-            { canEdit && <Button className={cls.ediBtn} onClick={onEditArticle}>{t('Редактировать')}</Button>}
+            {canEdit && <Button className={cls.ediBtn} onClick={onEditArticle}>{t('Редактировать')}</Button>}
 
         </div>
     );

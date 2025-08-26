@@ -34,13 +34,12 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.ABOUT]: '/about',
     [AppRoutes.PROFILE]: '/profile/',
     [AppRoutes.ARTICLES]: '/articles/',
-    [AppRoutes.ARTICLE_DETAILS]: '/articles/', // + :id
-    [AppRoutes.ARTICLE_CREATE]: '/articles/create', // + :id
+    [AppRoutes.ARTICLE_DETAILS]: '/articles/',
+    [AppRoutes.ARTICLE_CREATE]: '/articles/create',
     [AppRoutes.ARTICLE_EDIT]: '/articles/:id/edit',
     [AppRoutes.ADMIN_PANEL]: '/admin',
     [AppRoutes.FORBIDDEN]: '/frobidden',
     [AppRoutes.EDITED_PREVIEW]: '/preview',
-    // последний
     [AppRoutes.NOT_FOUND]: '*',
 };
 export const routeConfig: Record<AppRoutes, AppRouteProps> = {
