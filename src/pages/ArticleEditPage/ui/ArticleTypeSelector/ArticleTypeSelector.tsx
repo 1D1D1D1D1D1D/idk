@@ -19,7 +19,6 @@ interface ArticleTypeSelectorProps {
 
 export const ArticleTypeSelector = ({ className, onTabClick, readonly, value }: ArticleTypeSelectorProps) => {
     const { t } = useTranslation();
-    // const value = useSelector(getArticlePageSelectedTypes);
     const typeTabs = useMemo<TabItem[]>(() => [
 
         {

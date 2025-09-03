@@ -7,19 +7,22 @@ import { Page } from 'widgets/Page/ui/Page';
 import { MostViewedArticles } from '../MostViewedArticles/MostViewedArticles';
 import { VFlex } from 'shared/ui/Stack/VFlex/VFlex';
 import cls from './MainPage.module.scss'
+import { RecommendationListArticles } from '../RecommendationListArticles/RecommendationListArticles';
+import { RecentArticlesList } from '../RecentArticlesList/RecentArticlesList';
 const MainPage = () => {
 
     const { t } = useTranslation();
-
 
     return (
         <Page data-testid="MainPage">
             <VFlex align='center' justify='center'>
                 <Text text={t('Главная')} size={TextSize.L}></Text>
                 <MostViewedArticles />
-
             </VFlex>
-
+            <Flex direction='row' justify='between' className={cls.lists} >
+                <RecommendationListArticles className={cls.recommendations} />
+                <RecentArticlesList className={cls.recent} />
+            </Flex>
         </Page>
     );
 };

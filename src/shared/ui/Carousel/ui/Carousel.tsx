@@ -8,6 +8,7 @@ import { AppImage } from 'shared/ui/AppImage/AppImage';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import AppLink from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { memo } from 'react';
 
 interface CarouselData {
     imgUrl?: string,
@@ -23,7 +24,7 @@ interface CarouselProps {
 interface ArrowProps {
     onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
-export const Carousel = (props: CarouselProps) => {
+export const Carousel = memo((props: CarouselProps) => {
     const { className, articles, isLoading } = props
     const CustomPrevArrow = (props: ArrowProps) => {
         const { onClick } = props;
@@ -50,9 +51,10 @@ export const Carousel = (props: CarouselProps) => {
             <HFlex align='center' justify='center' className={cls.slide}>
                 <AppLink to={RoutePath.article_details + `${item.id}`} className={cls.link}>
                     <AppImage src={item.imgUrl} className={cls.image} />
-                </AppLink>
 
-                <Text text={item.title} align={TextAlign.CENTER} className={cls.title} size={TextSize.M}></Text>
+                </AppLink>
+                <Text text={item.title} align={TextAlign.CENTER} className={cls.title} size={TextSize.L}></Text>
+
 
             </HFlex >
         ))
@@ -100,4 +102,4 @@ export const Carousel = (props: CarouselProps) => {
             </HFlex>
         </>
     );
-}
+})

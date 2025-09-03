@@ -2,7 +2,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { memo, useCallback, useEffect, useMemo } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { fetchArticleById } from 'entities/Article/model/services/fetchArticleById/fetchArticleById';
-import { ArticleType, getArticleDetailsData, getArticleDetailsForm } from 'entities/Article';
+import { Article, ArticleType, getArticleDetailsData, getArticleDetailsForm } from 'entities/Article';
 import { useSelector } from 'react-redux';
 import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice';
@@ -29,16 +29,14 @@ interface EditArticleFormProps {
 }
 export const EditArticleForm = memo((props: EditArticleFormProps) => {
 
-  const reducers: ReducerList = {
-    articleDetails: articleDetailsReducer,
-    editArticleForm: EditArticleReducer,
-    articleAiInput: articleAiReducer
-  };
-
-
+  // const reducers: ReducerList = {
+  //   articleDetails: articleDetailsReducer,
+  //   editArticleForm: EditArticleReducer,
+  //   articleAiInput: articleAiReducer
+  // };
   const { className, id } = props
   const dispatch = useAppDispatch()
-  const article = useSelector(getArticleDetailsData);
+  const article = useSelector(getArticleDetailsData)
   const formArticle = useSelector(getArticleDetailsForm)
   const prompt = useSelector(getAiInputPrompt)
   const readonly = useSelector(getEditArticleReadonly)
@@ -47,7 +45,6 @@ export const EditArticleForm = memo((props: EditArticleFormProps) => {
   const response = useSelector(getAiInputResponse)
   const result = useSelector(getAiInputResult)
 
-  console.log(result);
 
   if (!id) {
     return null
@@ -86,16 +83,12 @@ export const EditArticleForm = memo((props: EditArticleFormProps) => {
     dispatch(articleAiActions.setReaonly(true))
     sendPrompt(promptTemplate, prompt, dispatch, result)
   }, [dispatch, prompt, result]);
-  console.log(isLoading)
 
-  const disabled = useMemo(() => {
-    if (prompt === '' || isLoading === true)
-      return true
-    else return false
-  }, [prompt, isLoading])
+  const disabled = prompt === '' || isLoading;
   return (
-    <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-
+    // <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
+    // </DynamicModuleLoader>
+    <>
       <VFlex className={classNames(cls.EditForm, {}, [className])}>
         <EditableArticleCard data={formArticle} readonly={readonly}
           onChangeSubtitle={onChangeSubtitle}
@@ -110,8 +103,7 @@ export const EditArticleForm = memo((props: EditArticleFormProps) => {
           <Icon className={cls.icon} Svg={SendIcon} />
         </Button>
       </VFlex>
+    </>
 
-
-    </DynamicModuleLoader>
   );
 });

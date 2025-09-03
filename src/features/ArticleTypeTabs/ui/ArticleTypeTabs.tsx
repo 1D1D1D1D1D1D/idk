@@ -5,7 +5,7 @@ import { memo, useCallback, useMemo } from 'react';
 
 interface ArticleTypeTabsProps {
     value: ArticleType[]
-    onChangeType: (type: ArticleType) => void
+    onChangeType?: (type: ArticleType) => void
 }
 
 export const ArticleTypeTabs = memo(({ value, onChangeType }: ArticleTypeTabsProps) => {
@@ -31,7 +31,10 @@ export const ArticleTypeTabs = memo(({ value, onChangeType }: ArticleTypeTabsPro
     ], [t]);
 
     const onTabClick = useCallback((tab: TabItem) => {
-        onChangeType(tab.value as ArticleType);
+        if (onChangeType) {
+            onChangeType(tab.value as ArticleType);
+
+        }
     }, [onChangeType]);
     return (
         <Tabs onTabClick={onTabClick} value={value} tabs={typeTabs} />

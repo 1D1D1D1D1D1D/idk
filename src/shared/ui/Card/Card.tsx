@@ -5,6 +5,7 @@ import cls from './Card.module.scss';
 export enum CardTheme {
     NORMAL = 'normal',
     OUTLINE = 'outline'
+
 }
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
     className?: string;
@@ -18,9 +19,10 @@ export const Card = ({
     const mods: Mods = {
         [cls.readonly]: readonly
     }
-    return (<div className={classNames(cls.Card, mods, [className, cls[theme],])} {...otherProps}>
-        {children}
-    </div>)
+    return (
+        <div className={classNames(cls.Card, mods, [className, cls[theme],])} {...otherProps}>
+            {children}
+        </div>)
 }
 
 

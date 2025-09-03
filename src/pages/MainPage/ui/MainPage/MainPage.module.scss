@@ -1,0 +1,19 @@
+.recommendations,
+.recent {
+    flex: 1 1 45%;
+    padding: 20px;
+}
+
+.lists {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+
+    .recommendations,
+    .recent {
+        flex: 1 1 100%;
+    }
+}

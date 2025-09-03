@@ -3,12 +3,12 @@ import { useTranslation } from 'react-i18next';
 import cls from './MostViewedArticles.module.scss';
 import { Carousel } from 'shared/ui/Carousel/ui/Carousel';
 import { VFlex } from 'shared/ui/Stack/VFlex/VFlex';
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { initAllArticles } from 'pages/MainPage/services/initAllArticles/initAllArticles';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { StateSchema } from 'app/providers/StoreProvider';
-import { getArticlesData, getArticlesIsloading } from 'pages/MainPage/services/selectors/selectors';
+import { getArticlesData, getArticlesIsloading, getArticlesRecent, getArticlesRecommendations } from 'pages/MainPage/services/selectors/selectors';
 import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { AllArticlesSliceReducer } from 'pages/MainPage/slice/AllArticlesSlice';
 
@@ -25,7 +25,10 @@ export const MostViewedArticles = ({ className }: MostViewedArticlesProps) => {
 
     const articles = useSelector(getArticlesData)
     const isLoading = useSelector(getArticlesIsloading)
-
+    const recommendations = useSelector(getArticlesRecommendations)
+    const recent = useSelector(getArticlesRecent)
+    console.log(recommendations);
+    console.log(recent);
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
             console.log('start');
@@ -42,4 +45,4 @@ export const MostViewedArticles = ({ className }: MostViewedArticlesProps) => {
         </DynamicModuleLoader>
 
     );
-};
+}

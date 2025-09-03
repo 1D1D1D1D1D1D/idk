@@ -1,0 +1,25 @@
+.RecentArticlesList {
+    width: 100%;
+}
+
+.card {
+    width: 100%;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    padding: 10px;
+    margin-bottom: 12px;
+    background: var(--inverted-bg-color);
+
+
+
+}
+
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card:active {
+    transform: scale(0.98);
+}

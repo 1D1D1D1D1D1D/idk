@@ -4,16 +4,14 @@ import { getEditArticleReadonly } from '../../model/selectors/editArticleSelecto
 import { useSelector } from 'react-redux';
 import Button from 'shared/ui/Button/Button';
 import { HFlex } from 'shared/ui/Stack/HFlex/HFlex';
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { updateArticleById } from 'entities/Article/model/services/updateArticleById/updateArticleById';
-import { EditArticleActions, EditArticleReducer } from '../../model/slice/EditArticleSlice';
-import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { EditArticleActions } from '../../model/slice/EditArticleSlice';
 import { getArticleDetailsData, getArticleDetailsForm } from 'entities/Article';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import cls from './EditArticleHeader.module.scss'
-import { articleAiReducer } from 'features/EditArticleAiHelper/model/slice/articleAiSlice';
 import { getAiInputIsLoading, getAiInputPrompt, getAiInputResult } from 'features/EditArticleAiHelper/model/selectors/selectors';
 interface EditArticleHeaderProps {
     className?: string;
@@ -29,21 +27,21 @@ export const EditArticleHeader = ({ className }: EditArticleHeaderProps) => {
     const isLoading = useSelector(getAiInputIsLoading)
     const result = useSelector(getAiInputResult)
     const navigate = useNavigate()
-    console.log(result);
+    const [saveDisabled, setSaveDisabled] = useState<boolean>(false)
 
-    const reducers: ReducerList = {
-        editArticleForm: EditArticleReducer,
-        articleAiInput: articleAiReducer
-    }
     const onSaveHandler = useCallback(() => {
         dispatch(updateArticleById())
+        setSaveDisabled(true)
         dispatch(EditArticleActions.saveData(article))
         dispatch(EditArticleActions.setReadonly(true))
 
     }, [dispatch])
     const onCancelHandler = useCallback(() => {
-        if (article)
+        if (article) {
             dispatch(EditArticleActions.cancelEdit(article))
+
+        }
+
     }, [dispatch, articleForm])
     const onSetReadonlyHandler = useCallback(() => {
         dispatch(EditArticleActions.setReadonly(false))
@@ -58,21 +56,19 @@ export const EditArticleHeader = ({ className }: EditArticleHeaderProps) => {
         else return false
     }, [prompt, isLoading, result])
     return (
-        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-            <HFlex className={classNames(cls.header, {}, [className])}>
-                {readonly ?
-                    <HFlex  >
-                        <Button onClick={onSetReadonlyHandler}>Edit</Button>
-                    </HFlex>
-                    :
-                    <HFlex className={cls.menu} gap='4' >
-                        <Button onClick={onCancelHandler}>Cancel</Button>
-                        <Button onClick={onSaveHandler}>Save</Button>
-                        <Button onClick={onPreviewClick} disabled={disabled} >Preview</Button>
-                    </HFlex>
-                }
-            </HFlex>
-        </DynamicModuleLoader>
+        <HFlex className={classNames(cls.header, {}, [className])}>
+            {readonly ?
+                <HFlex  >
+                    <Button onClick={onSetReadonlyHandler}>Edit</Button>
+                </HFlex>
+                :
+                <HFlex className={cls.menu} gap='4' >
+                    <Button onClick={onCancelHandler}>Cancel</Button>
+                    <Button disabled={saveDisabled} onClick={onSaveHandler}>Save</Button>
+                    <Button onClick={onPreviewClick} disabled={disabled} >Preview</Button>
+                </HFlex>
+            }
+        </HFlex>
 
     );
 };

@@ -11,7 +11,7 @@ export const sendPrompt = async (promptTemplate: string, text: string = '', disp
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer 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`
+                'Authorization': `Bearer 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`
             },
             body: JSON.stringify({
                 messages: [{ role: 'user', content: `${promptTemplate}` + ` ${text}` }],
